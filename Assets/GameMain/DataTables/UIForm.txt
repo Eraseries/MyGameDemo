@@ -1,0 +1,21 @@
+﻿#	界面配置表					
+#	Id		AssetName	UIGroupName	AllowMultiInstance	PauseCoveredUIForm
+#	int		string	string	bool	bool
+#	界面编号	策划备注	资源名称	界面组名称	是否允许多个界面实例	是否暂停被其覆盖的界面
+	1	弹出框	DialogForm	Default	TRUE	TRUE
+	100	主菜单	MenuForm	Default	FALSE	TRUE
+	101	设置	SettingForm	Default	FALSE	TRUE
+	102	设置	SettingUI	二级界面	FALSE	TRUE
+	103	关于	AboutForm	Default	FALSE	TRUE
+	104	消息盒	MessageBoxUI	二级界面	FALSE	TRUE
+	105	初始游戏界面	StartUI	一级界面	FALSE	TRUE
+	106	加载进度条界面	LoadingUI	一级界面	FALSE	TRUE
+	200	主界面	MainUI	一级界面	FALSE	TRUE
+	205	玩家信息	PlayerInfoUI	二级界面	FALSE	TRUE
+	210	背包界面	BagUI	二级界面	FALSE	TRUE
+	215	仓库界面	HouseUI	二级界面	FALSE	TRUE
+	220	商城界面	ShopUI	二级界面	FALSE	TRUE
+	230	活动界面	LuckyDrawUI	二级界面	FALSE	TRUE
+	240	小关卡界面	SmallStageUI	二级界面	FALSE	TRUE
+	245	大关卡界面	BigStageUI	二级界面	FALSE	TRUE
+	250	战斗界面	BattleUI	二级界面	FALSE	TRUE
