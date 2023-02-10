@@ -24,7 +24,6 @@ namespace StarForce
         private bool m_IsChangeSceneComplete = false;
         private int m_BackgroundMusicId = 0;
         private bool m_FirstEntryGame = true;
-        private LoadingUI loadingUI = null;
         public override bool UseNativeDialog
         {
             get
@@ -164,7 +163,6 @@ namespace StarForce
                 }
                 else if(GameEntry.UI.GetUIForm(UIFormId.LoadingUI))
                 {
-                    Log.Error("2222222");
                     ((LoadingUI)GameEntry.UI.GetUIForm(UIFormId.LoadingUI)).SetSlider(1);
                     ((LoadingUI)GameEntry.UI.GetUIForm(UIFormId.LoadingUI)).Close();
                 }

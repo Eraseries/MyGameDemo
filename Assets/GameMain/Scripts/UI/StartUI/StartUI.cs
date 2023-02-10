@@ -18,13 +18,11 @@ namespace StarForce
         Transform Btn1;
         Transform Btn2;
 
-        private bool first_entry_game = true;
 
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
             Name = "StartUI";
-            first_entry_game = false;
             content = transform.Find("Background");
             tapBtn = content.Find("Background").GetComponent<Button>();
             Btn1 = content.Find("Button_1");
