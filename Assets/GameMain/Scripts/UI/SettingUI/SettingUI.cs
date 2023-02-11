@@ -26,7 +26,9 @@ namespace StarForce
             Name = "SettingUI";
             content = transform.Find("Background");
             panel_1 = content.Find("Panel1");
+            panel_1.gameObject.SetActive(true);
             panel_2 = content.Find("Panel2");
+            panel_2.gameObject.SetActive(false);
             backBtn = content.Find("CloseBtn").GetComponent<Button>();
             AddBtnEvent(panel_1.Find("Group_Right/DeleteBtn").GetComponent<Button>(), () =>
             {
@@ -44,17 +46,17 @@ namespace StarForce
                     Close(true);
                 }});
             save_btns = new Button[4];
-            for (int i = 0; i < 4; i++)
-            {
-                int index = i + 1;
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    int index = i + 1;
 
-                AddBtnEvent(panel_2.Find("Slot" + index + "/LoadBtn").GetComponent<Button>(),()=>{
-                    GameEntry.PlayerData.Operate("load",index);
-                });
-                AddBtnEvent(panel_2.Find("Slot" + index + "/SaveBtn").GetComponent<Button>(), () => {
-                    GameEntry.PlayerData.Operate("save", index);
-                });
-            }
+            //    AddBtnEvent(panel_2.Find("Slot" + index + "/LoadBtn").GetComponent<Button>(),()=>{
+            //        GameEntry.PlayerData.Operate("load",index);
+            //    });
+            //    AddBtnEvent(panel_2.Find("Slot" + index + "/SaveBtn").GetComponent<Button>(), () => {
+            //        GameEntry.PlayerData.Operate("save", index);
+            //    });
+            //}
         }
 
         protected override void OnOpen(object userData)

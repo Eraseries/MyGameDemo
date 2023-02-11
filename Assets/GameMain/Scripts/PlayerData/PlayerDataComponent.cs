@@ -139,8 +139,5 @@ namespace StarForce
                 LoadByDeserialization(text_name);
             }
         }
-
-
-
     }
 }

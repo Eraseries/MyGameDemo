@@ -17,8 +17,9 @@ public class PlayerDataConfig
     public int coin;//角色金币
     public int diamond;//角色钻石
     public int energy;//角色能量
-    public int role_exp;//角色经验
-    public Dictionary<int,Dictionary<string,float>> bag = new Dictionary<int, Dictionary<string, float>>();//第一个参数物品index，第二个参数属性表
+    public float role_exp;//角色经验
+    public string playerName;//角色名字
+    Dictionary<string,float> bag = new Dictionary<string, float>();//第一个参数物品index，第二个参数属性表
 
 
 

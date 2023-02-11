@@ -33,6 +33,7 @@ namespace StarForce
             "UIForm",
             "UISound",
             "Weapon",
+            "Player",
         };
 
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
@@ -109,8 +110,8 @@ namespace StarForce
             //这里就是得到该类
             //TODO
             startUI = (StartUI)ne.UIForm.Logic;
-            startUI.tapBtn.onClick.RemoveAllListeners();
-            startUI.tapBtn.onClick.AddListener(()=> { 
+            startUI.newGameBtn.onClick.RemoveAllListeners();
+            startUI.newGameBtn.onClick.AddListener(()=> { 
                 m_EntryGame = true;
                 startUI.SetSlider(0.9f);
             });

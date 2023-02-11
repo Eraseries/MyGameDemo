@@ -1,226 +1,226 @@
-﻿[
-  {
-    "pet_id#宠物ID": "number",
+﻿{
+  "0": {
+    "id#宠物ID": "number",
     "pet_acs#宠物活力值\n(等级*5*星级)\n向上取整": "string",
     "pet_acs_max#宠物玩具提升上限": "number",
     "pet_ac_ot_add#跟随宠\n每小时回复活力值": "number",
     "pet_ac_ot_ded#测试2": "string"
   },
-  {
-    "pet_id": 104811.0,
+  "1": {
+    "id": 104811.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104812.0,
+  "2": {
+    "id": 104812.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104813.0,
+  "3": {
+    "id": 104813.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104814.0,
+  "4": {
+    "id": 104814.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104815.0,
+  "5": {
+    "id": 104815.0,
     "pet_acs": "lv*5*st+30",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104821.0,
+  "6": {
+    "id": 104821.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104822.0,
+  "7": {
+    "id": 104822.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104823.0,
+  "8": {
+    "id": 104823.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104824.0,
+  "9": {
+    "id": 104824.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104825.0,
+  "10": {
+    "id": 104825.0,
     "pet_acs": "lv*5*st+30",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104831.0,
+  "11": {
+    "id": 104831.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104832.0,
+  "12": {
+    "id": 104832.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104833.0,
+  "13": {
+    "id": 104833.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104834.0,
+  "14": {
+    "id": 104834.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104835.0,
+  "15": {
+    "id": 104835.0,
     "pet_acs": "lv*5*st+30",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104841.0,
+  "16": {
+    "id": 104841.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104842.0,
+  "17": {
+    "id": 104842.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104843.0,
+  "18": {
+    "id": 104843.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104844.0,
+  "19": {
+    "id": 104844.0,
     "pet_acs": "lv*5*st+10",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104845.0,
+  "20": {
+    "id": 104845.0,
     "pet_acs": "lv*5*st+30",
     "pet_acs_max": 100.0,
     "pet_ac_ot_add": 2.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104851.0,
+  "21": {
+    "id": 104851.0,
     "pet_acs": "lv*6*st+20",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104852.0,
+  "22": {
+    "id": 104852.0,
     "pet_acs": "lv*6*st+20",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104853.0,
+  "23": {
+    "id": 104853.0,
     "pet_acs": "lv*6*st+20",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104854.0,
+  "24": {
+    "id": 104854.0,
     "pet_acs": "lv*6*st+20",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104855.0,
+  "25": {
+    "id": 104855.0,
     "pet_acs": "lv*6*st+30",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104891.0,
+  "26": {
+    "id": 104891.0,
     "pet_acs": "lv*6*st+40",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104856.0,
+  "27": {
+    "id": 104856.0,
     "pet_acs": "lv*6*st+20",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104857.0,
+  "28": {
+    "id": 104857.0,
     "pet_acs": "lv*6*st+20",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104858.0,
+  "29": {
+    "id": 104858.0,
     "pet_acs": "lv*6*st+20",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104859.0,
+  "30": {
+    "id": 104859.0,
     "pet_acs": "lv*6*st+20",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   },
-  {
-    "pet_id": 104860.0,
+  "31": {
+    "id": 104860.0,
     "pet_acs": "lv*6*st+40",
     "pet_acs_max": 150.0,
     "pet_ac_ot_add": 3.0,
     "pet_ac_ot_ded": "lv/20"
   }
-]
+}

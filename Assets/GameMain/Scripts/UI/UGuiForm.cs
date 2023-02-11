@@ -244,10 +244,10 @@ namespace StarForce
             base.OnRecycle();
         }
 
+        //这个Onpen是有个动画过程的
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
-
             m_CanvasGroup.alpha = 0f;
             StopAllCoroutines();
             StartCoroutine(m_CanvasGroup.FadeToAlpha(1f, FadeTime));

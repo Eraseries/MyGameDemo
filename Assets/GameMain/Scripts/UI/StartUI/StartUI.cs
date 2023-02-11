@@ -14,7 +14,8 @@ namespace StarForce
         private Text slider_text;
 
         [HideInInspector]
-        public Button tapBtn;
+        public Button newGameBtn;
+        public Button exitBtn;
         Transform Btn1;
         Transform Btn2;
 
@@ -24,7 +25,8 @@ namespace StarForce
             base.OnInit(userData);
             Name = "StartUI";
             content = transform.Find("Background");
-            tapBtn = content.Find("Background").GetComponent<Button>();
+            newGameBtn = content.Find("NewGameBtn").GetComponent<Button>();
+            exitBtn = content.Find("ExitBtn").GetComponent<Button>();
             Btn1 = content.Find("Button_1");
             Btn2 = content.Find("Button_2");
 
@@ -33,6 +35,9 @@ namespace StarForce
             slider.value = 0;
             slider_text = content.Find("Slider/Value").GetComponent<Text>();
             slider_text.text = "0%";
+            AddBtnEvent(exitBtn, () => {
+                Application.Quit();
+            });
         }
 
         public void SetSlider(float value)

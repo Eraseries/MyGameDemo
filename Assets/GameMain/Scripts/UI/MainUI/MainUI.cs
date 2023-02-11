@@ -6,6 +6,9 @@ using GameFramework.DataTable;
 using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
+using LitJson;
+using System.IO;
+using System;
 /// <summary>
 /// 主界面模块
 /// </summary>
@@ -65,10 +68,20 @@ namespace StarForce
             AddBtnEvent(bagBtn, () => { GameEntry.UI.OpenUIForm(UIFormId.BagUI); });
             AddBtnEvent(cardBtn, () =>
             {
-                if (GetUIForm("BagUI") != null)
-                {
-                    GetUIForm("BagUI").Open();
-                }
+                //if (GetUIForm("BagUI") != null)
+                //{
+                //    GetUIForm("BagUI").Open();
+                //}
+
+
+                //TODO  解析Json文件
+
+                //ReadData();
+
+
+                IDataTable<DRPlayer> dtPlayer = GameEntry.DataTable.GetDataTable<DRPlayer>();
+                DRPlayer drPlayer = dtPlayer.GetDataRow(2);
+                Log.Error(drPlayer.Exp);
             });
             AddBtnEvent(clanBtn, () => { });
             AddBtnEvent(stageBtn, () =>
@@ -82,6 +95,37 @@ namespace StarForce
             AddBtnEvent(chatBtn, () => { });
             AddBtnEvent(settingBtn, () => { GameEntry.UI.OpenUIForm(UIFormId.SettingUI); });
             AddBtnEvent(playerInfoBtn, () => { GameEntry.UI.OpenUIForm(UIFormId.PlayerInfoUI); });
+        }
+
+
+        public void ReadData()
+        {
+            string FileName = "Assets/GameMain/ExcelTable/JsonTable/pet_config_new.json";
+            StreamReader json = File.OpenText(FileName);
+            string input = json.ReadToEnd();
+            Dictionary<string,Dictionary<string, object>> jsonObject = JsonMapper.ToObject<Dictionary<string,Dictionary<string, object>>>(input);
+            Debug.LogError(jsonObject.Count);
+            foreach (var item in jsonObject)
+            {
+                if (item.Key == "0")
+                {
+                    foreach (var list in item.Value)
+                    {
+                        string temp_key = list.Key;
+                        object temp_value_type = list.Value;
+                        string[] str = temp_key.Split('#');
+                        Debug.LogError(str[0]);
+                    }
+                }
+                else
+                {
+
+                    //foreach (var list in item.Value)
+                    //{
+                    //    Debug.LogError(list);
+                    //}
+                }
+            }
         }
 
         protected override void OnOpen(object userData)

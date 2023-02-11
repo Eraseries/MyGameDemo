@@ -26,7 +26,17 @@ namespace StarForce
             private set;
         }
 
+        /// 获取玩家数据。
         public static PlayerDataComponent PlayerData
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取Json数据配置表。
+        /// </summary>
+        public static ConfigDataComponent ConfigData
         {
             get;
             private set;
@@ -36,6 +46,7 @@ namespace StarForce
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
             HPBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent>();
             PlayerData = UnityGameFramework.Runtime.GameEntry.GetComponent<PlayerDataComponent>();
+            ConfigData = UnityGameFramework.Runtime.GameEntry.GetComponent<ConfigDataComponent>();
         }
     }
 }
