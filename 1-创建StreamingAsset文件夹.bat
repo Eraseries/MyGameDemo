@@ -1,1 +1,0 @@
-md F:\MyDemoGame\Assets\StreamingAssets
