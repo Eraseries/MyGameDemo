@@ -15,11 +15,33 @@ using DG.Tweening.Core.Easing;
 using UnityEngine.UI;
 using System;
 using UnityEngine.Events;
+using LitJson;
+using System.Collections;
 
 namespace StarForce
 {
     public class PlayerDataComponent : GameFrameworkComponent
     {
+        /// <summary>
+        /// 玩家数据
+        /// </summary>
+        private PlayerDataConfig Data
+        {
+            get;
+            set;
+        }
+
+
+        /// <summary>
+        /// 保存到哪个存档
+        /// </summary>
+        private SaveDataType CurrentSaveType
+        {
+            get;
+            set;
+        }
+
+
         public enum SaveDataType    //枚举类型
         {
             Data1,
@@ -39,19 +61,36 @@ namespace StarForce
         }
         public saveData[] saveDatas;  //结构体数组
 
-        public PlayerDataConfig CreateSaveData()
-        { //创建一个Save对象存储当前游戏数据
+
+        /// <summary>
+        /// 创建新的玩家数据
+        /// </summary>
+        /// <returns></returns>
+        public PlayerDataConfig CreateNewPlayerData()
+        {
+            CurrentSaveType = SaveDataType.Data1;
+            //创建一个Save对象存储当前游戏数据
             PlayerDataConfig data = new PlayerDataConfig();
-            data.coin = 10000;
-            data.diamond = 10000;
-            data.energy = 50;
+            System.Random random = new System.Random();
+            data.coin = random.Next(5000, 10000);
+            data.diamond = random.Next(1, 300);
+            data.energy = random.Next(1, 100);
             data.level = 1;
             data.role_exp = 0;
             return data;
         }
 
+        protected override void Awake()
+        {
+
+        }
+
         private void Start()
         {
+            if (!LoadByDeserialization())
+            {
+                Data = CreateNewPlayerData();
+            }
             colorDic = new Dictionary<SaveDataType, Sprite>();
             for (int i = 0; i < saveDatas.Length; i++)
             {
@@ -65,9 +104,9 @@ namespace StarForce
         }
 
         //将数据保存到文本里
-        public void SaveBySerialization(string text_name)
+        public void SaveBySerialization(string text_name = "/Data1.yj")
         {
-            PlayerDataConfig save = CreateSaveData();
+            PlayerDataConfig save = CreateNewPlayerData();
             //获取当前的游戏数据存在Save对象里
             BinaryFormatter bf = new BinaryFormatter();
             //创建一个二进制形式
@@ -83,50 +122,42 @@ namespace StarForce
         }
 
         //加载数据
-        private void LoadByDeserialization(string text_name)
+        private bool LoadByDeserialization(string text_name = "/Data1.yj")
         {
             if (File.Exists(Application.persistentDataPath + text_name))
             //判断文件是否创建
             {
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream fs = File.Open(Application.persistentDataPath + text_name, FileMode.Open);//打开文件
-                PlayerDataConfig save = bf.Deserialize(fs) as PlayerDataConfig;
+                Data = bf.Deserialize(fs) as PlayerDataConfig;
                 //反序列化并将数据储存至save（因为返回变量类型不对，所以要强制转换为Save类
                 //关文件流
                 fs.Close();
-                Log.Error(save.coins);
-                SetPlayerData();
+                return true;
             }
             else
             {
-                Debug.LogError("Data Not Found");
+                Debug.LogError("加载数据失败，创建一个新的数据存档");
+                return false;
             }
         }
 
-        //设置玩家保存的数据
-        public void SetPlayerData()
-        {
-            //GameManager.Instance.coins = save.coins;
-            //player.transform.position = new Vector2(save.playerPositionX, save.playerPositionY);
-            //赋值
-        }
-
-        //操作
-        public void Operate(string operate,int type = 1)
+        //存档/删除操作(外部接口)
+        public void Operate(string operate,SaveDataType saveDataType = SaveDataType.Data1)
         {
             string text_name = "";
-            switch (type)
+            switch (saveDataType)
             {
-                case 1:
+                case SaveDataType.Data1:
                     text_name = "/Data1.yj";
                     break;
-                case 2:
+                case SaveDataType.Data2:
                     text_name = "/Data2.yj";
                     break;
-                case 3:
+                case SaveDataType.Data3:
                     text_name = "/Data3.yj";
                     break;
-                case 4:
+                case SaveDataType.Data4:
                     text_name = "/Data4.yj";
                     break;
             }
@@ -138,6 +169,24 @@ namespace StarForce
             {
                 LoadByDeserialization(text_name);
             }
+        }
+
+        public PlayerDataConfig GetPlayerData()
+        {
+            Log.Error(Data.coin);
+            return Data;
+        }
+
+
+        private void DoDestroy()
+        {
+            Operate("save",CurrentSaveType);
+        }
+
+        //保存到哪个存档
+        private void SetSaveType(SaveDataType saveDataType)
+        {
+            CurrentSaveType = saveDataType;
         }
     }
 }

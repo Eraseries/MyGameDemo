@@ -36,7 +36,7 @@ namespace StarForce
             slider_text = content.Find("Slider/Value").GetComponent<Text>();
             slider_text.text = "0%";
             AddBtnEvent(exitBtn, () => {
-                Application.Quit();
+                UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit);
             });
         }
 

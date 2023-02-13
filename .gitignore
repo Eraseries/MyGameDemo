@@ -1,1 +1,16 @@
 Library/
+Assets/StreamingAssets/
+Temp/
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp-firstpass.csproj
+LoopScrollRect.Editor.csproj
+LoopScrollRect.Runtime.csproj
+MyDemoGame.sln
+UnityGameFramework.Editor.csproj
+UnityGameFramework.Runtime.csproj
+zframework.ui.joystick.csproj
+zframework.ui.joystick.demo.csproj
+zframework.ui.joystick.editor.csproj
+obj/
+.vs/

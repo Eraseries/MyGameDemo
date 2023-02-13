@@ -36,9 +36,7 @@ namespace StarForce
             {
                 LoadData(item);
             }
-            Debug.LogError(data_config.Count);
         }
-
         public void LoadData(string json_name = "")
         {
             string FileName = "Assets/GameMain/ExcelTable/JsonTable/"+ json_name + ".json";

@@ -8,7 +8,7 @@ using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 using LitJson;
 using System.IO;
-using System;
+using GameFramework;
 /// <summary>
 /// 主界面模块
 /// </summary>
@@ -83,7 +83,9 @@ namespace StarForce
                 DRPlayer drPlayer = dtPlayer.GetDataRow(2);
                 Log.Error(drPlayer.Exp);
             });
-            AddBtnEvent(clanBtn, () => { });
+            AddBtnEvent(clanBtn, () => {
+                GameEntry.Event.Fire(this, ReferencePool.Acquire<PlayerDefineEventArgs>().DefineEvent(PlayerDefineEventArgs.EventType.UpdatePlayerData));
+            });
             AddBtnEvent(stageBtn, () =>
             {
                 GameEntry.UI.OpenUIForm(UIFormId.BigStageUI);
@@ -128,9 +130,11 @@ namespace StarForce
             }
         }
 
-        protected override void OnOpen(object userData)
+    protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
+            Debug.LogError(GameEntry.ConfigData);
+            Debug.LogError(GameEntry.PlayerData);
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -147,7 +151,6 @@ namespace StarForce
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
         }
-
     }
 
 }

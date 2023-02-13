@@ -128,7 +128,7 @@ namespace UnityGameFramework.Runtime
             }
 
             Type type = gameFrameworkComponent.GetType();
-
+            Log.Error(type.FullName);
             LinkedListNode<GameFrameworkComponent> current = s_GameFrameworkComponents.First;
             while (current != null)
             {

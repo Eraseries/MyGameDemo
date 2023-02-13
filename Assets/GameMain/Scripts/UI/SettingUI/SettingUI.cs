@@ -29,8 +29,8 @@ namespace StarForce
             panel_1.gameObject.SetActive(true);
             panel_2 = content.Find("Panel2");
             panel_2.gameObject.SetActive(false);
-            backBtn = content.Find("CloseBtn").GetComponent<Button>();
-            AddBtnEvent(panel_1.Find("Group_Right/DeleteBtn").GetComponent<Button>(), () =>
+            backBtn = content.Find("back/CloseBtn").GetComponent<Button>();
+            AddBtnEvent(panel_1.Find("Group_Right/Button_List/SaveBtn").GetComponent<Button>(), () =>
             {
                 panel_2.gameObject.SetActive(true);
                 panel_1.gameObject.SetActive(false);
@@ -51,10 +51,10 @@ namespace StarForce
             //    int index = i + 1;
 
             //    AddBtnEvent(panel_2.Find("Slot" + index + "/LoadBtn").GetComponent<Button>(),()=>{
-            //        GameEntry.PlayerData.Operate("load",index);
+            //        GameEntry.Data.Operate("load",index);
             //    });
             //    AddBtnEvent(panel_2.Find("Slot" + index + "/SaveBtn").GetComponent<Button>(), () => {
-            //        GameEntry.PlayerData.Operate("save", index);
+            //        GameEntry.Data.Operate("save", index);
             //    });
             //}
         }
