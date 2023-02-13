@@ -120,6 +120,7 @@
       <Asset Guid="3e64b701c42cf5848a795a6572e67b05" ResourceName="Meshes" />
       <Asset Guid="3ebdc68f8c9e0ff4196eaff883f10307" ResourceName="UI/UISprites/Bag/btn_2_dark" />
       <Asset Guid="3f54fcfdac53aec42ae18a6a1c6d8cb1" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="400a0a653205d394985a72de4693e9b1" ResourceName="DataTables" />
       <Asset Guid="401cbc66c069e0a4598c2ec90b9cbc4c" ResourceName="UI/UIForms" />
       <Asset Guid="413710b631bd5493ebbf1a29b2d82eb3" ResourceName="UI/UISprites/Bag/status_attack" />
       <Asset Guid="41847392d0cf638468b0a7ca0aa525f3" ResourceName="UI/UIForms" />
@@ -130,6 +131,7 @@
       <Asset Guid="4cba564c8df2a1e4ba446603a55fa5ab" ResourceName="UI/UISprites/Bag/tip" />
       <Asset Guid="4e82e16066cd68c44bc783c1e5405b61" ResourceName="Entities" />
       <Asset Guid="4fa6a5e4637e55e4da76d6c941597eec" ResourceName="UI/UIForms" />
+      <Asset Guid="509a503061fff5c4d9b7244a7ff31efc" ResourceName="UI/UIForms" />
       <Asset Guid="56b8df63bbad60749a69e38bc687fadf" ResourceName="UI/UISprites/Common" />
       <Asset Guid="5cf164e0b99521b4aa3252fec3d2a423" ResourceName="UI/UISprites/Bag/item_quality_green" />
       <Asset Guid="5db6cab484a844649af4b6ef24fdca37" ResourceName="UI/UIForms" />
@@ -139,6 +141,7 @@
       <Asset Guid="638ff8ae4a0d15047839cd265d3bc296" ResourceName="Music" />
       <Asset Guid="64f3bb52c6a54854688fcc656af2b1c9" ResourceName="DataTables" />
       <Asset Guid="66e0675f09c7d6944b7438e9b9d3954d" ResourceName="DataTables" />
+      <Asset Guid="67e8fb7eb251d00439ccab4b6ac3a885" ResourceName="UI/UIForms" />
       <Asset Guid="6b00ff6310946e9458cfac6cd660818d" ResourceName="UI/UISprites/Bag/slot_empty" />
       <Asset Guid="6bb2a0418a7d2ab44addea07b7d33fcc" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/attack" />
       <Asset Guid="6bbcba4e267be464998897741b81d508" ResourceName="UI/UISprites/Bag/Btn_MainButton_Blue" />
@@ -148,6 +151,7 @@
       <Asset Guid="7108cdf2f97ed8f4fb7956b900398dc7" ResourceName="UI/UIForms" />
       <Asset Guid="715709ec2ed2d5d47bfdbf6f659d329e" ResourceName="UI/UISprites/Bag/item_quality_blue" />
       <Asset Guid="72e76810224064300b7d32e8322a5d12" ResourceName="Sounds" />
+      <Asset Guid="735e73dd02ed5de43b4cda280c851418" ResourceName="UI/UIForms" />
       <Asset Guid="79bb50c793397eb469970792e01b7420" ResourceName="UI/UISprites/Bag/item_quality_yellow" />
       <Asset Guid="79be0ebb2700b48e7a8792238a8934ef" ResourceName="UI/UISprites/Bag/equip_frame_gray" />
       <Asset Guid="7a3ca2f73a0eba248baad92f178b92fd" ResourceName="UI/UISprites/Role/Player/1002" />
@@ -214,6 +218,7 @@
       <Asset Guid="e830964cdb85ff3429bca484c16bab44" ResourceName="UI/UISounds" />
       <Asset Guid="e85864330b68dde498dcb6e8711815d3" ResourceName="UI/UISprites/Common" />
       <Asset Guid="e921b8e9e82844e45af83830c0cd38fd" ResourceName="UI/UIItems/Bag_Slot" />
+      <Asset Guid="e99326d643a0d2244b5df408c8e710b9" ResourceName="UI/UIForms" />
       <Asset Guid="eb888678b750d9c4dbf8eb9148aac5ec" ResourceName="Entities" />
       <Asset Guid="eef7dbc3fcb9a6b4db5e157a8e96c3df" ResourceName="Entities" />
       <Asset Guid="f04c9e4999ec59f40a9b77c48ae8a0b9" ResourceName="UI/UIForms" />
