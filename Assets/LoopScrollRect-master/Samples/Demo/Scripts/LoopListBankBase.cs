@@ -30,16 +30,16 @@ namespace Demo
         // Init DataList
         public abstract List<LoopListBankData> InitLoopListBankDataList();
 
-        // Get Data count in list
+        // Get PlayerData count in list
         public abstract int GetListLength();
 
-        // Get Data in list by index
+        // Get PlayerData in list by index
         public abstract LoopListBankData GetLoopListBankData(int index);
 
-        // Get All Data in list
+        // Get All PlayerData in list
         public abstract List<LoopListBankData> GetLoopListBankDatas();
 
-        // Set Data into list
+        // Set PlayerData into list
         public abstract void SetLoopListBankDatas(List<LoopListBankData> newDatas);
 
         // Get cell preferred type index by index

@@ -53963,7 +53963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -83295,7 +83295,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &6140869105401019049
 GameObject:
@@ -88359,7 +88359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0.4743627, y: 0.5}
-  m_AnchoredPosition: {x: 30.49997, y: 321.99997}
+  m_AnchoredPosition: {x: 30.5, y: 321.99997}
   m_SizeDelta: {x: -134.45142, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &110020324506612536
@@ -90564,7 +90564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0.4743627, y: 0.5}
-  m_AnchoredPosition: {x: 30.49997, y: 321.99997}
+  m_AnchoredPosition: {x: 30.5, y: 321.99997}
   m_SizeDelta: {x: -134.45142, y: 747.36}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &5375802968214023321

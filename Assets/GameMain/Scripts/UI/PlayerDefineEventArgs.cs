@@ -45,7 +45,7 @@ namespace StarForce
         void UpdatePlayerData()
         {
             //Log.Error("更新玩家数据");
-            //PlayerDataConfig playerDataConfig = GameEntry.Data.GetPlayerData();
+            //PlayerDataConfig playerDataConfig = GameEntry.PlayerData.GetPlayerData();
         }
 
         public override void Clear()

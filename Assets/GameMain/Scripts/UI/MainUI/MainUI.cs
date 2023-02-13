@@ -25,9 +25,10 @@ namespace StarForce
         Button houseBtn;
         Button bagBtn;
         Button cardBtn;
-        Button clanBtn;
+        Button equipBtn;
         Button stageBtn;
         Button playerInfoBtn;
+        Button roleBtn;
 
         Button[] buttons;
 
@@ -45,10 +46,10 @@ namespace StarForce
             content = transform.Find("Background");
 
             bottom = content.Find("Bottom");
-            houseBtn = bottom.Find("HouseBtn").GetComponent<Button>();
+            roleBtn = bottom.Find("RoleBtn").GetComponent<Button>();
             bagBtn = bottom.Find("BagBtn").GetComponent<Button>();
             cardBtn = bottom.Find("CardBtn").GetComponent<Button>();
-            clanBtn = bottom.Find("ClanBtn").GetComponent<Button>();
+            equipBtn = bottom.Find("EquipBtn").GetComponent<Button>();
             stageBtn = bottom.Find("StageBtn").GetComponent<Button>();
             battleBtn = bottom.Find("BattleBtn").GetComponent<Button>();
 
@@ -60,10 +61,10 @@ namespace StarForce
             chatBtn = right.Find("ChatBtn").GetComponent<Button>();
             settingBtn = right.Find("SettingBtn").GetComponent<Button>();
 
-            AddBtnEvent(houseBtn, () =>
+            AddBtnEvent(roleBtn, () =>
             {
                 //AssignUISprite("Image.spriteatlas", "", bottom.Find("StageBtn/Icon").GetComponent<Image>()); 
-                GameEntry.UI.OpenUIForm(UIFormId.HouseUI);
+                GameEntry.UI.OpenUIForm(UIFormId.RoleUI);
             });
             AddBtnEvent(bagBtn, () => { GameEntry.UI.OpenUIForm(UIFormId.BagUI); });
             AddBtnEvent(cardBtn, () =>
@@ -83,7 +84,7 @@ namespace StarForce
                 DRPlayer drPlayer = dtPlayer.GetDataRow(2);
                 Log.Error(drPlayer.Exp);
             });
-            AddBtnEvent(clanBtn, () => {
+            AddBtnEvent(equipBtn, () => {
                 GameEntry.Event.Fire(this, ReferencePool.Acquire<PlayerDefineEventArgs>().DefineEvent(PlayerDefineEventArgs.EventType.UpdatePlayerData));
             });
             AddBtnEvent(stageBtn, () =>
@@ -133,8 +134,6 @@ namespace StarForce
     protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
-            Debug.LogError(GameEntry.ConfigData);
-            Debug.LogError(GameEntry.PlayerData);
         }
 
         protected override void OnClose(bool isShutdown, object userData)

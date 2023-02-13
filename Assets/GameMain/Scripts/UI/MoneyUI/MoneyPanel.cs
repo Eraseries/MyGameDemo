@@ -53,7 +53,6 @@ namespace StarForce
         void UpdateUI(object sender, GameEventArgs e)
         {
             //Debug.LogError("UI更新");
-            Debug.LogError(GameEntry.PlayerData);
             PlayerDataConfig playerDataConfig = GameEntry.PlayerData.GetPlayerData();
             energy_text.text = playerDataConfig.energy.ToString();
             coin_text.text = playerDataConfig.coin.ToString();

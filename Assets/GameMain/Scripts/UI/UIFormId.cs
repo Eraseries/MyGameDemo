@@ -73,7 +73,7 @@ namespace StarForce
         /// <summary>
         /// 仓库。
         /// </summary>
-        HouseUI = 215,
+        RoleUI = 215,
 
         /// <summary>
         /// 商城。

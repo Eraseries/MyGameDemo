@@ -35,6 +35,11 @@ namespace StarForce
                 panel_2.gameObject.SetActive(true);
                 panel_1.gameObject.SetActive(false);
             });
+            AddBtnEvent(panel_1.Find("Group_Right/Button_List/ExitBtn").GetComponent<Button>(), () =>
+            {
+                GameEntry.PlayerData.Operate("svae");
+                UnityGameFramework.Runtime.GameEntry.Shutdown(ShutdownType.Quit);
+            });
             AddBtnEvent(backBtn, () => { 
                 if (panel_2.gameObject.activeInHierarchy)
                 {
@@ -51,10 +56,10 @@ namespace StarForce
             //    int index = i + 1;
 
             //    AddBtnEvent(panel_2.Find("Slot" + index + "/LoadBtn").GetComponent<Button>(),()=>{
-            //        GameEntry.Data.Operate("load",index);
+            //        GameEntry.PlayerData.Operate("load",index);
             //    });
             //    AddBtnEvent(panel_2.Find("Slot" + index + "/SaveBtn").GetComponent<Button>(), () => {
-            //        GameEntry.Data.Operate("save", index);
+            //        GameEntry.PlayerData.Operate("save", index);
             //    });
             //}
         }

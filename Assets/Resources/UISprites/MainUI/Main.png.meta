@@ -1,0 +1,512 @@
+fileFormatVersion: 2
+guid: 3b73220b93bddb74f937148ccb5797b8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1874529614378127649
+    second: BattleBtn
+  - first:
+      213: -1670440882442234758
+    second: Icon_ChestIcon_Blue03_l
+  - first:
+      213: 1131124470438129114
+    second: Icon_ImageIcon_Pass03
+  - first:
+      213: -7412606154325387461
+    second: Icon_MenuIcon02_Cards
+  - first:
+      213: 7266400295959662252
+    second: Icon_MenuIcon02_Inventory
+  - first:
+      213: 196295849182185315
+    second: Icon_MenuIcon02_Shop
+  - first:
+      213: -5719758481979121830
+    second: Icon_MenuIcon04_Friends
+  - first:
+      213: 6248510554907175293
+    second: Icon_MenuIcon04_Inbox
+  - first:
+      213: 3534691690220138110
+    second: Icon_MenuIcon04_News-
+  - first:
+      213: 7401297962517057297
+    second: Icon_MenuIcon04_Trophy
+  - first:
+      213: 1078164866349734230
+    second: RewardBtn
+  - first:
+      213: -9096773431186428941
+    second: SettingBtn
+  - first:
+      213: 7630011417122400479
+    second: Slider02_Icon1
+  - first:
+      213: 123001061704076175
+    second: Slider02_Icon2
+  - first:
+      213: -116913135912633955
+    second: Slider05_Icon
+  - first:
+      213: -4618736730005400579
+    second: StageBtn
+  - first:
+      213: -7372171981712500819
+    second: mini_reward
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 13
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BattleBtn
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 669
+        width: 146
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12155f9a0caa30a10800000000000000
+      internalID: 1874529614378127649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_ChestIcon_Blue03_l
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 856
+        width: 203
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a749db72ed661d8e0800000000000000
+      internalID: -1670440882442234758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_ImageIcon_Pass03
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 865
+        width: 196
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: add673186bf82bf00800000000000000
+      internalID: 1131124470438129114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_MenuIcon02_Cards
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 712
+        width: 135
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b379f8fe9f1212990800000000000000
+      internalID: -7412606154325387461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_MenuIcon02_Inventory
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 594
+        width: 135
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cae0874f19077d460800000000000000
+      internalID: 7266400295959662252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_MenuIcon02_Shop
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 578
+        width: 131
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3674369e80269b200800000000000000
+      internalID: 196295849182185315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_MenuIcon04_Friends
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 493
+        width: 114
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5f5b9817f55f90b0800000000000000
+      internalID: -5719758481979121830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_MenuIcon04_Inbox
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 806
+        width: 97
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7965806e3b27b650800000000000000
+      internalID: 6248510554907175293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_MenuIcon04_News-
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 911
+        width: 102
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7ea81a5d5fbd0130800000000000000
+      internalID: 3534691690220138110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon_MenuIcon04_Trophy
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 578
+        width: 131
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11fc6ac7841b6b660800000000000000
+      internalID: 7401297962517057297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RewardBtn
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 470
+        width: 93
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 659151ccb3966fe00800000000000000
+      internalID: 1078164866349734230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SettingBtn
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 415
+        width: 70
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fbebe7d2c4c1c180800000000000000
+      internalID: -9096773431186428941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slider02_Icon1
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 568
+        width: 71
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd861c555fe33e960800000000000000
+      internalID: 7630011417122400479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slider02_Icon2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 483
+        width: 97
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8b0edd50dcf4b100800000000000000
+      internalID: 123001061704076175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slider05_Icon
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 454
+        width: 96
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d99b9505f14a06ef0800000000000000
+      internalID: -116913135912633955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StageBtn
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 728
+        width: 146
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df39af84a63f6efb0800000000000000
+      internalID: -4618736730005400579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mini_reward
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 645
+        width: 76
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da750fe54a8c0b990800000000000000
+      internalID: -7372171981712500819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
