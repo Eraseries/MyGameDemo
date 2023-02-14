@@ -60,6 +60,11 @@ namespace StarForce
         ChatUI = 107,
 
         /// <summary>
+        /// 活动界面。
+        /// </summary>
+        ActivityUI = 108,
+
+        /// <summary>
         /// 主界面。
         /// </summary>
         MainUI = 200,
@@ -85,6 +90,10 @@ namespace StarForce
         /// </summary>
         ShopUI = 220,
 
+        /// <summary>
+        /// 日记。
+        /// </summary>
+        TaskUI = 225,
 
         /// <summary>
         /// 活动。

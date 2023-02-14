@@ -65,7 +65,7 @@ namespace StarForce
                     uIFormId = UIFormId.PlayerInfoUI;
                     break;
                 case "TaskBtn":
-                    uIFormId = UIFormId.PlayerInfoUI;
+                    uIFormId = UIFormId.TaskUI;
                     break;
                 case "ChatBtn":
                     uIFormId = UIFormId.ChatUI;
@@ -77,7 +77,7 @@ namespace StarForce
                     uIFormId = UIFormId.PlayerInfoUI;
                     break;
                 case "ActivityBtn":
-                    uIFormId = UIFormId.PlayerInfoUI;
+                    uIFormId = UIFormId.ActivityUI;
                     break;
                 default:
                     uIFormId = UIFormId.Undefined;
@@ -165,7 +165,7 @@ namespace StarForce
 
 
 
-            playerExpText.text = playerData.exp.ToString();
+            playerExpText.text = playerData.exp.ToString() + "/" + data.Exp;
             playerLevelText.text = playerData.level.ToString();
             playerNameText.text = playerData.playerName;
 

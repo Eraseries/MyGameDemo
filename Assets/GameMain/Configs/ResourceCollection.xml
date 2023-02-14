@@ -12,6 +12,10 @@
       <Resource Name="Animator/Role/Little_Cat_GirlRig/Little_Cat_GirlRig" LoadType="0" Packed="False" />
       <Resource Name="Animator/Role/Sword/SampleAnimatorSword" LoadType="0" Packed="False" />
       <Resource Name="Animator/Role/Wizard/Wizard" LoadType="0" Packed="False" />
+      <Resource Name="Animator/UI/ChatUI/ChatUI" LoadType="0" Packed="False" />
+      <Resource Name="Animator/UI/ChatUI/Close" LoadType="0" Packed="False" />
+      <Resource Name="Animator/UI/ChatUI/Open" LoadType="0" Packed="False" />
+      <Resource Name="Animator/UI/SettingUI/SettingUI" LoadType="0" Packed="False" />
       <Resource Name="Configs" FileSystem="GameData" LoadType="0" Packed="True" ResourceGroups="Base" />
       <Resource Name="DataTables" FileSystem="GameData" LoadType="0" Packed="True" ResourceGroups="Base" />
       <Resource Name="Entities" FileSystem="Resources" LoadType="0" Packed="True" />
@@ -83,6 +87,7 @@
     <Assets>
       <Asset Guid="0179316b5fc7c2946a67c5877c02fc30" ResourceName="UI/UISprites/Common" />
       <Asset Guid="04d7dde7615d71b4db1a0c8d67a62e95" ResourceName="UI/UIForms" />
+      <Asset Guid="058757d4aad3aab45b2c50994e52847a" ResourceName="Animator/UI/ChatUI/ChatUI" />
       <Asset Guid="05c5dbabc985d4a4593ebed5364433a4" ResourceName="Scenes" />
       <Asset Guid="06d3f13500683a84eabbb6fa8afed930" ResourceName="UI/UISprites/Bag/btn_1_dark" />
       <Asset Guid="077f67fac5946b54e877dfbff22ff92a" ResourceName="UI/UISprites/Bag/btn_2_select" />
@@ -103,6 +108,7 @@
       <Asset Guid="208356d1473cc794e90b42272ec88c45" ResourceName="UI/UISprites/Bag/sort_arrow" />
       <Asset Guid="236433a27ce40a7429b87d14d8fa3035" ResourceName="UI/UISprites/Common" />
       <Asset Guid="24ca310f92a6796408f1db7647ec4e55" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="28df593e66f2c5547b1ae4359318b31d" ResourceName="Animator/UI/ChatUI/Open" />
       <Asset Guid="2a2806c0996bb11478880d672f2bf12b" ResourceName="UI/UISprites/Bag/item_quality_brown" />
       <Asset Guid="2a3e19a8ab239e6429a7398e680a5d11" ResourceName="UI/UISprites/Bag/item_select" />
       <Asset Guid="2c5ad135b26e19248918b3affa34aac6" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/walk" />
@@ -152,6 +158,7 @@
       <Asset Guid="715709ec2ed2d5d47bfdbf6f659d329e" ResourceName="UI/UISprites/Bag/item_quality_blue" />
       <Asset Guid="72e76810224064300b7d32e8322a5d12" ResourceName="Sounds" />
       <Asset Guid="735e73dd02ed5de43b4cda280c851418" ResourceName="UI/UIForms" />
+      <Asset Guid="73bb2ca35dea8ac4aaddcadf7d614668" ResourceName="Animator/UI/SettingUI/SettingUI" />
       <Asset Guid="79bb50c793397eb469970792e01b7420" ResourceName="UI/UISprites/Bag/item_quality_yellow" />
       <Asset Guid="79be0ebb2700b48e7a8792238a8934ef" ResourceName="UI/UISprites/Bag/equip_frame_gray" />
       <Asset Guid="7a3ca2f73a0eba248baad92f178b92fd" ResourceName="UI/UISprites/Role/Player/1002" />
@@ -174,6 +181,7 @@
       <Asset Guid="9c3961f379234354e813d7b38146424d" ResourceName="DataTables" />
       <Asset Guid="9d7f046a5a67acc46b25e8ac362e8f93" ResourceName="Animator/Role/Sword/SampleAnimatorSword" />
       <Asset Guid="9d9df747afafc2c4cbff50ce90d80126" ResourceName="UI/UISprites/Role/Player/1004" />
+      <Asset Guid="9e9e81dad1fd0894ca5839b352c0482d" ResourceName="Animator/UI/ChatUI/Close" />
       <Asset Guid="9f847ec5e66e03e4ead1d3c5f7b510e8" ResourceName="UI/UISprites/Common" />
       <Asset Guid="a019ae3af8e864616b85773c509f5285" ResourceName="Sounds" />
       <Asset Guid="a40a9cf348249a349b81e0e30d0040df" ResourceName="UI/UIForms" />
@@ -207,9 +215,11 @@
       <Asset Guid="cfe53cf384344bd47a8680f8c5f97a7b" ResourceName="DataTables" />
       <Asset Guid="d006e2208427b1a45b640b90c646517c" ResourceName="UI/UIForms" />
       <Asset Guid="d2b5b74e034bb4321ba792a6e4f81e27" ResourceName="UI/UISprites/Bag/Frame_ItemFrame01_f" />
+      <Asset Guid="d546c7061672ee74abed354d5f11230e" ResourceName="Music" />
       <Asset Guid="d800289dc2f9b8d4ba5c31e8246c6ab9" ResourceName="Fonts" />
       <Asset Guid="db58965402f12ed47b4dad61a9e48c9d" ResourceName="UI/UISprites/Icons" />
       <Asset Guid="ddbc26a1799217d4da206a752eca32f6" ResourceName="UI/UIForms" />
+      <Asset Guid="e114a2a22f6b9854d8e0d87228bf2a6c" ResourceName="Animator/UI/SettingUI/SettingUI" />
       <Asset Guid="e40579d982378d7469bbf2ea1eca7a43" ResourceName="UI/UISprites/Role/Little_Cat_Girl/Little_Cat_Girl_parts" />
       <Asset Guid="e5ca26c53b6ab8a46b52817008d7c7fa" ResourceName="UI/UISprites/Icons" />
       <Asset Guid="e612cbb6db8314f41979f8f6b509bee1" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/idle" />
