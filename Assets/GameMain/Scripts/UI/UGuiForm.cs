@@ -46,6 +46,8 @@ namespace StarForce
         Vector3 click_point;
         GameObject click_effect;
 
+        protected bool SlowShowUI = true;
+
         public int OriginalDepth
         {
             get;
@@ -70,7 +72,10 @@ namespace StarForce
         public void Close(bool ignoreFade)
         {
             StopAllCoroutines();
-
+            if(!transform.gameObject.activeInHierarchy)
+            {
+                return;
+            }
             if (ignoreFade)
             {
                 GameEntry.UI.CloseUIForm(this);
@@ -104,6 +109,14 @@ namespace StarForce
             if (btn != null && action != null)
             {
                 btn.onClick.AddListener(action);
+            }
+        }
+
+        public void AddSliderEvent(Slider slider,UnityAction<float> action)
+        {
+            if (slider != null && action != null)
+            {
+                slider.onValueChanged.AddListener(action);
             }
         }
 
@@ -248,9 +261,17 @@ namespace StarForce
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
-            m_CanvasGroup.alpha = 0f;
-            StopAllCoroutines();
-            StartCoroutine(m_CanvasGroup.FadeToAlpha(1f, FadeTime));
+            if(SlowShowUI)
+            {
+                m_CanvasGroup.alpha = 0f;
+                StopAllCoroutines();
+                StartCoroutine(m_CanvasGroup.FadeToAlpha(1f, FadeTime));
+            }
+            else
+            {
+                StopAllCoroutines();
+                m_CanvasGroup.alpha = 1;
+            }
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -266,10 +287,20 @@ namespace StarForce
         protected override void OnResume()
         {
             base.OnResume();
-
-            m_CanvasGroup.alpha = 0f;
-            StopAllCoroutines();
-            StartCoroutine(m_CanvasGroup.FadeToAlpha(1f, FadeTime));
+            if (!transform.gameObject.activeInHierarchy)
+            {
+                return;
+            }
+            if (SlowShowUI)
+            {
+                m_CanvasGroup.alpha = 0f;
+                StopAllCoroutines();
+                StartCoroutine(m_CanvasGroup.FadeToAlpha(1f, FadeTime));
+            }
+            else
+            {
+                m_CanvasGroup.alpha = 1;
+            }
         }
 
         protected override void OnCover()

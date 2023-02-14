@@ -1,4 +1,5 @@
 ﻿using GameFramework;
+using GameFramework.DataTable;
 using GameFramework.Event;
 using System.Collections;
 using UnityEngine;
@@ -53,8 +54,12 @@ namespace StarForce
         void UpdateUI(object sender, GameEventArgs e)
         {
             //Debug.LogError("UI更新");
+
             PlayerDataConfig playerDataConfig = GameEntry.PlayerData.GetPlayerData();
-            energy_text.text = playerDataConfig.energy.ToString();
+            IDataTable<DRPlayer> dtPlayer = GameEntry.DataTable.GetDataTable<DRPlayer>();
+            DRPlayer data = dtPlayer.GetDataRow(playerDataConfig.level);
+
+            energy_text.text = playerDataConfig.energy.ToString() + "/" + data.MaxEnergy;
             coin_text.text = playerDataConfig.coin.ToString();
             diamond_text.text = playerDataConfig.diamond.ToString();
         }

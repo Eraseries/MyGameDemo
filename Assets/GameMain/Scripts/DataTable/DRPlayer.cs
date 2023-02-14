@@ -95,6 +95,16 @@ namespace StarForce
             get;
             private set;
         }
+        public int MaxCoin
+        {
+            get;
+            private set;
+        }
+        public int MaxEnergy
+        {
+            get;
+            private set;
+        }
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -114,6 +124,8 @@ namespace StarForce
             DeadEffectId = int.Parse(columnStrings[index++]);
             DeadSoundId = int.Parse(columnStrings[index++]);
             Exp = int.Parse(columnStrings[index++]);
+            MaxEnergy = int.Parse(columnStrings[index++]);
+            MaxCoin = int.Parse(columnStrings[index++]);
             GeneratePropertyArray();
             return true;
         }
@@ -132,6 +144,8 @@ namespace StarForce
                     DeadEffectId = binaryReader.Read7BitEncodedInt32();
                     DeadSoundId = binaryReader.Read7BitEncodedInt32();
                     Exp = binaryReader.Read7BitEncodedInt32();
+                    MaxEnergy = binaryReader.Read7BitEncodedInt32();
+                    MaxCoin = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

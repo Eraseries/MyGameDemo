@@ -53,7 +53,7 @@ namespace StarForce
             m_GoToBattle = false;
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
             GameEntry.UI.OpenUIForm(UIFormId.MainUI, this);
-
+            GameEntry.Sound.PlayMusic(4);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)

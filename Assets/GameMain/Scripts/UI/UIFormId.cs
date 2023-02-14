@@ -55,6 +55,11 @@ namespace StarForce
         LoadingUI = 106,
 
         /// <summary>
+        /// 聊天界面。
+        /// </summary>
+        ChatUI = 107,
+
+        /// <summary>
         /// 主界面。
         /// </summary>
         MainUI = 200,
