@@ -88,7 +88,7 @@ namespace StarForce
         protected override void Awake()
         {
             base.Awake();
-           // Operate("delete");
+            Operate("delete");
         }
 
 

@@ -21,7 +21,7 @@ namespace StarForce
     /// <summary>
     /// 物品。
     /// </summary>
-    public class DRItem : DataRowBase
+    public class DRModel : DataRowBase
     {
         private int m_Id = 0;
 
@@ -40,15 +40,6 @@ namespace StarForce
         /// 物品名称。
         /// </summary>
         public string Name
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 背包每格可放最大容量。
-        /// </summary>
-        public int MaxCount
         {
             get;
             private set;
@@ -75,16 +66,16 @@ namespace StarForce
         /// <summary>
         /// 获取物品描述。
         /// </summary>
-        public string Type
+        public string Path
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// 获取道具图标。
+        /// 获取物品描述。
         /// </summary>
-        public int Icon
+        public string Type
         {
             get;
             private set;
@@ -104,10 +95,9 @@ namespace StarForce
             m_Id = int.Parse(columnStrings[index++]);
             index++;
             Name = columnStrings[index++];
-            MaxCount = int.Parse(columnStrings[index++]);
             Quality = int.Parse(columnStrings[index++]);
             Desc = columnStrings[index++];
-            Icon = int.Parse(columnStrings[index++]);
+            Path = columnStrings[index++];
             Type = columnStrings[index++];
             GeneratePropertyArray();
             return true;
@@ -121,10 +111,9 @@ namespace StarForce
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     Name = binaryReader.ReadString();
-                    MaxCount = binaryReader.Read7BitEncodedInt32();
                     Quality = binaryReader.Read7BitEncodedInt32();
                     Desc = binaryReader.ReadString();
-                    Icon = binaryReader.Read7BitEncodedInt32();
+                    Path = binaryReader.ReadString();
                     Type = binaryReader.ReadString();
                 }
             }

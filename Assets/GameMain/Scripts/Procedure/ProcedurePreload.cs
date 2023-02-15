@@ -36,6 +36,7 @@ namespace StarForce
             "Weapon",
             "Player",
             "Item",
+            "Model"
         };
 
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
