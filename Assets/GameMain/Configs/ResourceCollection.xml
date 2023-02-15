@@ -11,7 +11,9 @@
       <Resource Name="Animator/Role/Little_Cat_GirlRig/anim/walk" LoadType="0" Packed="False" />
       <Resource Name="Animator/Role/Little_Cat_GirlRig/Little_Cat_GirlRig" LoadType="0" Packed="False" />
       <Resource Name="Animator/Role/Sword/SampleAnimatorSword" LoadType="0" Packed="False" />
+      <Resource Name="Animator/Role/Thief/Thief" LoadType="0" Packed="False" />
       <Resource Name="Animator/Role/Wizard/Wizard" LoadType="0" Packed="False" />
+      <Resource Name="Animator/UI/BagUI/ItemDetail" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/ChatUI/ChatUI" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/ChatUI/Close" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/ChatUI/Open" LoadType="0" Packed="False" />
@@ -85,7 +87,9 @@
       <Resource Name="UI/UISprites/Role/Player/1004" LoadType="0" Packed="False" />
     </Resources>
     <Assets>
+      <Asset Guid="002497e2ad99b5047b1d3b1231aa7f2e" ResourceName="Textures" />
       <Asset Guid="0179316b5fc7c2946a67c5877c02fc30" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="020af3f730f1df940a27cfbd96e23035" ResourceName="Materials" />
       <Asset Guid="04d7dde7615d71b4db1a0c8d67a62e95" ResourceName="UI/UIForms" />
       <Asset Guid="058757d4aad3aab45b2c50994e52847a" ResourceName="Animator/UI/ChatUI/ChatUI" />
       <Asset Guid="05c5dbabc985d4a4593ebed5364433a4" ResourceName="Scenes" />
@@ -95,30 +99,51 @@
       <Asset Guid="09966b19e546cc94aa84d0743cb2a83d" ResourceName="UI/UIForms" />
       <Asset Guid="0a65a68c01a76ea4b8b574827a6467aa" ResourceName="UI/UISprites/Common" />
       <Asset Guid="0c5495f05b08d514bb653557c7502090" ResourceName="UI/UIForms" />
+      <Asset Guid="0d241aff7e8d370448a585a8914759e1" ResourceName="Textures" />
+      <Asset Guid="0fc3fd94fd597584b848e2a553f4626b" ResourceName="Materials" />
       <Asset Guid="1053b0070685be347ab58587156842dc" ResourceName="Localization/ChineseTraditional/Dictionaries/Default" />
       <Asset Guid="12cfc2b0181f64634bb2c971f1562978" ResourceName="UI/UISprites/Bag/Btn_OtherButton_Square07" />
       <Asset Guid="131b09c85a01c2a4e9ef50ca45bd2644" ResourceName="UI/UIForms" />
       <Asset Guid="14869ac0d4433f04db1704e39d03412e" ResourceName="Localization/English/Dictionaries/Default" />
+      <Asset Guid="149ea9897b7776641810508a1e4a1a35" ResourceName="Entities" />
       <Asset Guid="156d241f796508c4da4fc354a7fbf5a8" ResourceName="UI/UISprites/Common" />
       <Asset Guid="15f649e8f23314a72a516901b7f4403a" ResourceName="UI/UISprites/Bag/lock" />
+      <Asset Guid="16390ddcc8998ae479017159f6e7bd10" ResourceName="Textures" />
       <Asset Guid="1719835cfe427e9489d3f00771c6b4e8" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/get_hit" />
       <Asset Guid="1763c140e7caf4eb2a38686bf8a790ec" ResourceName="UI/UISprites/Bag/status_anger" />
+      <Asset Guid="17d49cd68eae3fd47a688d61fe44c345" ResourceName="DataTables" />
+      <Asset Guid="17dbe955655edae4f9a88d92f0ce474a" ResourceName="Materials" />
+      <Asset Guid="17e2e2bd9c6d18e4b80bcd67edd54ef0" ResourceName="Materials" />
+      <Asset Guid="197f00bf4a7314f4eb5cf113159b7fd3" ResourceName="Entities" />
       <Asset Guid="1be4472894949437694aead55c6da60f" ResourceName="Sounds" />
+      <Asset Guid="1d8a579ccf5dec34d9f757c5fba2c121" ResourceName="Textures" />
+      <Asset Guid="1db8658c9a2bcff49b879bff369f2f9e" ResourceName="Textures" />
       <Asset Guid="1ea2836b917ed234fa46a531facc5868" ResourceName="UI/UIItems/Bag_Item" />
+      <Asset Guid="1fb1a05a813299241ae0de7c38752a80" ResourceName="Textures" />
       <Asset Guid="208356d1473cc794e90b42272ec88c45" ResourceName="UI/UISprites/Bag/sort_arrow" />
+      <Asset Guid="20d75c75c1526ce498a7a9365a0713f9" ResourceName="Entities" />
       <Asset Guid="236433a27ce40a7429b87d14d8fa3035" ResourceName="UI/UISprites/Common" />
       <Asset Guid="24ca310f92a6796408f1db7647ec4e55" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="2828251efe53af54cb1890946f89b9ca" ResourceName="Materials" />
       <Asset Guid="28df593e66f2c5547b1ae4359318b31d" ResourceName="Animator/UI/ChatUI/Open" />
       <Asset Guid="2a2806c0996bb11478880d672f2bf12b" ResourceName="UI/UISprites/Bag/item_quality_brown" />
       <Asset Guid="2a3e19a8ab239e6429a7398e680a5d11" ResourceName="UI/UISprites/Bag/item_select" />
+      <Asset Guid="2b646a422ed395c49bb51e0a7d1bc0bf" ResourceName="Materials" />
+      <Asset Guid="2b9ff759563e3024283576e39a5f058f" ResourceName="Textures" />
       <Asset Guid="2c5ad135b26e19248918b3affa34aac6" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/walk" />
       <Asset Guid="303ea7ef985ec7c4485b8ca0a0b8bdb7" ResourceName="Materials" />
+      <Asset Guid="31307b4e6fdf7924098fb9780ef966a3" ResourceName="Entities" />
       <Asset Guid="315e8ed2db27c254cb3366ff0793cd90" ResourceName="DataTables" />
+      <Asset Guid="3374104b84f9c3f42ba39984618f07c0" ResourceName="Entities" />
+      <Asset Guid="33b7f696048b63845ba7b88938c8087c" ResourceName="DataTables" />
+      <Asset Guid="33f6b37db7204bb4bb7e2a5376ecebad" ResourceName="Materials" />
       <Asset Guid="352da872791696c48af3b21132e3e3c3" ResourceName="DataTables" />
       <Asset Guid="35ac832b69b35457cb25a7f05c8fdead" ResourceName="UI/UISprites/Bag/equip_add" />
+      <Asset Guid="35adf5393e670ec4fa64dbae88299437" ResourceName="Entities" />
       <Asset Guid="36c1bf2cae02bd2499a620b3dce3ffac" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/die" />
       <Asset Guid="372a8b1e52bedc64b9207b12d167afaa" ResourceName="DataTables" />
       <Asset Guid="3aa539b1e46111d4299a83c73ebe762c" ResourceName="UI/UIForms" />
+      <Asset Guid="3b1310760e4456f43b12e514ba506d12" ResourceName="Entities" />
       <Asset Guid="3be3fac3611f4584695662c4889f722d" ResourceName="UI/UISprites/Common" />
       <Asset Guid="3c6f5b7a54bd84489ba7d655c5b7b812" ResourceName="UI/UISprites/Bag/status_critical" />
       <Asset Guid="3c7dc21b9cfc64a28a0db252abd7f3ad" ResourceName="UI/UISprites/Bag/status_attribute" />
@@ -126,28 +151,45 @@
       <Asset Guid="3e64b701c42cf5848a795a6572e67b05" ResourceName="Meshes" />
       <Asset Guid="3ebdc68f8c9e0ff4196eaff883f10307" ResourceName="UI/UISprites/Bag/btn_2_dark" />
       <Asset Guid="3f54fcfdac53aec42ae18a6a1c6d8cb1" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="3f75f7dc94738b44dabd49e9978bb7c2" ResourceName="Textures" />
       <Asset Guid="400a0a653205d394985a72de4693e9b1" ResourceName="DataTables" />
       <Asset Guid="401cbc66c069e0a4598c2ec90b9cbc4c" ResourceName="UI/UIForms" />
       <Asset Guid="413710b631bd5493ebbf1a29b2d82eb3" ResourceName="UI/UISprites/Bag/status_attack" />
       <Asset Guid="41847392d0cf638468b0a7ca0aa525f3" ResourceName="UI/UIForms" />
       <Asset Guid="4473d81b14ddb0143addf0e6050d8491" ResourceName="Scenes" />
+      <Asset Guid="448f0e72763f18c4d81bca27024849a7" ResourceName="Entities" />
       <Asset Guid="44c8db52241385c45bbb14a1718f17bf" ResourceName="Configs" />
+      <Asset Guid="454a5fdcc6fd2e449a28d83876b31e17" ResourceName="Materials" />
       <Asset Guid="46376fafbcd92e44191661300517e510" ResourceName="UI/UIForms" />
+      <Asset Guid="4c222fd8f26515c4299bd523c1b5f0e8" ResourceName="Entities" />
       <Asset Guid="4c2ce05856cd94f96bda820d2353988c" ResourceName="UI/UISprites/Bag/Frame_BasicFrame_Square08" />
       <Asset Guid="4cba564c8df2a1e4ba446603a55fa5ab" ResourceName="UI/UISprites/Bag/tip" />
+      <Asset Guid="4e2d1d9a66161104ea42f075a23d3aa2" ResourceName="Entities" />
       <Asset Guid="4e82e16066cd68c44bc783c1e5405b61" ResourceName="Entities" />
+      <Asset Guid="4f0b1de849306a8488c029b0760f33b8" ResourceName="Materials" />
       <Asset Guid="4fa6a5e4637e55e4da76d6c941597eec" ResourceName="UI/UIForms" />
       <Asset Guid="509a503061fff5c4d9b7244a7ff31efc" ResourceName="UI/UIForms" />
+      <Asset Guid="50aa4aace65c4984f90e9e0c2b450b32" ResourceName="Entities" />
+      <Asset Guid="535a3b8b21058d344928a5094ae9d19f" ResourceName="Entities" />
       <Asset Guid="56b8df63bbad60749a69e38bc687fadf" ResourceName="UI/UISprites/Common" />
+      <Asset Guid="56c526a81dc92014fb0541c742379987" ResourceName="Materials" />
+      <Asset Guid="56df8c723d5de6849b085761c66f7157" ResourceName="Animator/Role/Thief/Thief" />
+      <Asset Guid="5a09bd47f9745774d8bb05109454381f" ResourceName="Materials" />
       <Asset Guid="5cf164e0b99521b4aa3252fec3d2a423" ResourceName="UI/UISprites/Bag/item_quality_green" />
       <Asset Guid="5db6cab484a844649af4b6ef24fdca37" ResourceName="UI/UIForms" />
       <Asset Guid="5dcd89912e222bf4c87f76db4044bc5e" ResourceName="Localization/Korean/Dictionaries/Default" />
+      <Asset Guid="5ebee3d658e92f94fa5ef543939f17d4" ResourceName="Textures" />
+      <Asset Guid="5f0804fe0a9d62a4384f564ba37c9af4" ResourceName="Meshes" />
+      <Asset Guid="5ffee1d9c4742b54c97ac0545edeb4df" ResourceName="Entities" />
       <Asset Guid="601705b77e7ca9f4795b91fd626c1b0d" ResourceName="UI/UIItems/VerticalScroll_Grid" />
       <Asset Guid="62af9e5c8f39cfa49af9e10ccf42f1da" ResourceName="UI/UISprites/Common" />
       <Asset Guid="638ff8ae4a0d15047839cd265d3bc296" ResourceName="Music" />
       <Asset Guid="64f3bb52c6a54854688fcc656af2b1c9" ResourceName="DataTables" />
       <Asset Guid="66e0675f09c7d6944b7438e9b9d3954d" ResourceName="DataTables" />
+      <Asset Guid="66fd88b4a33cb6441a94f934af9c557e" ResourceName="Materials" />
       <Asset Guid="67e8fb7eb251d00439ccab4b6ac3a885" ResourceName="UI/UIForms" />
+      <Asset Guid="6826bada060637944a2ab2135cfdf0ba" ResourceName="Textures" />
+      <Asset Guid="68c05a858718bc043813192811ca68cd" ResourceName="Entities" />
       <Asset Guid="6b00ff6310946e9458cfac6cd660818d" ResourceName="UI/UISprites/Bag/slot_empty" />
       <Asset Guid="6bb2a0418a7d2ab44addea07b7d33fcc" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/attack" />
       <Asset Guid="6bbcba4e267be464998897741b81d508" ResourceName="UI/UISprites/Bag/Btn_MainButton_Blue" />
@@ -159,54 +201,85 @@
       <Asset Guid="72e76810224064300b7d32e8322a5d12" ResourceName="Sounds" />
       <Asset Guid="735e73dd02ed5de43b4cda280c851418" ResourceName="UI/UIForms" />
       <Asset Guid="73bb2ca35dea8ac4aaddcadf7d614668" ResourceName="Animator/UI/SettingUI/SettingUI" />
+      <Asset Guid="794b61b43b8abf141bcf9025110ab434" ResourceName="Entities" />
       <Asset Guid="79bb50c793397eb469970792e01b7420" ResourceName="UI/UISprites/Bag/item_quality_yellow" />
       <Asset Guid="79be0ebb2700b48e7a8792238a8934ef" ResourceName="UI/UISprites/Bag/equip_frame_gray" />
       <Asset Guid="7a3ca2f73a0eba248baad92f178b92fd" ResourceName="UI/UISprites/Role/Player/1002" />
       <Asset Guid="7debc48691913d14ebbe39b534f212cd" ResourceName="UI/UISprites/Bag/btn_4_select" />
+      <Asset Guid="7f10f1cab45aed34c81195a71d078cf8" ResourceName="Textures" />
       <Asset Guid="7f2331acfa23e1845bf8de19a4f01086" ResourceName="UI/UIItems/UI_ControllData_VerticalScroll_Grid" />
       <Asset Guid="7f5aee8da226edf4991598327cb32ce0" ResourceName="UI/UISprites/Logos" />
+      <Asset Guid="84dadc72107714047b5b0a3109a85dfe" ResourceName="Entities" />
       <Asset Guid="8568075df05379d47a4a898165ec9766" ResourceName="UI/UIForms" />
       <Asset Guid="85ed310c6dc0c8c4f9b13cd5d3ec9e86" ResourceName="UI/UIForms" />
       <Asset Guid="86101db9948d01041a73af6c5b4b7838" ResourceName="UI/UISprites/Bag/item_quality_purple" />
+      <Asset Guid="87a574f63747d6947b10db43e041d89c" ResourceName="UI/UIForms" />
       <Asset Guid="8820f2404b85e4c059bb1aff048a3309" ResourceName="UI/UISprites/Bag/status_hp" />
+      <Asset Guid="899e3e6f3725fb84f93296f2a7e048b3" ResourceName="Textures" />
       <Asset Guid="8a34905290cbb491a8b6e37adc6b2a96" ResourceName="UI/UISprites/Bag/Icon_PictoIcon_Delete" />
       <Asset Guid="8a407457980fa534d86d171bc913e46c" ResourceName="UI/UIForms" />
+      <Asset Guid="8aeae6044aac43f4fb8d3fade3603251" ResourceName="Textures" />
       <Asset Guid="8bb3235efebe9a44190b193d58a8c1ce" ResourceName="UI/UIForms" />
+      <Asset Guid="8bbcb0f131262184988146d605f08b3c" ResourceName="Materials" />
       <Asset Guid="8cbb0d76d5db6a6458e8aac771fe84b6" ResourceName="UI/UISprites/Role/Player/1001" />
       <Asset Guid="8dd9daba0eba4234e8d9d0473e8d5a1c" ResourceName="UI/UISprites/Bag/btn_4_dark" />
       <Asset Guid="8e29b5fe7ce3149e8aae1ee7b88d87b3" ResourceName="UI/UISprites/Bag/Common_Golw_White" />
+      <Asset Guid="91628679af5b95748ae930b98dc3c5a0" ResourceName="Materials" />
+      <Asset Guid="9209e7aecb2719d4e8887ad012f5c6b2" ResourceName="Entities" />
+      <Asset Guid="937040e56d7fb814fafda8e9d48edfc2" ResourceName="Materials" />
       <Asset Guid="9413fd1d6b1a9ea43a38b88810f2cd19" ResourceName="UI/UIForms" />
+      <Asset Guid="955dc6cfc0baf0845ab3aecb63218910" ResourceName="Textures" />
+      <Asset Guid="972959877fa703748a6aa47e2fea0e57" ResourceName="Entities" />
+      <Asset Guid="99cf60d7ae8748b46b9e21dff268f706" ResourceName="Materials" />
       <Asset Guid="9b5c6a59633540f4597ed6ca77618c3a" ResourceName="UI/UISprites/Role/Little_Cat_Girl/Little_Cat_Girl_ref" />
       <Asset Guid="9be2e1e45f4edd74c8764538ad306b78" ResourceName="Localization/ChineseSimplified/Dictionaries/Default" />
       <Asset Guid="9c3961f379234354e813d7b38146424d" ResourceName="DataTables" />
+      <Asset Guid="9d76715e1bfd4b5489b6e13d88398c6e" ResourceName="Textures" />
       <Asset Guid="9d7f046a5a67acc46b25e8ac362e8f93" ResourceName="Animator/Role/Sword/SampleAnimatorSword" />
       <Asset Guid="9d9df747afafc2c4cbff50ce90d80126" ResourceName="UI/UISprites/Role/Player/1004" />
       <Asset Guid="9e9e81dad1fd0894ca5839b352c0482d" ResourceName="Animator/UI/ChatUI/Close" />
+      <Asset Guid="9f62163c4b2f468458469b61fed7e0dd" ResourceName="Entities" />
       <Asset Guid="9f847ec5e66e03e4ead1d3c5f7b510e8" ResourceName="UI/UISprites/Common" />
       <Asset Guid="a019ae3af8e864616b85773c509f5285" ResourceName="Sounds" />
       <Asset Guid="a40a9cf348249a349b81e0e30d0040df" ResourceName="UI/UIForms" />
+      <Asset Guid="a7849320b59808344a30f031528d89ff" ResourceName="Textures" />
       <Asset Guid="a85848a8b6b0c7e4b8a63fd92f172991" ResourceName="UI/UIForms" />
       <Asset Guid="a8c07bbe04fdaf04b80e27f651a8edd6" ResourceName="UI/UISprites/Common" />
       <Asset Guid="ab45c3f613f388d43bbf43ec05eb92e2" ResourceName="UI/UISprites/Common" />
       <Asset Guid="ab4774faf71b57a40a29a9e902403fe3" ResourceName="DataTables" />
       <Asset Guid="ad56aae2bb0f2ce4a86711287e14e223" ResourceName="DataTables" />
+      <Asset Guid="afbe95a4be823574c9340f585d9c6bde" ResourceName="Materials" />
       <Asset Guid="b031b4f2980561542a7f7ba41391edc3" ResourceName="Scenes" />
+      <Asset Guid="b03724fcac5a20844abb875bd55862dc" ResourceName="Entities" />
       <Asset Guid="b05d0541f0895c046b5eab6103cebd73" ResourceName="ExcelTable/JsonTable/pet_config_new" />
+      <Asset Guid="b1abefe2df675d64bb0be8c4bf700183" ResourceName="Materials" />
       <Asset Guid="b1dd29a2edcf6dc438be98ba842d3a0f" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/run" />
+      <Asset Guid="b2614bf8e59984940b8f26bab3226d32" ResourceName="Entities" />
       <Asset Guid="b2b60c45119caad409ffb299cfe0f099" ResourceName="UI/UISprites/Bag/item_quality_red" />
       <Asset Guid="b2cebe04343227945bab3729ca9a3493" ResourceName="DataTables" />
+      <Asset Guid="b33aa0ebd692ae342b63142fc12204a8" ResourceName="Textures" />
       <Asset Guid="b3d8dbe835c404179842f9f9595f2bf0" ResourceName="UI/UISprites/Bag/status_defense" />
       <Asset Guid="b54f8de0d8422ed45991ec0b540dba91" ResourceName="Animator/Role/Wizard/Wizard" />
       <Asset Guid="b6cf3d983b185ba42a0a6710b7e6e9c9" ResourceName="Textures" />
       <Asset Guid="b82ffaa2e626cd346bbf9ab71e5bbdea" ResourceName="Textures" />
       <Asset Guid="b918655a3689b6746a20539987fc94ba" ResourceName="UI/UISprites/Bag/btn_3_select" />
+      <Asset Guid="b9a72c6bcf119d4499963c144361dc11" ResourceName="Materials" />
+      <Asset Guid="b9cabb2cba7dbb44485368bd932f2c23" ResourceName="Entities" />
       <Asset Guid="bbfd75fe6fe00e1448fe988173ede7f9" ResourceName="UI/UIForms" />
       <Asset Guid="bc702e16f77c578409744457923971ca" ResourceName="Entities" />
+      <Asset Guid="bce67d0add42d0c4da9563f471b9b4b4" ResourceName="Textures" />
+      <Asset Guid="bd57b05a7dc1e874a805931c948339fc" ResourceName="Materials" />
+      <Asset Guid="bd924b4654faa9544bd7a9790c2555a5" ResourceName="Animator/UI/BagUI/ItemDetail" />
       <Asset Guid="bf75b984df8a84987bcf3a8bf6e2862d" ResourceName="Sounds" />
+      <Asset Guid="bf91f8ea5a4e989468e2658f36d23a19" ResourceName="Textures" />
       <Asset Guid="bf9b74a49701d1346bd1aa6e9cfd6432" ResourceName="UI/UIForms" />
+      <Asset Guid="c31d08f9816d35e4cbe31a4dab181d4d" ResourceName="Materials" />
       <Asset Guid="c36d009bcec53c54286c02727ffccaed" ResourceName="Scenes" />
       <Asset Guid="c4ef6e0fcab43204381343a99ead56fb" ResourceName="UI/UIForms" />
+      <Asset Guid="c5bf99db1e793a243a5129139c833745" ResourceName="Entities" />
+      <Asset Guid="c7895b13570475d438369a49296558d6" ResourceName="Materials" />
       <Asset Guid="c7d1e11dd37634b48a9dd4012b8e4306" ResourceName="UI/UISounds" />
+      <Asset Guid="ca7f724f25e118647ba1d8636caf7fb3" ResourceName="Materials" />
       <Asset Guid="caa829ab2ffc71340a69253afdf58365" ResourceName="Music" />
       <Asset Guid="cadd0764941c8b646ae79b51d0ea8285" ResourceName="UI/UISprites/Common" />
       <Asset Guid="cb21eb80d2ec4d44a8b92b05d2fa02ad" ResourceName="UI/UIForms" />
@@ -219,17 +292,21 @@
       <Asset Guid="d800289dc2f9b8d4ba5c31e8246c6ab9" ResourceName="Fonts" />
       <Asset Guid="db58965402f12ed47b4dad61a9e48c9d" ResourceName="UI/UISprites/Icons" />
       <Asset Guid="ddbc26a1799217d4da206a752eca32f6" ResourceName="UI/UIForms" />
+      <Asset Guid="e05e7be066efd524ba27607d10f2a343" ResourceName="Textures" />
+      <Asset Guid="e0ba183ee55f2f34aae1d2bc84d867b0" ResourceName="Materials" />
       <Asset Guid="e114a2a22f6b9854d8e0d87228bf2a6c" ResourceName="Animator/UI/SettingUI/SettingUI" />
       <Asset Guid="e40579d982378d7469bbf2ea1eca7a43" ResourceName="UI/UISprites/Role/Little_Cat_Girl/Little_Cat_Girl_parts" />
       <Asset Guid="e5ca26c53b6ab8a46b52817008d7c7fa" ResourceName="UI/UISprites/Icons" />
       <Asset Guid="e612cbb6db8314f41979f8f6b509bee1" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/idle" />
       <Asset Guid="e7829c35f523baa4aabca3e1f79c1f37" ResourceName="Materials" />
+      <Asset Guid="e7829ead976c4de439a383638f6738f1" ResourceName="Animator/UI/BagUI/ItemDetail" />
       <Asset Guid="e82837c9099f69a48b48fc44eb8d119d" ResourceName="UI/UISprites/Common" />
       <Asset Guid="e830964cdb85ff3429bca484c16bab44" ResourceName="UI/UISounds" />
       <Asset Guid="e85864330b68dde498dcb6e8711815d3" ResourceName="UI/UISprites/Common" />
       <Asset Guid="e921b8e9e82844e45af83830c0cd38fd" ResourceName="UI/UIItems/Bag_Slot" />
       <Asset Guid="e99326d643a0d2244b5df408c8e710b9" ResourceName="UI/UIForms" />
       <Asset Guid="eb888678b750d9c4dbf8eb9148aac5ec" ResourceName="Entities" />
+      <Asset Guid="ec15c8c8fe02b9a489fc373301d971f2" ResourceName="Textures" />
       <Asset Guid="eef7dbc3fcb9a6b4db5e157a8e96c3df" ResourceName="Entities" />
       <Asset Guid="f04c9e4999ec59f40a9b77c48ae8a0b9" ResourceName="UI/UIForms" />
       <Asset Guid="f12c451ff6617864e8c058b209eb502f" ResourceName="UI/UISprites/Role/Player/1003" />
@@ -239,10 +316,15 @@
       <Asset Guid="f2f97a713beae744181ba934f9c4113a" ResourceName="DataTables" />
       <Asset Guid="f38098d552a984003a237adf1d93ca19" ResourceName="UI/UISprites/Bag/star_gray" />
       <Asset Guid="f3db31aa444b70d42a5960666b3815b0" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/jump" />
+      <Asset Guid="f3e846e4ebe6bd54c855cb12846dee1c" ResourceName="Entities" />
       <Asset Guid="f438a72a91e1c3c4a9ced40888ffec96" ResourceName="UI/UISprites/Icons" />
+      <Asset Guid="f4423039ab2b81744bcab7c991ded28d" ResourceName="Textures" />
+      <Asset Guid="f620f76bf6b16d241a93ee38d827db5c" ResourceName="Textures" />
       <Asset Guid="fa0cd91aed7db71429ef3c526e17a05b" ResourceName="Meshes" />
       <Asset Guid="fa7e5c5873b023b44a4c18c1501221a3" ResourceName="Animator/Role/Little_Cat_GirlRig/Little_Cat_GirlRig" />
       <Asset Guid="fb3d9ab77192f48d29273337d1eb43a5" ResourceName="UI/UISprites/Bag/star_light" />
+      <Asset Guid="fc40b5429c9dce14fa4d737d961d9a22" ResourceName="UI/UIItems/Bag_Slot" />
+      <Asset Guid="fcc41361ebebfb64880652452d21035a" ResourceName="Textures" />
     </Assets>
   </ResourceCollection>
 </UnityGameFramework>
