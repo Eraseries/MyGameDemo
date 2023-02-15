@@ -35,7 +35,6 @@ namespace StarForce
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
-
             m_IsChangeSceneComplete = false;
 
             GameEntry.Event.Subscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
@@ -68,7 +67,7 @@ namespace StarForce
 
             if(!m_FirstEntryGame)
             {
-                GameEntry.UI.OpenUIForm(UIFormId.LoadingUI, this);
+                //GameEntry.UI.OpenUIForm(UIFormId.LoadingUI, this);
             }
 
             IDataTable<DRScene> dtScene = GameEntry.DataTable.GetDataTable<DRScene>();
@@ -99,7 +98,6 @@ namespace StarForce
             {
                 return;
             }
-
             if (m_ChangeToMenu)
             {
                 ChangeState<ProcedureMenu>(procedureOwner);
@@ -112,6 +110,7 @@ namespace StarForce
             else if (m_ChangeToBattle)
             {
                 ChangeState<ProcedureBattle1>(procedureOwner);
+                
             }
             else
             {

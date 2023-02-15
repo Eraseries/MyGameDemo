@@ -35,6 +35,7 @@ namespace StarForce
             "UISound",
             "Weapon",
             "Player",
+            "Item",
         };
 
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();

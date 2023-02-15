@@ -79,14 +79,22 @@ namespace StarForce
             data.coin = random.Next(5000, 10000);
             data.diamond = random.Next(1, 300);
             data.energy = random.Next(1, 100);
+            data.playerName = "冒险家#" + random.Next(10000000, 99999999);
             data.level = 1;
             data.exp = 0;
-            data.playerName = "";
             return data;
         }
+
+        protected override void Awake()
+        {
+            base.Awake();
+           // Operate("delete");
+        }
+
+
         private void Start()
         {
-            if (!LoadByDeserialization())
+            if (!Operate("load"))
             {
                 PlayerData = CreateNewPlayerData();
                 Operate("save");
@@ -119,7 +127,27 @@ namespace StarForce
         }
 
         //将数据保存到文本里
-        public void SaveBySerialization(string text_name = "/Data1.txt")
+        public bool SaveBySerialization(string text_name = "/Data1.txt",bool force_save = false)
+        {
+            if (File.Exists(Application.persistentDataPath + text_name))
+            //判断文件是否创建
+            {
+                if(force_save)
+                {
+                    save(text_name);
+                }
+                return false;
+            }
+            else
+            {
+                save(text_name);
+                return true;
+            }
+
+
+        }
+
+        private void save(string text_name)
         {
             BinaryFormatter bf = new BinaryFormatter();
             //创建一个二进制形式
@@ -133,6 +161,10 @@ namespace StarForce
             fs.Close();
             //把文件流关了
         }
+
+
+
+
 
         //加载数据
         private bool LoadByDeserialization(string text_name = "/Data1.txt")
@@ -154,8 +186,22 @@ namespace StarForce
             }
         }
 
+        private bool DeleteByDeserialization(string text_name = "/Data1.txt")
+        {
+            if (File.Exists(Application.persistentDataPath + text_name))
+            //判断文件是否创建
+            {
+                File.Delete(Application.persistentDataPath + text_name);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         //存档/删除操作(外部接口)
-        public void Operate(string operate)
+        public bool Operate(string operate,bool force_save = false)
         {
             string text_name = "";
             switch (CurrentSaveType)
@@ -172,20 +218,38 @@ namespace StarForce
                 case SaveDataType.Data4:
                     text_name = "/Data4.txt";
                     break;
+                default:
+                    text_name = "/Data1.txt";
+                    break;
             }
             if (operate == "save")
             {
-                SaveBySerialization(text_name);
+                return SaveBySerialization(text_name, force_save);
+            }
+            else if(operate == "load")
+            {
+                return LoadByDeserialization(text_name);
+            }
+            else if(operate == "delete")
+            {
+                return DeleteByDeserialization(text_name);
             }
             else
             {
-                LoadByDeserialization(text_name);
+                Log.Error("操作错误");
+                return false;
             }
         }
 
         public PlayerDataConfig GetPlayerData()
         {
             return PlayerData;
+        }
+
+        public void SetPlayerData(PlayerDataConfig temp_playerData)
+        {
+            PlayerData = temp_playerData;
+            Operate("save",true);
         }
 
         //保存到哪个存档

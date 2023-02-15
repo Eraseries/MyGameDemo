@@ -1,6 +1,8 @@
 ﻿using DG.Tweening;
+using GameFramework.DataTable;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,8 +31,22 @@ namespace StarForce
         private GameObject item_panel;
         private Vector2 item_panel_orign_rect;
 
+        string[] tap_menu_name = {
+            "Text_All",
+            "Text_Equip",
+            "Text_Consume",
+            "Text_Material",
+            "Text_Other",
+        };
+        string[] tap_panel_name = {
+            "Panel_All",
+            "Panel_Equip",
+            "Panel_Consume",
+            "Panel_Material",
+            "Panel_Other",
+        };
         GameObject[] tap_menu_group = new GameObject[5];
-        private GameObject select_tap_menu;
+        GameObject[] tap_panel_group = new GameObject[5];
         private Transform bottom_menu;
         private int pre_type = 0;
 
@@ -52,27 +68,20 @@ namespace StarForce
             top = content.Find("Top");
             backBtn = top.Find("BackBtn").GetComponent<Button>();
             AddBtnEvent(backBtn, () => { Close(true); });// Close();
-
-            //AddBtnEvent(content.GetComponent<Button>(), () =>
-            //{
-            //    ShowItemPanel(false);
-            //    ShowStatusTip(false);
-            //    ShowSortType(false);
-            //});
-
-
-            //top = content.Find("Top");
-            //AddToggleEvent(top.Find("ItemPanelToggle").GetComponent<Toggle>(), (bool bo) =>
-            //{
-            //    enable_item_panel = bo;
-            //});
-
-            //right = content.Find("Right");
-            //item_prefab = right.Find("Bag_Item").gameObject;
-            //item_prefab.SetActive(false);
-
-
-            //left = content.Find("Left");
+            AddBtnEvent(content.Find("TestBtn").GetComponent<Button>(), () => { Test(); });// Close();
+            left = content.Find("Left");
+            for (int i = 0; i < 5; i++)
+            {
+                int current_type = i;
+                tap_menu_group[current_type] = left.Find("Tap_Menu/GameObject/"+ tap_menu_name[current_type]).gameObject;
+                tap_panel_group[current_type] = left.Find("ScrollRect/" + tap_panel_name[current_type]).gameObject;
+                AddToggleEvent(tap_menu_group[current_type].GetComponent<Toggle>(), (isOn) => {
+                    if(isOn)
+                    {
+                        SelectTapMenuPanel(current_type);
+                    }
+                });
+            }
             //status_tip = left.Find("Tip");
             //status_tip.gameObject.SetActive(false);
             //for (int i = 0; i < left.Find("Stats").childCount; i++)
@@ -87,16 +96,7 @@ namespace StarForce
             //AddBtnEvent(item_panel.transform.Find("BottomMenu/UseBtn").GetComponent<Button>(), UseBtnEvent);
             //item_panel.SetActive(false);
 
-            //select_tap_menu = right.Find("Tap_Menu/GameObject/Select").gameObject;
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    int current_type = i;
-            //    tap_menu_group[current_type] = right.Find(string.Format("Tap_Menu/GameObject/btn_{0}", current_type)).gameObject;
-            //    AddBtnEvent(tap_menu_group[current_type].GetComponent<Button>(), () =>
-            //    {
-            //        SelectTapMenuPanel(current_type);
-            //    });// Close();
-            //}
+
 
 
             //bottom_menu = right.Find("Bottom_Menu");
@@ -117,7 +117,7 @@ namespace StarForce
             //    });
             //}
 
-            //InitBagPanel();
+            InitBagPanel();
         }
 
         protected override void OnOpen(object userData)
@@ -144,7 +144,7 @@ namespace StarForce
 
 
         //初始化背包面板
-        private void InitBagPanel()
+        private void InitBagPanel1()
         {
             Transform parent = right.Find("ScrollParent/ScrollView/Content");
             for (int i = 0; i < parent.childCount; i++)
@@ -177,6 +177,47 @@ namespace StarForce
 
                         }
                         ShowItemPanel();
+                    }
+                });
+            }
+        }
+
+
+        private void InitBagPanel()
+        {
+            Transform parent = left.Find("ScrollRect/Panel_All");
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                int index = i;
+                GameObject slot = parent.GetChild(index).gameObject;
+                slot.name = "Bag_Slot_" + (index);
+                slots.Add(index,slot.gameObject);
+                AddBtnEvent(slots[index].GetComponent<Button>(), () =>
+                {
+                    BagItem temp_item = slots[index].GetComponent<BagItem>();
+                    if (temp_item.has_item)
+                    {
+                        if (selectBagItem != null)
+                        {
+                            if (selectBagItem == temp_item)
+                            {
+                                temp_item.SetSelect(false);
+                                selectBagItem = null;
+                                return;
+                            }
+                            selectBagItem.SetSelect(false);
+                            temp_item.SetSelect();
+                            selectBagItem = temp_item;
+                            UpdateItemPanel(selectBagItem);
+                        }
+                        else
+                        {
+                            temp_item.SetSelect();
+                            selectBagItem = temp_item;
+                            UpdateItemPanel(selectBagItem);
+
+                        }
+                        //ShowItemPanel();
                     }
                 });
             }
@@ -217,21 +258,76 @@ namespace StarForce
         //切换背包按钮
         private void SelectTapMenuPanel(int current_type)
         {
-            //先处理前一个选择的按钮
-            tap_menu_group[pre_type].GetComponent<Text>().color = new Color(0.2901961f, 0.6745098f, 0.9686275f, 1);
-            //在处理现在所选的按钮
+            tap_menu_group[pre_type].GetComponent<Text>().color = new Color(1,1,1,0.5f);
             tap_menu_group[current_type].GetComponent<Text>().color = Color.white;
-
             pre_type = current_type;
 
-            Dotween(DotweenType.RectMove, select_tap_menu, new Vector2(tap_menu_group[current_type].GetComponent<RectTransform>().anchoredPosition.x, -72), 0.5f);
-
-            //TODO 这里切换格子栏
-            switch (current_type)
+            Transform slot_parent = tap_panel_group[current_type].transform;
+            foreach (var slot in slots)
             {
-                default:
-                    break;
+                slot.Value.transform.SetParent(slot_parent);
+                slot.Value.GetComponent<BagItem>().UpdateInfo();
             }
+            UpdateBagData(tap_panel_name[current_type]);
+        }
+
+        //初始化背包里的数据
+        private void UpdateBagData(string panel_name = "Panel_All")
+        {
+            PlayerDataConfig playerData = GameEntry.PlayerData.GetPlayerData();
+            if(playerData.bag.Count == 0)
+            {
+                //初始化存档数据
+                Dictionary<string, Dictionary<int, BagDataConfig>> temp_bag = new Dictionary<string, Dictionary<int, BagDataConfig>>();
+                foreach (var item in tap_panel_name)
+                {
+                    Dictionary<int, BagDataConfig> temp_bag_detail = new Dictionary<int, BagDataConfig>();
+                    temp_bag.Add(item, temp_bag_detail);
+                }
+                playerData.bag = temp_bag;
+                GameEntry.PlayerData.SetPlayerData(playerData);
+            }
+            else
+            {
+                foreach (var item in playerData.bag)
+                {
+                    Log.Error(item.Key);
+                    if(item.Key == panel_name)
+                    {
+                        Dictionary<int, BagDataConfig> temp_bag_detail = item.Value;
+                        foreach (var bag_item in temp_bag_detail)
+                        {
+                            slots[bag_item.Key].GetComponent<BagItem>().UpdateInfo(bag_item.Value);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Test(string panel_name = "Panel_All")
+        {
+            PlayerDataConfig playerData = GameEntry.PlayerData.GetPlayerData();
+            foreach (var item in playerData.bag)
+            {
+                Log.Error(item.Key);
+                if (item.Key == panel_name)
+                {
+                    Dictionary<int, BagDataConfig> temp_bag_detail = item.Value;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        BagDataConfig bagDataConfig = new BagDataConfig();
+                        bagDataConfig.guid = System.Guid.NewGuid().ToString();
+                        bagDataConfig.count = UnityEngine.Random.Range(1, 100);
+                        bagDataConfig.index = i;
+                        temp_bag_detail.Add(i, bagDataConfig);
+                    }
+                    foreach (var bag_item in temp_bag_detail)
+                    {
+                        slots[bag_item.Key].GetComponent<BagItem>().UpdateInfo(bag_item.Value);
+                    }
+                }
+            }
+            GameEntry.PlayerData.SetPlayerData(playerData);
         }
 
         private void ShowStatusTip(bool _show = true, Transform target = null)
@@ -256,71 +352,6 @@ namespace StarForce
             {
                 Log.Error(selectBagItem.transform.name);
             }
-        }
-
-        private void UseBtnEvent()
-        {
-            if (selectBagItem)
-            {
-                Log.Error(selectBagItem.transform.name);
-            }
-        }
-
-
-        //显示排序类型按钮
-        private void ShowSortType(bool bo = true)
-        {
-            if (bo)
-            {
-                bottom_menu.Find("sort/type").localScale = new Vector3(-2.5f, 2.5f, 2.5f);
-                sort_btn[0].SetActive(true);
-                Dotween(DotweenType.AlphaMove, sort_btn[0], 1f, 0.1f, () =>
-                {
-                    sort_btn[1].SetActive(true);
-                    Dotween(DotweenType.AlphaMove, sort_btn[1], 1f, 0.1f, () =>
-                    {
-                        sort_btn[2].SetActive(true);
-                        Dotween(DotweenType.AlphaMove, sort_btn[2], 1f, 0.1f, () =>
-                        {
-                        });
-                    });
-                });
-            }
-            else
-            {
-                Dotween(DotweenType.AlphaMove, sort_btn[2], 0f, 0.1f, () =>
-                {
-                    sort_btn[2].SetActive(false);
-                    Dotween(DotweenType.AlphaMove, sort_btn[1], 0f, 0.1f, () =>
-                    {
-                        sort_btn[1].SetActive(false);
-                        Dotween(DotweenType.AlphaMove, sort_btn[0], 0f, 0.1f, () =>
-                        {
-                            sort_btn[0].SetActive(false);
-                            bottom_menu.Find("sort/type").localScale = new Vector3(2.5f, 2.5f, 2.5f);
-                            bottom_menu.Find("sort").GetComponent<Toggle>().isOn = false;
-                        });
-                    });
-                });
-            }
-        }
-
-        //排序
-        private void SortItem(int type = 0)
-        {
-            switch (type)
-            {
-                case 1:
-                    Debug.LogError("种类排序");
-                    break;
-                case 2:
-                    Debug.LogError("等级排序");
-                    break;
-                default:
-                    Debug.LogError("品质排序");
-                    break;
-            }
-            ShowSortType(false);
         }
     }
 

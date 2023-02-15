@@ -20,7 +20,6 @@ namespace StarForce
         {
             base.OnInit(userData);
             Name = "LoadingUI";
-
             content = transform.Find("Background");
             tapBtn = content.Find("Background").GetComponent<Button>();
             slider = content.Find("Slider").GetComponent<Slider>();

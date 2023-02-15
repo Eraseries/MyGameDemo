@@ -74,7 +74,7 @@ namespace StarForce
                     uIFormId = UIFormId.SettingUI;
                     break;
                 case "NoticeBtn":
-                    uIFormId = UIFormId.PlayerInfoUI;
+                    uIFormId = UIFormId.LuckyDrawUI;
                     break;
                 case "ActivityBtn":
                     uIFormId = UIFormId.ActivityUI;

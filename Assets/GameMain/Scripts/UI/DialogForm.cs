@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using GameFramework;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGameFramework.Runtime;
@@ -38,7 +39,6 @@ namespace StarForce
         private GameFrameworkAction<object> m_OnClickConfirm = null;
         private GameFrameworkAction<object> m_OnClickCancel = null;
         private GameFrameworkAction<object> m_OnClickOther = null;
-
         public int DialogMode
         {
             get

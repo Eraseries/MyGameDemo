@@ -55,13 +55,13 @@ namespace StarForce
         {
             //Debug.LogError("UI更新");
 
-            PlayerDataConfig playerDataConfig = GameEntry.PlayerData.GetPlayerData();
+            PlayerDataConfig playerData = GameEntry.PlayerData.GetPlayerData();
             IDataTable<DRPlayer> dtPlayer = GameEntry.DataTable.GetDataTable<DRPlayer>();
-            DRPlayer data = dtPlayer.GetDataRow(playerDataConfig.level);
+            DRPlayer data = dtPlayer.GetDataRow(playerData.level);
 
-            energy_text.text = playerDataConfig.energy.ToString() + "/" + data.MaxEnergy;
-            coin_text.text = playerDataConfig.coin.ToString();
-            diamond_text.text = playerDataConfig.diamond.ToString();
+            energy_text.text = playerData.energy.ToString() + "/" + data.MaxEnergy;
+            coin_text.text = playerData.coin.ToString();
+            diamond_text.text = playerData.diamond.ToString();
         }
 
         IEnumerator OpenShopCallBack(int panel_type)

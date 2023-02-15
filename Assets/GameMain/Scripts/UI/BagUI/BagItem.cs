@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using GameFramework.DataTable;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,12 +16,16 @@ namespace StarForce
         Text item_count;
         Image item_icon;
         Image item_quality;
-        Image item_select;
+        GameObject item_select;
+
 
         [HideInInspector]
         public bool has_item = false;
+
+        [HideInInspector]
         public enum ItemType
         {
+            None,
             Equip,
             Prop,
             Pet,
@@ -34,54 +39,41 @@ namespace StarForce
             item_quality = transform.Find("Item/Quality").GetComponent<Image>();
             item_icon = icon_go.GetComponent<Image>();
             item_count = transform.Find("Item/Count").GetComponent<Text>();
-            item_select = transform.Find("Select").GetComponent<Image>();
-            item_select.color = new Color(1, 1, 1, 0);
+            item_select = transform.Find("Select").gameObject;
+            item_select.SetActive(false);
         }
 
         private void Start()
         {
-            InitItem();
+            UpdateInfo();
         }
 
-        private void InitItem()
+        public void UpdateInfo(BagDataConfig info = null)
         {
-            int ran = Random.Range(0, 2);
-            if (ran == 0)
+            SetSelect(false);
+            item.SetActive(false);
+            if(info == null)
             {
-                has_item = true;
-
+                return;
             }
-            else
-            {
-                has_item = true;
-            }
-            item.SetActive(has_item);
-            item_count.text = Random.Range(0, 100).ToString();
+            item.SetActive(true);
+            IDataTable<DRItem> dtItem = GameEntry.DataTable.GetDataTable<DRItem>();
+            DRItem data = dtItem.GetDataRow(1);
         }
-
-        private void UpdateItem()
-        {
-            
-        }
-
 
         public void SetSelect(bool select = true)
         {
             if (select)
             {
-                item_select.color = new Color(1, 1, 1, 1);
+                item_select.SetActive(true);
+
                 Dotween(DotweenType.ScaleMove, icon_go, new Vector3(1.15f, 1.15f, 1.15f), 0.5f);
             }
             else
             {
-                item_select.color = new Color(1, 1, 1, 0);
+                item_select.SetActive(false);
                 Dotween(DotweenType.ScaleMove, icon_go, new Vector3(1f, 1f, 1f), 0.5f);
             }
-        }
-
-        private void OnDisable()
-        {
-            SetSelect(false);
         }
     }
 }
