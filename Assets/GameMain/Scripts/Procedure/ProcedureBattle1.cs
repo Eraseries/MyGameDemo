@@ -16,8 +16,7 @@ namespace StarForce
     public class ProcedureBattle1 : ProcedureBase
     {
 
-        private BattleUI battleUI = null;
-        private bool m_GoToMain = false;
+        public bool m_ExitBattle = false;
         public override bool UseNativeDialog
         {
             get
@@ -27,7 +26,7 @@ namespace StarForce
         }
         private void ExitBattle()
         {
-            m_GoToMain = true;
+            m_ExitBattle = true;
         }
 
         protected override void OnInit(ProcedureOwner procedureOwner)
@@ -48,7 +47,7 @@ namespace StarForce
             // 停止所有声音
             GameEntry.Sound.StopAllLoadingSounds();
             GameEntry.Sound.StopAllLoadedSounds();
-            m_GoToMain = false;
+            m_ExitBattle = false;
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
             GameEntry.UI.OpenUIForm(UIFormId.BattleUI,this);
         }
@@ -56,20 +55,13 @@ namespace StarForce
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
-
             GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
-
-            if (battleUI != null)
-            {
-                battleUI.Close();
-                battleUI = null;
-            }
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-            if (m_GoToMain)
+            if (m_ExitBattle)
             {
                 procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Demo"));
                 ChangeState<ProcedureChangeScene>(procedureOwner);
@@ -83,10 +75,6 @@ namespace StarForce
             {
                 return;
             }
-            //这里就是得到该类
-            battleUI = (BattleUI)ne.UIForm.Logic;
-            battleUI.backBtn.onClick.RemoveAllListeners();
-            battleUI.backBtn.onClick.AddListener(() => { ExitBattle(); });
         }
 
     }

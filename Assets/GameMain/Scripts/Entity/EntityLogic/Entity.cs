@@ -23,7 +23,13 @@ namespace StarForce
                 return Entity.Id;
             }
         }
-
+        public string EntityAssetName
+        {
+            get
+            {
+                return Entity.EntityAssetName;
+            }
+        }
         public Animation CachedAnimation
         {
             get;

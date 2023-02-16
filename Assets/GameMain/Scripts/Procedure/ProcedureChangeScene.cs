@@ -7,6 +7,7 @@
 
 using GameFramework.DataTable;
 using GameFramework.Event;
+using System.Collections;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
@@ -77,7 +78,8 @@ namespace StarForce
                 Log.Warning("Can not load scene '{0}' from data table.", sceneId.ToString());
                 return;
             }
-            GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(drScene.AssetName), Constant.AssetPriority.SceneAsset, this);
+            GameEntry.UI.CloseAllLoadedUIForms();
+            GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(drScene.AssetName), Constant.AssetPriority.SceneAsset, this, 3);
             m_BackgroundMusicId = drScene.BackgroundMusicId;
         }
 
@@ -88,6 +90,11 @@ namespace StarForce
             GameEntry.Event.Unsubscribe(LoadSceneUpdateEventArgs.EventId, OnLoadSceneUpdate);
             GameEntry.Event.Unsubscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
             base.OnLeave(procedureOwner, isShutdown);
+        }
+
+        private IEnumerator loadScene()
+        {
+            yield return new WaitForSeconds(2);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -110,7 +117,6 @@ namespace StarForce
             else if (m_ChangeToBattle)
             {
                 ChangeState<ProcedureBattle1>(procedureOwner);
-                
             }
             else
             {

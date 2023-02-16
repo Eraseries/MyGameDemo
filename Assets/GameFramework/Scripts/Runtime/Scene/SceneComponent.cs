@@ -9,6 +9,7 @@ using GameFramework;
 using GameFramework.Resource;
 using GameFramework.Scene;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -282,7 +283,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="sceneAssetName">场景资源名称。</param>
         /// <param name="priority">加载场景资源的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void LoadScene(string sceneAssetName, int priority, object userData)
+        public void LoadScene(string sceneAssetName, int priority, object userData,int delay_load = 0)
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
@@ -295,7 +296,6 @@ namespace UnityGameFramework.Runtime
                 Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
                 return;
             }
-
             m_SceneManager.LoadScene(sceneAssetName, priority, userData);
         }
 

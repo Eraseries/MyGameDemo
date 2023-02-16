@@ -16,15 +16,22 @@ namespace StarForce
         private Transform content;
         private Transform top;
 
-        public Button backBtn;
+        Button backBtn;
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
             Name = "BigStageUI";
             content = transform.Find("Background");
-            top = content.Find("Top");
+            top = content.Find("Content1/Top");
             backBtn = top.Find("BackBtn").GetComponent<Button>();
-            AddBtnEvent(backBtn, () => { Close(true); });// Close();
+            AddBtnEvent(backBtn, () => { 
+                GameEntry.UI.OpenUIForm(UIFormId.MainUI, this);
+                Close(true);
+            });// Close();
+            AddBtnEvent(content.Find("Content1/PreBtn").GetComponent<Button>(), () => {
+                //GameEntry.UI.OpenUIForm(UIFormId.SmallStageUI);
+                (GameEntry.Procedure.CurrentProcedure as ProcedureDemo).m_GoToBattle = true;
+            });
         }
 
         protected override void OnOpen(object userData)

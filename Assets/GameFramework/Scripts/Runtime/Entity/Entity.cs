@@ -119,6 +119,7 @@ namespace UnityGameFramework.Runtime
                 m_EntityLogic = null;
             }
 
+            
             m_EntityLogic = gameObject.AddComponent(entityLogicType) as EntityLogic;
             if (m_EntityLogic == null)
             {
@@ -158,7 +159,7 @@ namespace UnityGameFramework.Runtime
         /// 实体显示。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>
-        public void OnShow(object userData)
+        public void OnShow(object userData = null)
         {
             ShowEntityInfo showEntityInfo = (ShowEntityInfo)userData;
             try
@@ -171,6 +172,15 @@ namespace UnityGameFramework.Runtime
             }
         }
 
+        public void Show()
+        {
+            m_EntityLogic.OnShow(null);
+        }
+        public void Hide()
+        {
+            OnRecycle();
+            m_EntityLogic.OnHide(true,null);
+        }
         /// <summary>
         /// 实体隐藏。
         /// </summary>

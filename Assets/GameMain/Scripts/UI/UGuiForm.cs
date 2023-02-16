@@ -17,6 +17,7 @@ using UnityEngine.U2D;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityGameFramework.Runtime;
+using GameFramework;
 
 namespace StarForce
 {
@@ -415,6 +416,12 @@ namespace StarForce
         public void ShowMsgBox()
         {
             GameEntry.UI.OpenUIForm(UIFormId.MessageBoxUI,this);
+        }
+
+        //更新玩家数据接口
+        public void UpdatePlayerData()
+        {
+            GameEntry.Event.Fire(this, ReferencePool.Acquire<PlayerDefineEventArgs>().DefineEvent(PlayerDefineEventArgs.EventType.UpdatePlayerData));
         }
 
     }

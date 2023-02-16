@@ -18,7 +18,7 @@ namespace StarForce
     public abstract class Aircraft : TargetableObject
     {
         [SerializeField]
-        private AircraftData m_AircraftData = null;
+        private AircraftData m_ModelData = null;
 
         [SerializeField]
         protected Thruster m_Thruster = null;
@@ -37,28 +37,13 @@ namespace StarForce
         {
             base.OnShow(userData);
 
-            m_AircraftData = userData as AircraftData;
-            if (m_AircraftData == null)
+            m_ModelData = userData as ModelData;
+            if (m_ModelData == null)
             {
                 Log.Error("Aircraft data is invalid.");
                 return;
             }
 
-            Name = Utility.Text.Format("Aircraft ({0})", Id);
-
-            GameEntry.Entity.ShowThruster(m_AircraftData.GetThrusterData());
-
-            List<WeaponData> weaponDatas = m_AircraftData.GetAllWeaponDatas();
-            for (int i = 0; i < weaponDatas.Count; i++)
-            {
-                GameEntry.Entity.ShowWeapon(weaponDatas[i]);
-            }
-
-            List<ArmorData> armorDatas = m_AircraftData.GetAllArmorDatas();
-            for (int i = 0; i < armorDatas.Count; i++)
-            {
-                GameEntry.Entity.ShowArmor(armorDatas[i]);
-            }
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -128,16 +113,16 @@ namespace StarForce
         {
             base.OnDead(attacker);
 
-            GameEntry.Entity.ShowEffect(new EffectData(GameEntry.Entity.GenerateSerialId(), m_AircraftData.DeadEffectId)
+            GameEntry.Entity.ShowEffect(new EffectData(GameEntry.Entity.GenerateSerialId(), m_ModelData.DeadEffectId)
             {
                 Position = CachedTransform.localPosition,
             });
-            GameEntry.Sound.PlaySound(m_AircraftData.DeadSoundId);
+            GameEntry.Sound.PlaySound(m_ModelData.DeadSoundId);
         }
 
         public override ImpactData GetImpactData()
         {
-            return new ImpactData(m_AircraftData.Camp, m_AircraftData.HP, 0, m_AircraftData.Defense);
+            return new ImpactData(m_ModelData.Camp, m_ModelData.HP, 0, m_ModelData.Defense);
         }
     }
 }

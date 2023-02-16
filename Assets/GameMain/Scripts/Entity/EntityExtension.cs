@@ -50,6 +50,11 @@ namespace StarForce
             entityComponent.ShowEntity(typeof(Aircraft), "Aircraft", Constant.AssetPriority.AircraftAsset, data);
         }
 
+        public static void ShowModel(this EntityComponent entityCompoennt, ModelData data)
+        {
+            entityCompoennt.ShowEntity(typeof(Model), "Model", Constant.AssetPriority.ModelAsset, data);
+        }
+
         public static void ShowThruster(this EntityComponent entityComponent, ThrusterData data)
         {
             entityComponent.ShowEntity(typeof(Thruster), "Thruster", Constant.AssetPriority.ThrusterAsset, data);
@@ -95,13 +100,12 @@ namespace StarForce
                 Log.Warning("Can not load entity id '{0}' from data table.", data.TypeId.ToString());
                 return;
             }
-
             entityComponent.ShowEntity(data.Id, logicType, AssetUtility.GetEntityAsset(drEntity.AssetName), entityGroup, priority, data);
         }
 
         public static int GenerateSerialId(this EntityComponent entityComponent)
         {
-            return --s_SerialId;
+            return ++s_SerialId;
         }
     }
 }

@@ -47,6 +47,18 @@ namespace UnityGameFramework.Runtime
             }
         }
 
+        public Vector3 Scale
+        {
+            get
+            {
+                return gameObject.transform.localScale;
+            }
+            set
+            {
+                gameObject.transform.localScale = value;
+            }
+        }
+
         /// <summary>
         /// 获取实体是否可用。
         /// </summary>

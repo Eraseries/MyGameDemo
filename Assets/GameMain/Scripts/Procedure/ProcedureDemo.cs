@@ -16,8 +16,8 @@ namespace StarForce
     public class ProcedureDemo : ProcedureBase
     {
 
-        private MainUI mainUI = null;
-        private bool m_GoToBattle = false;
+        public bool m_GoToBattle = false;
+        public bool m_ExitBattle = false; //退出战斗返回上一层UI
         public override bool UseNativeDialog
         {
             get
@@ -25,12 +25,6 @@ namespace StarForce
                 return false;
             }
         }
-
-        private void EntryBattle()
-        {
-            m_GoToBattle = true;
-        }
-
 
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
@@ -52,20 +46,22 @@ namespace StarForce
             GameEntry.Sound.StopAllLoadedSounds();
             m_GoToBattle = false;
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
-            GameEntry.UI.OpenUIForm(UIFormId.MainUI, this);
+            if(m_ExitBattle)
+            {
+                GameEntry.UI.OpenUIForm(UIFormId.BigStageUI, this);
+            }
+            else
+            {
+                GameEntry.UI.OpenUIForm(UIFormId.MainUI, this);
+            }
+            m_ExitBattle = false;
             GameEntry.Sound.PlayMusic(4);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
-
             GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
-            if (mainUI != null)
-            {
-                mainUI.Close(isShutdown);
-                mainUI = null;
-            }
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -73,6 +69,7 @@ namespace StarForce
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
             if (m_GoToBattle)
             {
+                m_ExitBattle = true;
                 procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Battle1"));
                 ChangeState<ProcedureChangeScene>(procedureOwner);
             }
@@ -86,11 +83,6 @@ namespace StarForce
             {
                 return;
             }
-            //这里就是得到该类
-            //TODO
-            mainUI = (MainUI)ne.UIForm.Logic;
-            mainUI.battleBtn.onClick.RemoveAllListeners();
-            mainUI.battleBtn.onClick.AddListener(()=> { EntryBattle(); });
         }
 
     }

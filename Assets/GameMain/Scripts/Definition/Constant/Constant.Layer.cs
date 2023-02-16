@@ -24,6 +24,9 @@ namespace StarForce
 
             public const string TargetableObjectLayerName = "Targetable Object";
             public static readonly int TargetableObjectLayerId = LayerMask.NameToLayer(TargetableObjectLayerName);
+
+            public const string UIModelLayerName = "UIModel";
+            public static readonly int UIModelLayerId = LayerMask.NameToLayer(UIModelLayerName);
         }
     }
 }

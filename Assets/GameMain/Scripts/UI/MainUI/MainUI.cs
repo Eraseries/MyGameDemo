@@ -143,7 +143,12 @@ namespace StarForce
                 //ReadData();
             });
             AddBtnEvent(equipBtn, () => {
-                GameEntry.Event.Fire(this, ReferencePool.Acquire<PlayerDefineEventArgs>().DefineEvent(PlayerDefineEventArgs.EventType.UpdatePlayerData));
+                UpdatePlayerData();
+                GameEntry.Entity.ShowModel(new ModelData(GameEntry.Entity.GenerateSerialId(), 100001)) ;
+                if (GameEntry.Entity.GetEntity(1))
+                {
+                    (GameEntry.Entity.GetEntity(1).Logic as Model).SetParent(content);
+                }
             });
             AddBtnEvent(stageBtn, () =>
             {
@@ -151,7 +156,8 @@ namespace StarForce
             });
             AddBtnEvent(battleBtn, () =>
             {
-                GameEntry.UI.OpenUIForm(UIFormId.BattleUI);
+                //GameEntry.UI.OpenUIForm(UIFormId.BattleUI);
+                GameEntry.UI.OpenUIForm(UIFormId.BigStageUI);
             });
             AddBtnEvent(playerInfoBtn, () => { GameEntry.UI.OpenUIForm(UIFormId.PlayerInfoUI); });
         }
@@ -217,6 +223,7 @@ namespace StarForce
         protected override void OnClose(bool isShutdown, object userData)
         { 
             base.OnClose(isShutdown, userData);
+            GameEntry.Event.Unsubscribe(PlayerDefineEventArgs.EventId, UpdatePlayerInfo);
         }
 
         protected override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)

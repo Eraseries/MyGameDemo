@@ -76,9 +76,9 @@ namespace StarForce
             //创建一个Save对象存储当前游戏数据
             PlayerDataConfig data = new PlayerDataConfig();
             System.Random random = new System.Random();
-            data.coin = random.Next(5000, 10000);
-            data.diamond = random.Next(1, 300);
-            data.energy = random.Next(1, 100);
+            data.coin = 1000;
+            data.diamond = 0;
+            data.energy = 50;
             data.playerName = "冒险家#" + random.Next(10000000, 99999999);
             data.level = 1;
             data.exp = 0;
@@ -88,7 +88,7 @@ namespace StarForce
         protected override void Awake()
         {
             base.Awake();
-            Operate("delete");
+            //Operate("delete");
         }
 
 
