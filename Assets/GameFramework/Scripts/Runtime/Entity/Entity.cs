@@ -171,16 +171,6 @@ namespace UnityGameFramework.Runtime
                 Log.Error("Entity '[{0}]{1}' OnShow with exception '{2}'.", m_Id, m_EntityAssetName, exception);
             }
         }
-
-        public void Show()
-        {
-            m_EntityLogic.OnShow(null);
-        }
-        public void Hide()
-        {
-            OnRecycle();
-            m_EntityLogic.OnHide(true,null);
-        }
         /// <summary>
         /// 实体隐藏。
         /// </summary>

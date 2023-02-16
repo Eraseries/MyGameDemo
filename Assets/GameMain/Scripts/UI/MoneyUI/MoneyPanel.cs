@@ -37,11 +37,6 @@ namespace StarForce
             GameEntry.Event.Fire(this, ReferencePool.Acquire<PlayerDefineEventArgs>().DefineEvent(PlayerDefineEventArgs.EventType.UpdatePlayerData));
         }
 
-        private void Start()
-        {
-            //这里会不会存在没有销毁订阅的一个bug??????
-            GameEntry.Event.Subscribe(PlayerDefineEventArgs.EventId, UpdateUI);
-        }
 
         private void OpenShopUI(int panel_type)
         {
@@ -62,6 +57,16 @@ namespace StarForce
             energy_text.text = playerData.energy.ToString() + "/" + data.MaxEnergy;
             coin_text.text = playerData.coin.ToString();
             diamond_text.text = playerData.diamond.ToString();
+        }
+
+        private void OnEnable()
+        {
+            GameEntry.Event.Subscribe(PlayerDefineEventArgs.EventId, UpdateUI);
+        }
+
+        private void OnDisable()
+        {
+            GameEntry.Event.Unsubscribe(PlayerDefineEventArgs.EventId, UpdateUI);
         }
 
         IEnumerator OpenShopCallBack(int panel_type)

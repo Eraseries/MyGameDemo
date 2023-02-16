@@ -115,5 +115,10 @@ namespace StarForce
         /// 战斗。
         /// </summary>
         BattleUI = 250,
+
+        /// <summary>
+        /// 战斗。
+        /// </summary>
+        BattleStartUI = 255,
     }
 }

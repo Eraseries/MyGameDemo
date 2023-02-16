@@ -14,6 +14,7 @@
       <Resource Name="Animator/Role/Thief/Thief" LoadType="0" Packed="False" />
       <Resource Name="Animator/Role/Wizard/Wizard" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/BagUI/ItemDetail" LoadType="0" Packed="False" />
+      <Resource Name="Animator/UI/BattleUI/BattleStartUI" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/ChatUI/ChatUI" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/ChatUI/Close" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/ChatUI/Open" LoadType="0" Packed="False" />
@@ -142,6 +143,7 @@
       <Asset Guid="35adf5393e670ec4fa64dbae88299437" ResourceName="Entities" />
       <Asset Guid="36c1bf2cae02bd2499a620b3dce3ffac" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/die" />
       <Asset Guid="372a8b1e52bedc64b9207b12d167afaa" ResourceName="DataTables" />
+      <Asset Guid="38c78e2c37bb28c4d9d74eb911329409" ResourceName="DataTables" />
       <Asset Guid="3aa539b1e46111d4299a83c73ebe762c" ResourceName="UI/UIForms" />
       <Asset Guid="3b1310760e4456f43b12e514ba506d12" ResourceName="Entities" />
       <Asset Guid="3be3fac3611f4584695662c4889f722d" ResourceName="UI/UISprites/Common" />
@@ -195,6 +197,7 @@
       <Asset Guid="6bbcba4e267be464998897741b81d508" ResourceName="UI/UISprites/Bag/Btn_MainButton_Blue" />
       <Asset Guid="6cbc2c323b77f804fb958fa4eca33998" ResourceName="UI/UISprites/Common" />
       <Asset Guid="6e3730451fa077346abd4ac642ea71d8" ResourceName="Textures" />
+      <Asset Guid="6e9358b27d8af8e43aed4498f9c403ac" ResourceName="Animator/UI/BattleUI/BattleStartUI" />
       <Asset Guid="6fd98dd8b33c2bf46bd3521e049c2512" ResourceName="UI/UIForms" />
       <Asset Guid="7108cdf2f97ed8f4fb7956b900398dc7" ResourceName="UI/UIForms" />
       <Asset Guid="715709ec2ed2d5d47bfdbf6f659d329e" ResourceName="UI/UISprites/Bag/item_quality_blue" />
@@ -224,6 +227,7 @@
       <Asset Guid="8cbb0d76d5db6a6458e8aac771fe84b6" ResourceName="UI/UISprites/Role/Player/1001" />
       <Asset Guid="8dd9daba0eba4234e8d9d0473e8d5a1c" ResourceName="UI/UISprites/Bag/btn_4_dark" />
       <Asset Guid="8e29b5fe7ce3149e8aae1ee7b88d87b3" ResourceName="UI/UISprites/Bag/Common_Golw_White" />
+      <Asset Guid="8f757b9c5ebe1e245b6bbf74a49a9f99" ResourceName="Animator/UI/BattleUI/BattleStartUI" />
       <Asset Guid="91628679af5b95748ae930b98dc3c5a0" ResourceName="Materials" />
       <Asset Guid="9209e7aecb2719d4e8887ad012f5c6b2" ResourceName="Entities" />
       <Asset Guid="937040e56d7fb814fafda8e9d48edfc2" ResourceName="Materials" />
@@ -295,6 +299,7 @@
       <Asset Guid="e05e7be066efd524ba27607d10f2a343" ResourceName="Textures" />
       <Asset Guid="e0ba183ee55f2f34aae1d2bc84d867b0" ResourceName="Materials" />
       <Asset Guid="e114a2a22f6b9854d8e0d87228bf2a6c" ResourceName="Animator/UI/SettingUI/SettingUI" />
+      <Asset Guid="e3b8a8ac17bc92a40b9cda653c055461" ResourceName="Music" />
       <Asset Guid="e40579d982378d7469bbf2ea1eca7a43" ResourceName="UI/UISprites/Role/Little_Cat_Girl/Little_Cat_Girl_parts" />
       <Asset Guid="e5ca26c53b6ab8a46b52817008d7c7fa" ResourceName="UI/UISprites/Icons" />
       <Asset Guid="e612cbb6db8314f41979f8f6b509bee1" ResourceName="Animator/Role/Little_Cat_GirlRig/anim/idle" />

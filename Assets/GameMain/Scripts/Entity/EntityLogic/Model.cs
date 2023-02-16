@@ -26,8 +26,13 @@ namespace StarForce
 #endif
         {
             base.OnInit(userData);
+            Name = "Role_" + Id;
+            transform.localScale = new Vector3(2, 2, -2);
             animator = transform.GetComponent<Animator>();
-            animator.Play("Idle",-1,Random.Range(0,1));
+            animator.Play("Idle");
+            animator.SetFloat("Offset", Random.Range(0.0f, 1.0f));
+            animator.SetFloat("Speed", Random.Range(0.6f, 1.5f));
+            gameObject.SetActive(false);
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -37,7 +42,7 @@ namespace StarForce
 #endif
         {
             base.OnShow(userData);
-
+            gameObject.SetActive(false);
             m_ModelData = userData as ModelData;
             if (m_ModelData == null)
             {
@@ -46,7 +51,9 @@ namespace StarForce
             }
             Name = "Role_" + Id;
             transform.localScale = new Vector3(2, 2, -2);
-
+            gameObject.SetLayerRecursively(Constant.Layer.UIModelLayerId);
+            animator.SetFloat("Offset", Random.Range(0.0f, 1.0f));
+            animator.SetFloat("Speed", Random.Range(0.6f, 1.5f));
             //ScrollableBackground sceneBackground = FindObjectOfType<ScrollableBackground>();
             //if (sceneBackground == null)
             //{
@@ -110,6 +117,15 @@ namespace StarForce
             else
             {
                 transform.localScale = new Vector3(2, 2, -2);
+            }
+        }
+
+        void OnEnable()
+        {
+            if (animator)
+            {
+                animator.SetFloat("Offset", Random.Range(0.0f, 1.0f));
+                animator.SetFloat("Speed", Random.Range(0.6f, 1.5f));
             }
         }
 

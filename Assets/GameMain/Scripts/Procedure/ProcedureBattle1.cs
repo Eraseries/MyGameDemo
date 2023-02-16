@@ -49,7 +49,7 @@ namespace StarForce
             GameEntry.Sound.StopAllLoadedSounds();
             m_ExitBattle = false;
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
-            GameEntry.UI.OpenUIForm(UIFormId.BattleUI,this);
+            GameEntry.UI.OpenUIForm(UIFormId.BattleStartUI,this);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
