@@ -21,6 +21,7 @@ namespace StarForce
         public Button backBtn;
 
         bool InitModel = false;
+        BattlePanel battlePanel;
         GameObject pausePanel;
         protected override void OnInit(object userData)
         {
@@ -31,7 +32,6 @@ namespace StarForce
             pausePanel.SetActive(false);
             top = content.Find("Top");
             right = content.Find("Right");
-
             AddBtnEvent(right.Find("PauseBtn").GetComponent<Button>(), () =>
             {
                 ResumeGame(false);
@@ -61,12 +61,6 @@ namespace StarForce
             {
                 Close(true);
             });
-
-            for (int i = 1; i <= 9; i++)
-            {
-                int index = i;
-                GameEntry.Entity.ShowModel(new ModelData(GameEntry.Entity.GenerateSerialId(), 100000 + index));
-            }
         }
 
 
@@ -145,7 +139,7 @@ namespace StarForce
             base.OnUpdate(elapseSeconds, realElapseSeconds);
             if(!InitModel)
             {
-                SetPlayer();
+                //SetPlayer();
             }
         }
 

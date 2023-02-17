@@ -27,7 +27,7 @@ namespace StarForce
         {
             base.OnInit(userData);
             Name = "Role_" + Id;
-            transform.localScale = new Vector3(2, 2, -2);
+            transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
             animator = transform.GetComponent<Animator>();
             animator.Play("Idle");
             animator.SetFloat("Offset", Random.Range(0.0f, 1.0f));
@@ -50,7 +50,7 @@ namespace StarForce
                 return;
             }
             Name = "Role_" + Id;
-            transform.localScale = new Vector3(2, 2, -2);
+            transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
             gameObject.SetLayerRecursively(Constant.Layer.UIModelLayerId);
             animator.SetFloat("Offset", Random.Range(0.0f, 1.0f));
             animator.SetFloat("Speed", Random.Range(0.6f, 1.5f));
@@ -112,11 +112,11 @@ namespace StarForce
         {
             if (type == "Player")
             {
-                transform.localScale = new Vector3(-2, 2, -2);
+                transform.localScale = new Vector3(-2.5f, 2.5f, -2.5f);
             }
             else
             {
-                transform.localScale = new Vector3(2, 2, -2);
+                transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
             }
         }
 
