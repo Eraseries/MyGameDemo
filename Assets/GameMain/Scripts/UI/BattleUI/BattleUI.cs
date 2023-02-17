@@ -21,7 +21,6 @@ namespace StarForce
         public Button backBtn;
 
         bool InitModel = false;
-        BattlePanel battlePanel;
         GameObject pausePanel;
         protected override void OnInit(object userData)
         {
@@ -34,7 +33,7 @@ namespace StarForce
             right = content.Find("Right");
             AddBtnEvent(right.Find("PauseBtn").GetComponent<Button>(), () =>
             {
-                ResumeGame(false);
+                OperateGame("pause");
             });
             AddBtnEvent(right.Find("SpeedBtn").GetComponent<Button>(), () =>
             {
@@ -54,78 +53,61 @@ namespace StarForce
             });
             AddBtnEvent(pausePanel.transform.Find("MenuFrame/Group_Menu/ContinueBtn").GetComponent<Button>(), () =>
             {
-                ResumeGame(true);
+                OperateGame("continue");
+            });
+
+            AddBtnEvent(pausePanel.transform.Find("MenuFrame/Group_Menu/RestartBtn").GetComponent<Button>(), () =>
+            {
+                OperateGame("restart");
             });
 
             AddBtnEvent(pausePanel.transform.Find("MenuFrame/Group_Menu/ExitBtn").GetComponent<Button>(), () =>
             {
-                Close(true);
+                OperateGame("exit");
             });
         }
 
 
-        private void ResumeGame(bool bo)
+        private void OperateGame(string operate)
         {
-            if(bo)
+            if(operate == "continue")
             {
                 GameEntry.Base.ResumeGame();
                 GameEntry.Sound.Mute("Music", false);
                 pausePanel.SetActive(false);
             }
-            else
+            else if(operate == "pause")
             {
                 GameEntry.Base.PauseGame();
                 GameEntry.Sound.Mute("Music", true);
                 pausePanel.SetActive(true);
             }
+            else if(operate == "restart")
+            {
+                Close(true);
+                BattlePanel.Instance.Reset();
+                GameEntry.Base.ResetNormalGameSpeed();
+                GameEntry.Base.ResumeGame();
+                GameEntry.Sound.StopMusic();
+                pausePanel.SetActive(false);
+            }
+            else if(operate == "exit")
+            {
+                (GameEntry.Procedure.CurrentProcedure as ProcedureBattle1).m_ExitBattle = true;
+                Close(true);
+            }
         }
 
         protected override void OnOpen(object userData)
         {
+            BattlePanel.Instance.Show();
             base.OnOpen(userData);
-            ResumeGame(true);
-            InitModel = false;
-        }
-
-        void SetPlayer()
-        {
-            for (int i = 1; i <= 11; i++)
-            {
-                int index = i;
-                if (GameEntry.Entity.HasEntity(index))
-                {
-                    IDataTable<DRBattleScene1> dtPlayer = GameEntry.DataTable.GetDataTable<DRBattleScene1>();
-                    DRBattleScene1 data = dtPlayer.GetDataRow(index);
-                    (GameEntry.Entity.GetEntity(index).Logic as Model).SetPos(new Vector3(data.X,data.Y,data.Z));
-                    (GameEntry.Entity.GetEntity(index).Logic as Model).SetDirection(data.Type);
-                    GameEntry.Entity.GetEntity(index).gameObject.SetActive(true);
-                    if (index == 9)
-                    {
-                        InitModel = true;
-                        break;
-                    }
-                }
-                else
-                {
-                    GameEntry.Entity.ShowModel(new ModelData(index, 100000 + index));
-                    IDataTable<DRBattleScene1> dtPlayer = GameEntry.DataTable.GetDataTable<DRBattleScene1>();
-                    DRBattleScene1 data = dtPlayer.GetDataRow(index);
-                    (GameEntry.Entity.GetEntity(index).Logic as Model).SetPos(new Vector3(data.X, data.Y, data.Z));
-                    (GameEntry.Entity.GetEntity(index).Logic as Model).SetDirection(data.Type);
-                    GameEntry.Entity.GetEntity(index).gameObject.SetActive(true);
-                    if (index == 9)
-                    {
-                        InitModel = true;
-                        break;
-                    }
-                }
-
-            }
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
-            (GameEntry.Procedure.CurrentProcedure as ProcedureBattle1).m_ExitBattle = true;
+            BattlePanel.Instance.Close();
+            pausePanel.SetActive(false);
             base.OnClose(isShutdown, userData);
         }
 
@@ -136,11 +118,8 @@ namespace StarForce
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
+            BattlePanel.Instance.Update();
             base.OnUpdate(elapseSeconds, realElapseSeconds);
-            if(!InitModel)
-            {
-                //SetPlayer();
-            }
         }
 
     }

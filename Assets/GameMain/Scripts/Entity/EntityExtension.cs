@@ -107,5 +107,11 @@ namespace StarForce
         {
             return ++s_SerialId;
         }
+
+        public static int GetSerialId(this EntityComponent entityComponent)
+        {
+            return s_SerialId;
+        }
+
     }
 }

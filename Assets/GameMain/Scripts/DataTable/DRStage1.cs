@@ -53,7 +53,16 @@ namespace StarForce
             get;
             private set;
         }
-        
+
+        /// <summary>
+        /// 获取物品描述。
+        /// </summary>
+        public string EnemyPos
+        {
+            get;
+            private set;
+        }
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -68,6 +77,7 @@ namespace StarForce
             index++;
             EnemyCount = int.Parse(columnStrings[index++]);
             EnemyModel = columnStrings[index++];
+            EnemyPos = columnStrings[index++];
             GeneratePropertyArray();
             return true;
         }
@@ -81,6 +91,7 @@ namespace StarForce
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     EnemyCount = binaryReader.Read7BitEncodedInt32();
                     EnemyModel = binaryReader.ReadString();
+                    EnemyPos = binaryReader.ReadString();
                 }
             }
 

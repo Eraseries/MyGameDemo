@@ -18,17 +18,15 @@ namespace StarForce
         private float timer = 5;
         [HideInInspector]
         public Button backBtn;
-        BattlePanel battlePanel;
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
             Name = "BattleStartUI";
-            battlePanel = new BattlePanel();
-            battlePanel.Init();
         }
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
+            BattlePanel.Instance.Init();
         }
 
         protected override void OnClose(bool isShutdown, object userData)

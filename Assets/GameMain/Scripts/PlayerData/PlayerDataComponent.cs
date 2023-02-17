@@ -81,6 +81,7 @@ namespace StarForce
             data.energy = 50;
             data.playerName = "冒险家#" + random.Next(10000000, 99999999);
             data.level = 1;
+            data.curStage = 1;
             data.exp = 0;
             return data;
         }
@@ -88,7 +89,7 @@ namespace StarForce
         protected override void Awake()
         {
             base.Awake();
-            //Operate("delete");
+            Operate("delete");
         }
 
 
