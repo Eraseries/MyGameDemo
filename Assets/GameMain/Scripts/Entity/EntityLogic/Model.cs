@@ -19,6 +19,27 @@ namespace StarForce
         private Vector3 m_TargetPosition = Vector3.zero;
         private Animator animator;
 
+        private bool is_moving = false;
+        private Vector3 moving_direction = Vector3.one;
+        private Vector3 back_direction = Vector3.one;
+        private Vector3 target_pos = Vector3.one;
+        private Vector3 orign_pos = Vector3.zero;
+        private float timer = 0.1f;
+        private enum State
+        {
+            Dead,
+            Rebirth,
+            MovingTarget,
+            MovingOrign,
+            Attack,
+            Skill,
+            Idle,
+            OperateFinsh,
+            None
+        }
+
+        State cur_state = State.Idle;
+
 #if UNITY_2017_3_OR_NEWER
         protected override void OnInit(object userData)
 #else
@@ -29,7 +50,6 @@ namespace StarForce
             Name = "Role_" + Id;
             transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
             animator = transform.GetComponent<Animator>();
-            animator.Play("Idle");
             animator.SetFloat("Offset", Random.Range(0.0f, 1.0f));
             animator.SetFloat("Speed", Random.Range(0.6f, 1.5f));
             gameObject.SetActive(false);
@@ -97,6 +117,78 @@ namespace StarForce
             //    0f,
             //    Mathf.Clamp(CachedTransform.localPosition.z + speed.z, m_PlayerMoveBoundary.yMin, m_PlayerMoveBoundary.yMax)
             //);
+
+            if(cur_state == State.Idle)
+            {
+                if(!animator.isActiveAndEnabled)
+                {
+                    return;
+                }
+                animator.updateMode = AnimatorUpdateMode.Normal;
+                animator.Play("Idle");
+                cur_state = State.None;
+            }
+            else if(cur_state == State.MovingTarget)
+            {
+                animator.Play("Run");
+                transform.Translate((-8f - GameEntry.Base.GameSpeed * 2f) * moving_direction * Time.unscaledDeltaTime, Space.World);
+                if (Vector2.Distance(new Vector2(transform.position.x, transform.position.y), new Vector2(target_pos.x, target_pos.y)) <= 0.65f)
+                {
+                    transform.position = new Vector3(target_pos.x, target_pos.y, 0);
+                    //animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                    cur_state = State.Attack;
+
+                }
+            }
+            else if (cur_state == State.MovingOrign)
+            {
+                animator.Play("Run");
+                transform.Translate((-8f - GameEntry.Base.GameSpeed * 2f) * back_direction * Time.unscaledDeltaTime, Space.World);
+                if (Vector2.Distance(new Vector2(transform.position.x, transform.position.y), new Vector2(orign_pos.x, orign_pos.y)) <= 0.65f)
+                {
+                    transform.position = new Vector3(orign_pos.x, orign_pos.y, 0);
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                    cur_state = State.OperateFinsh;
+                }
+            }
+            else if (cur_state == State.Attack)
+            {
+                animator.Play("Attack");
+                timer -= Time.unscaledDeltaTime;
+                if(timer <= 0)
+                {
+                    if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime * (1 /(Mathf.Clamp(GameEntry.Base.GameSpeed - 0.9f,1,1.2f))) >= 1)
+                    {
+                        cur_state = State.MovingOrign;
+                        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                        timer = 0.1f;
+                    }
+                }
+            }
+            else if (cur_state == State.Dead)
+            {
+                animator.Play("Dead");
+                cur_state = State.None;
+            }
+            else if (cur_state == State.Skill)
+            {
+                animator.Play("Skill");
+                cur_state = State.None;
+            }
+            else if (cur_state == State.Rebirth)
+            {
+                animator.Play("Rebirth");
+                cur_state = State.None;
+            }
+            else if (cur_state == State.OperateFinsh)
+            {
+                cur_state = State.Idle;
+            }
+            else
+            {
+
+            }
+
         }
 
         public void SetParent(Transform parent)
@@ -106,6 +198,7 @@ namespace StarForce
         public void SetPos(Vector3 pos)
         {
             transform.position = pos;
+            orign_pos = pos;
         }
 
         public void SetDirection(string type)
@@ -118,6 +211,21 @@ namespace StarForce
             {
                 transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
             }
+        }
+
+        public void Fly(Vector3 pos)
+        {
+            Vector3 end_pos = new Vector3(pos.x - 1.5f , pos.y, pos.z);
+            cur_state = State.MovingTarget;
+
+            is_moving = true;
+            moving_direction = transform.position - end_pos;
+            back_direction = end_pos - transform.position;
+            //单位化（长度为1的向量）
+            back_direction = back_direction.normalized;
+            moving_direction = moving_direction.normalized;
+            transform.position = new Vector3(transform.position.x, transform.position.y, target_pos.z);
+            target_pos = end_pos;
         }
 
         void OnEnable()

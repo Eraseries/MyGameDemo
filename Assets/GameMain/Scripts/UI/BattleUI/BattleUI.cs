@@ -17,6 +17,7 @@ namespace StarForce
         private Transform content;
         private Transform top;
         private Transform right;
+        private int index = 5;
         [HideInInspector]
         public Button backBtn;
 
@@ -34,6 +35,15 @@ namespace StarForce
             AddBtnEvent(right.Find("PauseBtn").GetComponent<Button>(), () =>
             {
                 OperateGame("pause");
+            });
+            AddBtnEvent(right.Find("AutoBtn").GetComponent<Button>(), () =>
+            {
+                if(index > 11)
+                {
+                    index = 5;
+                }
+                BattlePanel.Instance.TestOperate(index);
+                index++;
             });
             AddBtnEvent(right.Find("SpeedBtn").GetComponent<Button>(), () =>
             {

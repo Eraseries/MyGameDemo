@@ -77,8 +77,8 @@ namespace StarForce
             int count = stage1Data.EnemyCount;
             if (count > 1)
             {
-                model_id_s = stage1Data.EnemyModel.Split('/');
-                model_pos_s = stage1Data.EnemyPos.Split('/');
+                model_id_s = stage1Data.EnemyModel.Split('、');
+                model_pos_s = stage1Data.EnemyPos.Split('、');
             }
             else
             {
@@ -110,9 +110,27 @@ namespace StarForce
             }
         }
 
+        public void TestOperate(int index)
+        {
+            Attack(index);
+        }
+
         public void Update()
         {
-            
+            //回合开始（场上所有怪物逻辑）
+
+            //具体逻辑
+
+            //回合结束
+        }
+
+        public void Attack(int index)
+        {
+            foreach (var item in model)
+            {
+                (GameEntry.Entity.GetEntity(item.Key).Logic as Model).Fly(new Vector3(model[index].X, model[index].Y, model[index].Z));
+                break;
+            }
         }
 
         public void Close()
