@@ -25,6 +25,7 @@ namespace StarForce
         private Vector3 target_pos = Vector3.one;
         private Vector3 orign_pos = Vector3.zero;
         private float timer = 0.1f;
+        public int model_type;
         private enum State
         {
             Dead,
@@ -206,10 +207,12 @@ namespace StarForce
             if (type == "Player")
             {
                 transform.localScale = new Vector3(-2.5f, 2.5f, -2.5f);
+                model_type = 1;
             }
             else
             {
                 transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
+                model_type = 2;
             }
         }
 

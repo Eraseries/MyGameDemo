@@ -12,13 +12,20 @@ namespace StarForce
         Vector2 init_sizedelta;
         Transform temp_parent;
         RectTransform rectTransform;
-        RaycastHit hit;
+        Canvas canvas;
+
+        bool select_enemy = false;
+        Model select_model;
+
+        //更新卡牌数据 TODO
         public void UpdateCardInfo(RoleData roleData = null)
         {
-            if(roleData == null)
+            if (roleData == null)
             {
                 return;
             }
+
+
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -30,15 +37,36 @@ namespace StarForce
 
             rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 0, 0);
             rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, 0);
-            rectTransform.pivot = new Vector2(0f,0f);
+
+            canvas = temp_parent.parent.parent.GetComponent<Canvas>();
+
+            rectTransform.pivot = new Vector2(0.5f, 0.5f);
             rectTransform.sizeDelta = init_sizedelta;
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            rectTransform.anchoredPosition = eventData.position - new Vector2(init_sizedelta.x/2,init_sizedelta.y/2);
-            //射线检测怪物 TODO
-
+            rectTransform.anchoredPosition = new Vector2(eventData.position.x / canvas.scaleFactor, eventData.position.y / canvas.scaleFactor);
+            //射线检测
+            RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.forward, int.MaxValue, LayerMask.GetMask("UIModel"));
+            if (hitInfo.collider != null)
+            {
+                Log.Error(hitInfo.collider.gameObject.name);//显示名字
+                select_model = hitInfo.collider.gameObject.GetComponent<Model>();
+                if(select_model.model_type == 1)
+                {
+                    //玩家
+                }
+                else
+                {
+                    //敌人
+                }
+                select_enemy = true;
+            }
+            else
+            {
+                select_enemy = false;
+            }
         }
 
 
@@ -53,16 +81,21 @@ namespace StarForce
             rectTransform.anchorMin = new Vector2(0, 0);
             rectTransform.pivot = new Vector2(0.5f, 0.5f);
             rectTransform.sizeDelta = init_sizedelta;
+
+            if (select_enemy)
+            {
+                transform.gameObject.SetActive(false);
+            }
         }
 
         int GetIndex()
         {
             int index = 1;
-            if(transform.name == "Slot_1")
+            if (transform.name == "Slot_1")
             {
                 index = 0;
             }
-            else if(transform.name == "Slot_2")
+            else if (transform.name == "Slot_2")
             {
                 index = 1;
             }

@@ -50,6 +50,7 @@ namespace StarForce
         public bool load_battle; //是否出战
         public int level; //卡牌等级
         public int exp; //卡牌经验
+        public int index; //卡牌index  用来获取配置表的信息
     }
 
     //背包数据

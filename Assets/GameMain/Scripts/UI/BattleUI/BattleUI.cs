@@ -1,13 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using GameFramework.DataTable;
-using GameFramework.Event;
-using UnityGameFramework.Runtime;
-using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
-using System.Reflection;
-using UnityEditor.SceneManagement;
 using System;
 /// <summary>
 /// 战斗模块
@@ -97,12 +90,6 @@ namespace StarForce
                 go.AddComponent<BattleCard>();
                 grid_table.Add(i, go.GetComponent<BattleCard>());
             }
-
-            foreach (var item in grid_table)
-            {
-                Log.Error(item.Key);
-            }
-
         }
 
         //更新底部出战卡牌(传入角色id)

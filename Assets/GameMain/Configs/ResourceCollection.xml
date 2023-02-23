@@ -15,6 +15,7 @@
       <Resource Name="Animator/Role/Wizard/Wizard" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/BagUI/ItemDetail" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/BattleUI/BattleStartUI" LoadType="0" Packed="False" />
+      <Resource Name="Animator/UI/BattleUI/RoundStart" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/ChatUI/ChatUI" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/ChatUI/Close" LoadType="0" Packed="False" />
       <Resource Name="Animator/UI/ChatUI/Open" LoadType="0" Packed="False" />
@@ -149,6 +150,7 @@
       <Asset Guid="3be3fac3611f4584695662c4889f722d" ResourceName="UI/UISprites/Common" />
       <Asset Guid="3c6f5b7a54bd84489ba7d655c5b7b812" ResourceName="UI/UISprites/Bag/status_critical" />
       <Asset Guid="3c7dc21b9cfc64a28a0db252abd7f3ad" ResourceName="UI/UISprites/Bag/status_attribute" />
+      <Asset Guid="3d2615fc901b49a49ab8d3733bb22fc9" ResourceName="Animator/UI/BattleUI/RoundStart" />
       <Asset Guid="3dc7455402dfa462b89a4bbd513955e9" ResourceName="Sounds" />
       <Asset Guid="3e64b701c42cf5848a795a6572e67b05" ResourceName="Meshes" />
       <Asset Guid="3ebdc68f8c9e0ff4196eaff883f10307" ResourceName="UI/UISprites/Bag/btn_2_dark" />
@@ -187,6 +189,7 @@
       <Asset Guid="62af9e5c8f39cfa49af9e10ccf42f1da" ResourceName="UI/UISprites/Common" />
       <Asset Guid="638ff8ae4a0d15047839cd265d3bc296" ResourceName="Music" />
       <Asset Guid="64f3bb52c6a54854688fcc656af2b1c9" ResourceName="DataTables" />
+      <Asset Guid="6520c095701a8834c8fcb6a4a4367d85" ResourceName="Animator/UI/BattleUI/RoundStart" />
       <Asset Guid="66e0675f09c7d6944b7438e9b9d3954d" ResourceName="DataTables" />
       <Asset Guid="66fd88b4a33cb6441a94f934af9c557e" ResourceName="Materials" />
       <Asset Guid="67e8fb7eb251d00439ccab4b6ac3a885" ResourceName="UI/UIForms" />
