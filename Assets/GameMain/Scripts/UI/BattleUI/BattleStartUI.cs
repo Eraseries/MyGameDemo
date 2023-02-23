@@ -46,7 +46,7 @@ namespace StarForce
             if(timer < 0)
             {
                 Close(true);
-                timer = 5;
+                timer = 3;
                 GameEntry.UI.OpenUIForm(UIFormId.BattleUI);
                 GameEntry.Sound.PlayMusic(5);
             }

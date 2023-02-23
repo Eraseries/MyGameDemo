@@ -7,11 +7,20 @@ using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 using System.Reflection;
+using System.Threading;
 /// <summary>
 /// 战斗面板
 /// </summary>
 namespace StarForce
 {
+    enum Status
+    {
+        RoundStart,
+        Fighting,
+        RoundEnd,
+        None
+    }
+
     public class BattlePanel
     {
         //存储生成的所有模型(参数一：生成模型的唯一SerialId，参数二：场景数据)
@@ -29,6 +38,7 @@ namespace StarForce
                 return instance;
             }
         }
+        Status status = Status.None;
 
         IDataTable<DRStage1> dtStage1;
         DRStage1 stage1Data;
@@ -36,7 +46,7 @@ namespace StarForce
         IDataTable<DRBattleScene1> dtBattleScene1;
         DRBattleScene1 battleScene1Data;
 
-
+        BattleUI battleUI;
         string[] model_id_s;
         string[] model_pos_s;
         public void Init()
@@ -50,19 +60,23 @@ namespace StarForce
 
             InitPlayer();
             InitEnemy();
+            status = Status.None;
         }
 
         //初始化玩家
         public void InitPlayer()
         {
             //获取到自己设置的出战的角色
-            if(GameEntry.PlayerData.GetPlayerData().BattleQueue.Count > 0)
+            if(GameEntry.PlayerData.GetPlayerData().RoleBag.Count > 0)
             {
-                foreach (var item in GameEntry.PlayerData.GetPlayerData().BattleQueue)
+                foreach (var item in GameEntry.PlayerData.GetPlayerData().RoleBag)
                 {
-                    battleScene1Data = dtBattleScene1.GetDataRow(item.Value);
-                    GameEntry.Entity.ShowModel(new ModelData(GameEntry.Entity.GenerateSerialId(), item.Key));
-                    model.Add(GameEntry.Entity.GetSerialId(), battleScene1Data);
+                    if(item.Value.battle_pos != -1)
+                    {
+                        battleScene1Data = dtBattleScene1.GetDataRow(item.Value.battle_pos);
+                        GameEntry.Entity.ShowModel(new ModelData(GameEntry.Entity.GenerateSerialId(), item.Key));
+                        model.Add(GameEntry.Entity.GetSerialId(), battleScene1Data);
+                    }
                 }
             }
         }
@@ -102,12 +116,29 @@ namespace StarForce
 
         public void Show()
         {
+            status = Status.None;
+            if (battleUI == null)
+            {
+                battleUI = (BattleUI)GameEntry.UI.GetUIForm(UIFormId.BattleUI).UIForm.Logic;
+            }
+
+            ShowAllModel();
+
+        }
+
+
+        private void ShowAllModel()
+        {
             foreach (var item in model)
             {
                 (GameEntry.Entity.GetEntity(item.Key).Logic as Model).SetPos(new Vector3(item.Value.X, item.Value.Y, item.Value.Z));
                 (GameEntry.Entity.GetEntity(item.Key).Logic as Model).SetDirection(item.Value.Type);
                 GameEntry.Entity.GetEntity(item.Key).gameObject.SetActive(true);
             }
+
+            Timer timer_1 = Timer.Register(0.1f, () => {
+                status = Status.RoundStart;
+            }, null, false, true);
         }
 
         public void TestOperate(int index)
@@ -117,8 +148,25 @@ namespace StarForce
 
         public void Update()
         {
-            //回合开始（场上所有怪物逻辑）
+            //回合开始（场上所有玩家和怪物选卡逻辑）
 
+            if(status == Status.RoundStart)
+            {
+                battleUI.RoundStart();
+                status = Status.None;
+            }
+            else if(status == Status.Fighting)
+            {
+
+            }
+            else if (status == Status.RoundEnd)
+            {
+
+            }
+            else if (status == Status.None)
+            {
+
+            }
             //具体逻辑
 
             //回合结束

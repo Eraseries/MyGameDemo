@@ -278,10 +278,10 @@ namespace StarForce
             if(playerData.Bag.Count == 0)
             {
                 //初始化存档数据
-                Dictionary<string, Dictionary<int, BagDataConfig>> temp_bag = new Dictionary<string, Dictionary<int, BagDataConfig>>();
+                Dictionary<string, Dictionary<int, BagData>> temp_bag = new Dictionary<string, Dictionary<int, BagData>>();
                 foreach (var item in tap_panel_name)
                 {
-                    Dictionary<int, BagDataConfig> temp_bag_detail = new Dictionary<int, BagDataConfig>();
+                    Dictionary<int, BagData> temp_bag_detail = new Dictionary<int, BagData>();
                     temp_bag.Add(item, temp_bag_detail);
                 }
                 playerData.Bag = temp_bag;
@@ -294,7 +294,7 @@ namespace StarForce
                     Log.Error(item.Key);
                     if(item.Key == panel_name)
                     {
-                        Dictionary<int, BagDataConfig> temp_bag_detail = item.Value;
+                        Dictionary<int, BagData> temp_bag_detail = item.Value;
                         foreach (var bag_item in temp_bag_detail)
                         {
                             slots[bag_item.Key].GetComponent<BagItem>().UpdateInfo(bag_item.Value);
@@ -312,10 +312,10 @@ namespace StarForce
                 Log.Error(item.Key);
                 if (item.Key == panel_name)
                 {
-                    Dictionary<int, BagDataConfig> temp_bag_detail = item.Value;
+                    Dictionary<int, BagData> temp_bag_detail = item.Value;
                     for (int i = 0; i < 10; i++)
                     {
-                        BagDataConfig bagDataConfig = new BagDataConfig();
+                        BagData bagDataConfig = new BagData();
                         bagDataConfig.guid = System.Guid.NewGuid().ToString();
                         bagDataConfig.count = UnityEngine.Random.Range(1, 100);
                         bagDataConfig.index = i;

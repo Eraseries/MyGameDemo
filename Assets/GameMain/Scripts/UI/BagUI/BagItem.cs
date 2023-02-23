@@ -48,7 +48,7 @@ namespace StarForce
             UpdateInfo();
         }
 
-        public void UpdateInfo(BagDataConfig info = null)
+        public void UpdateInfo(BagData info = null)
         {
             SetSelect(false);
             item.SetActive(false);

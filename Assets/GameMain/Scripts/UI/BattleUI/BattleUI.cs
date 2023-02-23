@@ -7,8 +7,10 @@ using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 using System.Reflection;
+using UnityEditor.SceneManagement;
+using System;
 /// <summary>
-/// 主界面模块
+/// 战斗模块
 /// </summary>
 namespace StarForce
 {
@@ -17,21 +19,28 @@ namespace StarForce
         private Transform content;
         private Transform top;
         private Transform right;
+        private Transform bottom;
         private int index = 5;
         [HideInInspector]
         public Button backBtn;
 
         bool InitModel = false;
         GameObject pausePanel;
+        GameObject roundPanel;
+        Dictionary<int, BattleCard> grid_table = new Dictionary<int, BattleCard>();
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
             Name = "BattleUI";
+
             content = transform.Find("Background");
             pausePanel = content.Find("PausePanel").gameObject;
             pausePanel.SetActive(false);
+            roundPanel = content.Find("RoundPanel").gameObject;
+            roundPanel.SetActive(false);
             top = content.Find("Top");
             right = content.Find("Right");
+            bottom = content.Find("Bottom");
             AddBtnEvent(right.Find("PauseBtn").GetComponent<Button>(), () =>
             {
                 OperateGame("pause");
@@ -75,8 +84,55 @@ namespace StarForce
             {
                 OperateGame("exit");
             });
+            InitBottomGrid();
         }
 
+        //初始化底部格子
+        private void InitBottomGrid()
+        {
+            for (int i = 1; i <= 4; i++)
+            {
+                GameObject go = bottom.Find("Slot_" + i).gameObject;
+                go.SetActive(true);
+                go.AddComponent<BattleCard>();
+                grid_table.Add(i, go.GetComponent<BattleCard>());
+            }
+
+            foreach (var item in grid_table)
+            {
+                Log.Error(item.Key);
+            }
+
+        }
+
+        //更新底部出战卡牌(传入角色id)
+        private void UpdateBottomCard(int role_id)
+        {
+            //获取该角色的战斗卡组
+            int grid_index = 0;
+            foreach (var item_1 in GameEntry.PlayerData.GetPlayerData().RoleBag)
+            {
+                if(item_1.Key == role_id)
+                {
+                    foreach (var item_2 in item_1.Value.CardBag)
+                    {
+                        if(item_2.Value.load_battle)
+                        {
+                            grid_table[grid_index].UpdateCardInfo(item_1.Value);
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        public void RoundStart(Action func = null)
+        {
+            roundPanel.SetActive(true);
+            Timer timer = Timer.Register(1f, () => {
+                roundPanel.SetActive(false);
+            }, null, false, true);
+        }
 
         private void OperateGame(string operate)
         {
