@@ -1,15 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GameFramework.DataTable;
 using GameFramework.Event;
-using UnityGameFramework.Runtime;
-using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 using LitJson;
 using System.IO;
-using GameFramework;
-using UnityEngine.PlayerLoop;
+using UnityGameFramework.Runtime;
 /// <summary>
 /// 主界面模块
 /// </summary>
@@ -23,13 +19,8 @@ namespace StarForce
         private Transform left;
 
 
-        Button houseBtn;
-        Button bagBtn;
         Button skillBtn;
         Button equipBtn;
-        Button stageBtn;
-        Button playerInfoBtn;
-        Button roleBtn;
 
         Text playerExpText;
         Text playerLevelText;
@@ -37,7 +28,7 @@ namespace StarForce
 
         Slider expSlider;
 
-        string[] rightBtnGroup =
+        string[] BtnGroup =
         {
             "RankBtn",
             "FriendBtn",
@@ -48,49 +39,12 @@ namespace StarForce
             "SettingBtn",
             "NoticeBtn",
             "ActivityBtn",
+            "MapBtn",
+            "StageBtn",
+            "BagBtn",
+            "PlayerInfoBtn",
+            "RoleBtn",
         };
-
-        private void GoToUI(string str)
-        {
-            UIFormId uIFormId;
-            switch (str)
-            {
-                case "RankBtn":
-                    uIFormId = UIFormId.PlayerInfoUI;
-                    break;
-                case "EmailBtn":
-                    uIFormId = UIFormId.PlayerInfoUI;
-                    break;
-                case "FriendBtn":
-                    uIFormId = UIFormId.PlayerInfoUI;
-                    break;
-                case "TaskBtn":
-                    uIFormId = UIFormId.TaskUI;
-                    break;
-                case "ChatBtn":
-                    uIFormId = UIFormId.ChatUI;
-                    break;
-                case "SettingBtn":
-                    uIFormId = UIFormId.SettingUI;
-                    break;
-                case "NoticeBtn":
-                    uIFormId = UIFormId.LuckyDrawUI;
-                    break;
-                case "ActivityBtn":
-                    uIFormId = UIFormId.ActivityUI;
-                    break;
-                default:
-                    uIFormId = UIFormId.Undefined;
-                    break;
-            }
-            GameEntry.UI.OpenUIForm(uIFormId);
-        }
-
-
-
-        [HideInInspector]
-        public Button battleBtn;
-
 
         protected override void OnInit(object userData)
         {
@@ -101,65 +55,29 @@ namespace StarForce
             content = transform.Find("Background");
 
             bottom = content.Find("Bottom");
-            roleBtn = bottom.Find("RoleBtn").GetComponent<Button>();
-            bagBtn = bottom.Find("BagBtn").GetComponent<Button>();
             skillBtn = bottom.Find("SkillBtn").GetComponent<Button>();
             equipBtn = bottom.Find("EquipBtn").GetComponent<Button>();
-            stageBtn = bottom.Find("StageBtn").GetComponent<Button>();
-            battleBtn = bottom.Find("BattleBtn").GetComponent<Button>();
-
 
             left = content.Find("Left");
             expSlider = left.Find("PlayerInfo/Exp").GetComponent<Slider>();
             playerExpText = left.Find("PlayerInfo/Exp/Text").GetComponent<Text>();
             playerLevelText = left.Find("PlayerInfo/Level/Text").GetComponent<Text>();
             playerNameText = left.Find("PlayerInfo/Name").GetComponent<Text>();
-            playerInfoBtn = left.Find("PlayerInfo/Level").GetComponent<Button>();
 
             right = content.Find("Right");
-            foreach (var btn_name in rightBtnGroup)
+            foreach (var btn_name in BtnGroup)
             {
-                AddBtnEvent(right.Find(btn_name).GetComponent<Button>(), () => { GoToUI(btn_name); });
+                AddBtnEvent(GameObject.Find(btn_name).GetComponent<Button>(), () => { GoToUI(btn_name); });
             }
 
-
-
-            AddBtnEvent(roleBtn, () =>
-            {
-                //AssignUISprite("Image.spriteatlas", "", bottom.Find("StageBtn/Icon").GetComponent<Image>()); 
-                GameEntry.UI.OpenUIForm(UIFormId.RoleUI);
-            });
-            AddBtnEvent(bagBtn, () => { GameEntry.UI.OpenUIForm(UIFormId.BagUI); });
             AddBtnEvent(skillBtn, () =>
             {
-                //if (GetUIForm("BagUI") != null)
-                //{
-                //    GetUIForm("BagUI").Open();
-                //}
-
-
                 //TODO  解析Json文件
-
                 //ReadData();
             });
             AddBtnEvent(equipBtn, () => {
                 UpdatePlayerData();
-                GameEntry.Entity.ShowModel(new ModelData(GameEntry.Entity.GenerateSerialId(), 100001)) ;
-                if (GameEntry.Entity.GetEntity(1))
-                {
-                    (GameEntry.Entity.GetEntity(1).Logic as Model).SetParent(content);
-                }
             });
-            AddBtnEvent(stageBtn, () =>
-            {
-                GameEntry.UI.OpenUIForm(UIFormId.BigStageUI);
-            });
-            AddBtnEvent(battleBtn, () =>
-            {
-                //GameEntry.UI.OpenUIForm(UIFormId.BattleUI);
-                GameEntry.UI.OpenUIForm(UIFormId.BigStageUI);
-            });
-            AddBtnEvent(playerInfoBtn, () => { GameEntry.UI.OpenUIForm(UIFormId.PlayerInfoUI); });
         }
 
 
@@ -212,7 +130,14 @@ namespace StarForce
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
+
+
             GameEntry.Event.Subscribe(PlayerDefineEventArgs.EventId, UpdatePlayerInfo);
+
+            IDataTable<DREntity> dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
+            DREntity drEntity = dtEntity.GetDataRow(100001);
+            PlayerDataConfig playerDataConfig = GameEntry.PlayerData.GetPlayerData();
+            Log.Error(ExpressionDeal(string.Format(drEntity.Exp,5,playerDataConfig.level)));
         }
 
         protected override void OnResume()

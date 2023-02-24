@@ -14,10 +14,18 @@ namespace StarForce
         RectTransform rectTransform;
         Canvas canvas;
 
-        bool select_enemy = false;
-        Model select_model;
+        BattleUI parent_ui;
 
+        bool select_enemy = false;
+        Model cur_select_model;
+        Model pre_select_model;
         //更新卡牌数据 TODO
+
+        public void InitGrid(BattleUI battleUI)
+        {
+            parent_ui = battleUI;
+        }
+
         public void UpdateCardInfo(RoleData roleData = null)
         {
             if (roleData == null)
@@ -29,6 +37,10 @@ namespace StarForce
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if (!parent_ui.CheckCanUseCard())
+            {
+                return;
+            }
             rectTransform = gameObject.GetComponent<RectTransform>();
             init_parent = transform.parent;
             temp_parent = transform.parent.parent;
@@ -46,14 +58,23 @@ namespace StarForce
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (!parent_ui.CheckCanUseCard())
+            {
+                return;
+            }
             rectTransform.anchoredPosition = new Vector2(eventData.position.x / canvas.scaleFactor, eventData.position.y / canvas.scaleFactor);
             //射线检测
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.forward, int.MaxValue, LayerMask.GetMask("UIModel"));
             if (hitInfo.collider != null)
             {
-                Log.Error(hitInfo.collider.gameObject.name);//显示名字
-                select_model = hitInfo.collider.gameObject.GetComponent<Model>();
-                if(select_model.model_type == 1)
+                cur_select_model = hitInfo.collider.gameObject.GetComponent<Model>();
+                if(pre_select_model && pre_select_model != cur_select_model)
+                {
+                    pre_select_model.SetSelect(false);
+                }
+                cur_select_model.SetSelect(true);
+
+                if(cur_select_model.model_type == 1)
                 {
                     //玩家
                 }
@@ -61,19 +82,31 @@ namespace StarForce
                 {
                     //敌人
                 }
-                select_enemy = true;
+                pre_select_model = cur_select_model;
             }
             else
             {
-                select_enemy = false;
+                if (cur_select_model)
+                {
+                    cur_select_model.SetSelect(false);
+                    cur_select_model = null;
+                }
+                if (pre_select_model)
+                {
+                    pre_select_model.SetSelect(false);
+                    pre_select_model = null;
+                }
             }
         }
 
-
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (!parent_ui.CheckCanUseCard())
+            {
+                return;
+            }
             transform.SetParent(init_parent);
-            transform.SetSiblingIndex(GetIndex());
+            transform.SetSiblingIndex(GetSlotIndex());
 
             rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 0);
             rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, 0);
@@ -82,13 +115,15 @@ namespace StarForce
             rectTransform.pivot = new Vector2(0.5f, 0.5f);
             rectTransform.sizeDelta = init_sizedelta;
 
-            if (select_enemy)
+            if (cur_select_model)
             {
+                cur_select_model.SetSelect(false);
                 transform.gameObject.SetActive(false);
+                parent_ui.SetUseCardCount();
             }
         }
 
-        int GetIndex()
+        int GetSlotIndex()
         {
             int index = 1;
             if (transform.name == "Slot_1")

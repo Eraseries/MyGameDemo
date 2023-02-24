@@ -38,7 +38,7 @@ namespace Demo
 
         public static void OnButtonScrollIndexCallbackClick(ScrollIndexCallback_Custom ScrollIndexCallback, int index, object content)
         {
-            //Debug.LogWarningFormat("ScrollIndexCallback_Custom => Click index: {0}, content: {1}, ClickUniqueID: {2}", index, content, ScrollIndexCallback.GetUniqueID());
+            //Debug.LogWarningFormat("ScrollIndexCallback_Custom => Click index: {0}, content_1: {1}, ClickUniqueID: {2}", index, content_1, ScrollIndexCallback.GetUniqueID());
         }
 
         public override void RefeashUI(string ClickUniqueID, object ClickContent)

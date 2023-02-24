@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 /// <summary>
 /// 战斗模块
 /// </summary>
@@ -14,13 +15,19 @@ namespace StarForce
         private Transform right;
         private Transform bottom;
         private int index = 5;
+        private Text time_text;
+        Text useCardText;
         [HideInInspector]
         public Button backBtn;
 
-        bool InitModel = false;
         GameObject pausePanel;
         GameObject roundPanel;
         Dictionary<int, BattleCard> grid_table = new Dictionary<int, BattleCard>();
+
+        Timer top_timer;
+        int time_index = 0;
+        int round_use_card_count = 1;
+        public int cur_use_card_count = 0;
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -34,6 +41,7 @@ namespace StarForce
             top = content.Find("Top");
             right = content.Find("Right");
             bottom = content.Find("Bottom");
+            useCardText = top.Find("UseCardText").GetComponent<Text>();
             AddBtnEvent(right.Find("PauseBtn").GetComponent<Button>(), () =>
             {
                 OperateGame("pause");
@@ -77,6 +85,8 @@ namespace StarForce
             {
                 OperateGame("exit");
             });
+
+            time_text = top.Find("Time/Time").GetComponent<Text>();
             InitBottomGrid();
         }
 
@@ -89,6 +99,7 @@ namespace StarForce
                 go.SetActive(true);
                 go.AddComponent<BattleCard>();
                 grid_table.Add(i, go.GetComponent<BattleCard>());
+                grid_table[i].InitGrid(this);
             }
         }
 
@@ -108,17 +119,65 @@ namespace StarForce
                             grid_table[grid_index].UpdateCardInfo(item_1.Value);
                         }
                     }
+                    round_use_card_count = item_1.Value.round_use_card_count;
                 }
             }
             
         }
 
-        public void RoundStart(Action func = null)
+        //更新回合使用卡个数
+        private void UpdateUseCardText()
+        {
+            useCardText.text = String.Format("(卡牌使用次数:(<color=#ff0000>{0}</color>/{1})", cur_use_card_count,round_use_card_count);
+        }
+
+        //设置回合使用卡个数
+        public void SetUseCardCount()
+        {
+            cur_use_card_count = cur_use_card_count + 1;
+            UpdateUseCardText();
+        }
+
+        //判断能否继续使用卡牌
+        public bool CheckCanUseCard()
+        {
+            return cur_use_card_count < round_use_card_count;
+        }
+
+        //更新顶部时间
+        private void UpdateTopTime(bool pause = false)
+        {
+            if(pause)
+            {
+                if(top_timer != null)
+                {
+                    top_timer.Pause();
+                }
+                return;
+            }
+            if(top_timer == null)
+            {
+                top_timer = Timer.Register(1, () => {
+                    time_text.text = (time_index++).ToString();
+                }, null, true, true, this);
+            }
+            else
+            {
+                top_timer.Resume();
+            }
+        }
+
+        public void RoundStart(Action action = null)
         {
             roundPanel.SetActive(true);
-            Timer timer = Timer.Register(1f, () => {
+            Timer.Register(1.52f, () => {
                 roundPanel.SetActive(false);
-            }, null, false, true);
+                UpdateTopTime();
+                if(action != null)
+                {
+                    action();
+                }
+            }, null, false, true,this);
         }
 
         private void OperateGame(string operate)

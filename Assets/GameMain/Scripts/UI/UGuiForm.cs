@@ -13,11 +13,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.U2D;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityGameFramework.Runtime;
 using GameFramework;
+using GameDevWare.Dynamic.Expressions.CSharp;
 
 namespace StarForce
 {
@@ -413,6 +413,17 @@ namespace StarForce
             }
         }
 
+        /// <summary>
+        /// 字符串表达式操作
+        /// </summary>
+        /// <param name="expression_str"> 传入要操作的字符串表达式，例如"2 * (2 + 3)"</param>
+        /// <returns></returns>
+        public int ExpressionDeal(string expression_str)
+        {
+            int result = CSharpExpression.Evaluate<int>(expression_str);
+            return result;
+        }
+
         public void ShowMsgBox()
         {
             GameEntry.UI.OpenUIForm(UIFormId.MessageBoxUI,this);
@@ -422,6 +433,58 @@ namespace StarForce
         public void UpdatePlayerData()
         {
             GameEntry.Event.Fire(this, ReferencePool.Acquire<PlayerDefineEventArgs>().DefineEvent(PlayerDefineEventArgs.EventType.UpdatePlayerData));
+        }
+
+        public void GoToUI(string str)
+        {
+            UIFormId uIFormId;
+            switch (str)
+            {
+                case "RankBtn":
+                    uIFormId = UIFormId.PlayerInfoUI;
+                    break;
+                case "EmailBtn":
+                    uIFormId = UIFormId.PlayerInfoUI;
+                    break;
+                case "FriendBtn":
+                    uIFormId = UIFormId.PlayerInfoUI;
+                    break;
+                case "TaskBtn":
+                    uIFormId = UIFormId.TaskUI;
+                    break;
+                case "ChatBtn":
+                    uIFormId = UIFormId.ChatUI;
+                    break;
+                case "SettingBtn":
+                    uIFormId = UIFormId.SettingUI;
+                    break;
+                case "NoticeBtn":
+                    uIFormId = UIFormId.LuckyDrawUI;
+                    break;
+                case "ActivityBtn":
+                    uIFormId = UIFormId.ActivityUI;
+                    break;
+                case "StageBtn":
+                    uIFormId = UIFormId.StageUI;
+                    break;
+                case "BagBtn":
+                    uIFormId = UIFormId.BagUI;
+                    break;
+                case "PlayerInfoBtn":
+                    uIFormId = UIFormId.PlayerInfoUI;
+                    break;
+                case "RoleBtn":
+                    uIFormId = UIFormId.RoleUI;
+                    break;
+                default:
+                    uIFormId = UIFormId.Undefined;
+                    break;
+            }
+            if(uIFormId == UIFormId.Undefined)
+            {
+                return;
+            }
+            GameEntry.UI.OpenUIForm(uIFormId);
         }
 
     }

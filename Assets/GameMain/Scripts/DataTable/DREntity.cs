@@ -45,6 +45,50 @@ namespace StarForce
             private set;
         }
 
+        /// <summary>
+        /// 模型名字
+        /// </summary>
+        public string Name
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 稀有度
+        /// </summary>
+        public int Rarity
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 模型类型
+        /// </summary>
+        public string Type
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 经验值(稀有度*等级*10)
+        /// </summary>
+        public string Exp
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 优先级（战斗力的出战顺序）
+        /// </summary>
+        public int Priority
+        {
+            get;
+            private set;
+        }
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -58,6 +102,11 @@ namespace StarForce
             m_Id = int.Parse(columnStrings[index++]);
             index++;
             AssetName = columnStrings[index++];
+            Name = columnStrings[index++];
+            Rarity = int.Parse(columnStrings[index++]);
+            Type = columnStrings[index++];
+            Exp = columnStrings[index++];
+            Priority = int.Parse(columnStrings[index++]);
 
             GeneratePropertyArray();
             return true;
@@ -71,6 +120,11 @@ namespace StarForce
                 {
                     m_Id = binaryReader.Read7BitEncodedInt32();
                     AssetName = binaryReader.ReadString();
+                    Name = binaryReader.ReadString();
+                    Rarity = binaryReader.Read7BitEncodedInt32();
+                    Type = binaryReader.ReadString();
+                    Exp = binaryReader.ReadString();
+                    Priority = binaryReader.Read7BitEncodedInt32();
                 }
             }
 

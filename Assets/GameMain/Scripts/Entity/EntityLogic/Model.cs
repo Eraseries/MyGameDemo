@@ -15,17 +15,16 @@ namespace StarForce
         [SerializeField]
         private ModelData m_ModelData = null;
 
-        private Rect m_PlayerMoveBoundary = default(Rect);
         private Vector3 m_TargetPosition = Vector3.zero;
         private Animator animator;
 
-        private bool is_moving = false;
         private Vector3 moving_direction = Vector3.one;
         private Vector3 back_direction = Vector3.one;
         private Vector3 target_pos = Vector3.one;
         private Vector3 orign_pos = Vector3.zero;
         private float timer = 0.1f;
         public int model_type;
+        public GameObject select;
         private enum State
         {
             Dead,
@@ -47,9 +46,11 @@ namespace StarForce
         protected internal override void OnInit(object userData)
 #endif
         {
-            base.OnInit(userData);
+            //base.OnInit(userData);
             Name = "Role_" + Id;
             transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
+            select = transform.Find("select").gameObject;
+            select.SetActive(false);
             animator = transform.GetComponent<Animator>();
             animator.SetFloat("Offset", Random.Range(0.0f, 1.0f));
             animator.SetFloat("Speed", Random.Range(0.6f, 1.5f));
@@ -62,7 +63,7 @@ namespace StarForce
         protected internal override void OnShow(object userData)
 #endif
         {
-            base.OnShow(userData);
+            //base.OnShow(userData);
             gameObject.SetActive(false);
             m_ModelData = userData as ModelData;
             if (m_ModelData == null)
@@ -221,7 +222,6 @@ namespace StarForce
             Vector3 end_pos = new Vector3(pos.x - 1.5f , pos.y, pos.z);
             cur_state = State.MovingTarget;
 
-            is_moving = true;
             moving_direction = transform.position - end_pos;
             back_direction = end_pos - transform.position;
             //单位化（长度为1的向量）
@@ -229,6 +229,11 @@ namespace StarForce
             moving_direction = moving_direction.normalized;
             transform.position = new Vector3(transform.position.x, transform.position.y, target_pos.z);
             target_pos = end_pos;
+        }
+
+        public void SetSelect(bool bo)
+        {
+            select.SetActive(bo);
         }
 
         void OnEnable()

@@ -46,6 +46,9 @@ namespace StarForce
         IDataTable<DRBattleScene1> dtBattleScene1;
         DRBattleScene1 battleScene1Data;
 
+
+        Model cur_turn_model; //轮到当前的角色模型
+
         BattleUI battleUI;
         string[] model_id_s;
         string[] model_pos_s;
@@ -129,16 +132,13 @@ namespace StarForce
 
         private void ShowAllModel()
         {
+            status = Status.RoundStart;
             foreach (var item in model)
             {
                 (GameEntry.Entity.GetEntity(item.Key).Logic as Model).SetPos(new Vector3(item.Value.X, item.Value.Y, item.Value.Z));
                 (GameEntry.Entity.GetEntity(item.Key).Logic as Model).SetDirection(item.Value.Type);
                 GameEntry.Entity.GetEntity(item.Key).gameObject.SetActive(true);
             }
-
-            Timer timer_1 = Timer.Register(0.1f, () => {
-                status = Status.RoundStart;
-            }, null, false, true);
         }
 
         public void TestOperate(int index)
@@ -152,7 +152,7 @@ namespace StarForce
 
             if(status == Status.RoundStart)
             {
-                battleUI.RoundStart();
+                battleUI.RoundStart(SortModel);
                 status = Status.None;
             }
             else if(status == Status.Fighting)
@@ -161,7 +161,8 @@ namespace StarForce
             }
             else if (status == Status.RoundEnd)
             {
-
+                battleUI.RoundStart();
+                status = Status.None;
             }
             else if (status == Status.None)
             {
@@ -170,6 +171,16 @@ namespace StarForce
             //具体逻辑
 
             //回合结束
+        }
+
+        //处理所有模型的出战优先级
+        private void SortModel()
+        {
+            foreach (var item in model)
+            {
+                Model model_logic = GameEntry.Entity.GetEntity(item.Key).Logic as Model;
+                
+            }
         }
 
         public void Attack(int index)

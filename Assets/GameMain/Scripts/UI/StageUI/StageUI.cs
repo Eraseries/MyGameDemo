@@ -7,29 +7,45 @@ using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 
 /// <summary>
-/// 主界面模块
+/// 关卡模块
 /// </summary>
 namespace StarForce
 {
-    public class BigStageUI : UGuiForm
+    public class StageUI : UGuiForm
     {
-        private Transform content;
+        private Transform content_1;
+        private Transform content_2;
         private Transform top;
 
-        Button backBtn;
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
-            Name = "BigStageUI";
-            content = transform.Find("Background");
-            top = content.Find("Content1/Top");
-            backBtn = top.Find("BackBtn").GetComponent<Button>();
-            AddBtnEvent(backBtn, () => { 
+            Name = "StageUI";
+            top = transform.Find("Background/Top");
+            content_1 = transform.Find("Background/Content1");
+            content_2 = transform.Find("Background/Content2");
+
+            for (int i = 1; i <= 4; i++)
+            {
+                AddBtnEvent(content_1.Find("ScrollRect/Content/Stage_"+ i).GetComponent<Button>(), () =>
+                {
+                    content_2.gameObject.SetActive(true);
+                });
+            }
+
+
+            AddBtnEvent(content_1.Find("Top/BackBtn").GetComponent<Button>(), () =>
+            {
                 GameEntry.UI.OpenUIForm(UIFormId.MainUI, this);
                 Close(true);
-            });// Close();
-            AddBtnEvent(content.Find("Content1/PreBtn").GetComponent<Button>(), () => {
-                //GameEntry.UI.OpenUIForm(UIFormId.SmallStageUI);
+            });
+
+            AddBtnEvent(content_2.Find("Top/BackBtn").GetComponent<Button>(), () =>
+            {
+                content_2.gameObject.SetActive(false);
+            });
+
+            AddBtnEvent(content_1.Find("PreBtn").GetComponent<Button>(), () => {
                 (GameEntry.Procedure.CurrentProcedure as ProcedureDemo).m_GoToBattle = true;
             });
         }

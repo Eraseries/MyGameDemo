@@ -17,6 +17,8 @@ namespace StarForce
         public int exp;//冒险家经验
         public int curStage;//当前关卡
         public string playerName = "";//冒险家名字
+        public Dictionary<int, int> Stage = new Dictionary<int, int>(); //关卡信息，大关卡-小关卡
+
 
 
         /// <summary>
@@ -28,7 +30,7 @@ namespace StarForce
         /// <summary>
         /// 拥有的角色以及角色数据，模型id,角色数据
         /// </summary>
-        public Dictionary<int,RoleData> RoleBag = new Dictionary<int,RoleData>();
+        public Dictionary<int, RoleData> RoleBag = new Dictionary<int, RoleData>();
     }
 
     //角色数据
@@ -37,10 +39,14 @@ namespace StarForce
         public int battle_pos = -1;  //-1为不出战，1234对应场景位置
         public int round_use_card_count = 1;   //每回合战斗可以使用多少张卡牌
         public int exp; //角色经验
+        public int index; //角色Index 用来获取配置表的信息
+        public int health; //角色血量
+        public int priority; //角色出战优先级
+
 
         //卡包
         //卡牌id,卡牌数据
-        public Dictionary<int, CardData> CardBag = new Dictionary<int, CardData>(); 
+        public Dictionary<int, CardData> CardBag = new Dictionary<int, CardData>();
     }
 
     //卡牌数据
@@ -54,10 +60,11 @@ namespace StarForce
     }
 
     //背包数据
-}    public class BagData
+    public class BagData
     {
         public string guid; //物品唯一id
         public int grid_index; //格子位置
         public int count; //物品数量
         public int index; //物品index，用来获取配置表的信息
     }
+}

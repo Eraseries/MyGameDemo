@@ -107,9 +107,9 @@ namespace StarForce
 
 
         /// <summary>
-        /// 战斗。
+        /// 关卡。
         /// </summary>
-        BigStageUI = 245,
+        StageUI = 245,
 
         /// <summary>
         /// 战斗。

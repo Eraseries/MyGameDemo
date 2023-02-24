@@ -25,7 +25,7 @@ namespace StarForce
             base.OnInit(userData);
             Name = "ChatUI";
             content = transform.Find("Background");
-            top = content.Find("content/Top");
+            top = content.Find("content_1/Top");
             backBtn = top.Find("BackBtn").GetComponent<Button>();
             AddBtnEvent(backBtn, () => { Close(); });// Close();
             AddBtnEvent(content.GetComponent<Button>(), () => { Close(); });// Close();

@@ -48,7 +48,7 @@ namespace StarForce
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
             if(m_ExitBattle)
             {
-                GameEntry.UI.OpenUIForm(UIFormId.BigStageUI, this);
+                GameEntry.UI.OpenUIForm(UIFormId.StageUI, this);
             }
             else
             {
