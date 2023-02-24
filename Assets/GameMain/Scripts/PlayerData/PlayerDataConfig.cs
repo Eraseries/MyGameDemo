@@ -15,10 +15,10 @@ namespace StarForce
         public int diamond;//冒险家钻石
         public int energy;//冒险家能量
         public int exp;//冒险家经验
-        public int curStage;//当前关卡
         public string playerName = "";//冒险家名字
-        public Dictionary<int, int> Stage = new Dictionary<int, int>(); //关卡信息，大关卡-小关卡
 
+        //关卡信息，场景名---大关卡---小关卡
+        public Dictionary<string, Dictionary<int, int>> Stage = new Dictionary<string, Dictionary<int, int>>();
 
 
         /// <summary>

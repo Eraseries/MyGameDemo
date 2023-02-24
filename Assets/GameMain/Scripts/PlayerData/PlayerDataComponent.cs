@@ -81,8 +81,11 @@ namespace StarForce
             data.energy = 50;
             data.playerName = "冒险家#" + random.Next(10000000, 99999999);
             data.level = 1;
-            data.curStage = 1;
             data.exp = 0;
+            Dictionary<int, int> temp_dic = new Dictionary<int, int>();
+
+            temp_dic.Add(1, 0);
+            data.Stage.Add("Battle_1", temp_dic);
             return data;
         }
 

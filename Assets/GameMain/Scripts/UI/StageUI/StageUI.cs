@@ -21,6 +21,8 @@ namespace StarForce
         RectTransform challange_panel_rect;
         Vector2 init_anchoredposition;
         bool panel_running = false;
+        int cur_select_big_stage = -1;
+        PlayerDataConfig playerData;
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -37,8 +39,15 @@ namespace StarForce
             challange_panel.SetActive(false);
             for (int i = 1; i <= 4; i++)
             {
-                AddBtnEvent(content_1.Find("ScrollRect/Content/BigStage_"+ i).GetComponent<Button>(), () =>
+                int index = i;
+                AddBtnEvent(content_1.Find("ScrollRect/Content/BigStage_"+ index).GetComponent<Button>(), () =>
                 {
+                    if(index > playerData.Stage.Count)
+                    {
+                        Log.Error("关卡未解锁！！");
+                        return;
+                    }
+                    cur_select_big_stage = index;
                     content_2.gameObject.SetActive(true);
                 });
             }
@@ -54,6 +63,10 @@ namespace StarForce
                     });
                 }
             }
+
+            AddBtnEvent(challange_panel.transform.Find("BattleBtn").GetComponent<Button>(), () => {
+                (GameEntry.Procedure.CurrentProcedure as ProcedureDemo).m_GoToBattle = true;
+            });
 
             AddBtnEvent(top.Find("BackBtn").GetComponent<Button>(), () =>
             {
@@ -98,9 +111,21 @@ namespace StarForce
             });
         }
 
+        private void UpdateStageInfo()
+        {
+
+            playerData = GameEntry.PlayerData.GetPlayerData();
+            for (int i = 0; i < playerData.Stage.Count; i++)
+            {
+
+            }
+            
+        }
+
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
+            UpdateStageInfo();
         }
 
         public override void Close()

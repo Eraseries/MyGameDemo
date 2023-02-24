@@ -54,12 +54,10 @@ namespace StarForce
         string[] model_pos_s;
         public void Init()
         {
-            current_stage = GameEntry.PlayerData.GetPlayerData().curStage;
-            GameEntry.PlayerData.GetPlayerData().curStage++;
             dtStage1 = GameEntry.DataTable.GetDataTable<DRStage1>();
             dtBattleScene1 = GameEntry.DataTable.GetDataTable<DRBattleScene1>();
 
-            stage1Data = dtStage1.GetDataRow(current_stage);
+            stage1Data = dtStage1.GetDataRow(1);
 
             InitPlayer();
             InitEnemy();
