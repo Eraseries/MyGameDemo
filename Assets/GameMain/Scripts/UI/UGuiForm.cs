@@ -43,7 +43,6 @@ namespace StarForce
         private static List<UGuiForm> m_CachedUIFormContainer = new List<UGuiForm>();
         private static Dictionary<string, object> m_CachedPrefabContainer = new Dictionary<string, object>();
 
-
         Vector3 click_point;
         GameObject click_effect;
 
@@ -52,7 +51,7 @@ namespace StarForce
         public int OriginalDepth
         {
             get;
-            private set;
+            protected set;
         }
 
         public int Depth
@@ -136,12 +135,22 @@ namespace StarForce
         /// <param name="uiFormid"></param>
         public UGuiForm GetUIForm(string uiName)
         {
+            int temp_index = -1;
             for (int i = 0; i < m_CachedUIFormContainer.Count; i++)
             {
+                if(m_CachedUIFormContainer[i] == null)
+                {
+                    temp_index = i;
+                    continue;
+                }
                 if (m_CachedUIFormContainer[i].Name == uiName)
                 {
                     return m_CachedUIFormContainer[i];
                 }
+            }
+            if(temp_index != -1)
+            {
+                m_CachedUIFormContainer.RemoveAt(temp_index);
             }
             return null;
         }
@@ -336,7 +345,7 @@ namespace StarForce
         {
             int oldDepth = Depth;
             base.OnDepthChanged(uiGroupDepth, depthInUIGroup);
-            int deltaDepth = UGuiGroupHelper.DepthFactor * uiGroupDepth + DepthFactor * depthInUIGroup - oldDepth + OriginalDepth;
+            int deltaDepth =(int) Mathf.Clamp(UGuiGroupHelper.DepthFactor * uiGroupDepth + DepthFactor * depthInUIGroup - oldDepth + OriginalDepth,-int.MaxValue,int.MaxValue);
             GetComponentsInChildren(true, m_CachedCanvasContainer);
             for (int i = 0; i < m_CachedCanvasContainer.Count; i++)
             {

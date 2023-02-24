@@ -20,7 +20,7 @@ namespace StarForce
     {
         private StartUI startUI = null;
         private bool m_EntryGame = false;
-        private bool m_OpenStarUI = true;
+        private bool m_OpenStartUI = true;
         public static readonly string[] DataTableNames = new string[]
         {
             "Aircraft",
@@ -92,9 +92,9 @@ namespace StarForce
                 }
             }
 
-            if(m_OpenStarUI)
+            if(m_OpenStartUI)
             {
-                m_OpenStarUI = false;
+                m_OpenStartUI = false;
                 GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
                 GameEntry.UI.OpenUIForm(UIFormId.StartUI, this);
             }
@@ -102,7 +102,7 @@ namespace StarForce
             {
                 procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Demo"));
                 ChangeState<ProcedureChangeScene>(procedureOwner);
-            }    
+            }
         }
 
         private void OnOpenUIFormSuccess(object sender, GameEventArgs e)

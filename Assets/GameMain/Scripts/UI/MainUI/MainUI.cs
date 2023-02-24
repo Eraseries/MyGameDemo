@@ -137,7 +137,7 @@ namespace StarForce
             IDataTable<DREntity> dtEntity = GameEntry.DataTable.GetDataTable<DREntity>();
             DREntity drEntity = dtEntity.GetDataRow(100001);
             PlayerDataConfig playerDataConfig = GameEntry.PlayerData.GetPlayerData();
-            Log.Error(ExpressionDeal(string.Format(drEntity.Exp,5,playerDataConfig.level)));
+            //Log.Error(ExpressionDeal(string.Format(drEntity.Exp,5,playerDataConfig.level)));
         }
 
         protected override void OnResume()

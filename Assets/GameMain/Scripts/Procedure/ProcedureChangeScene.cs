@@ -91,12 +91,6 @@ namespace StarForce
             GameEntry.Event.Unsubscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
             base.OnLeave(procedureOwner, isShutdown);
         }
-
-        private IEnumerator loadScene()
-        {
-            yield return new WaitForSeconds(2);
-        }
-
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
@@ -138,7 +132,10 @@ namespace StarForce
             {
                 GameEntry.Sound.PlayMusic(m_BackgroundMusicId);
             }
-
+            if(ne.SceneAssetName == "Assets/GameMain/Scenes/Demo.unity")
+            {
+                GameEntry.UI.OpenUIForm(UIFormId.MoneyUI);
+            }
             m_IsChangeSceneComplete = true;
         }
 

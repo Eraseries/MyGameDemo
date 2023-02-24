@@ -11,15 +11,35 @@ using UnityGameFramework.Runtime;
 /// </summary>
 namespace StarForce
 {
-    public class MoneyPanel : UGuiForm
+    public class MoneyUI : UGuiForm
     {
         private Transform diamond;
         private Transform coin;
         private Transform energy;
 
+        RectTransform rectTransform;
+
         Text diamond_text;
         Text coin_text;
         Text energy_text;
+        Canvas canvas;
+        Vector2 init_pos = new Vector2(-219, -83);
+        Vector2 init_delta = new Vector2(994, 100);
+        protected override void OnInit(object userData)
+        {
+            base.OnInit(userData);
+            Name = "MoneyUI";
+            rectTransform = transform.GetComponent<RectTransform>();
+            canvas = gameObject.GetOrAddComponent<Canvas>();
+            rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 0);
+            rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, 0);
+            rectTransform.sizeDelta = init_delta;
+            rectTransform.pivot = new Vector2(1, 0.5f);
+            rectTransform.anchoredPosition = init_pos;
+        }
+
         private void Awake()
         {
             diamond = transform.Find("Diamond");
@@ -67,6 +87,12 @@ namespace StarForce
         private void OnDisable()
         {
             GameEntry.Event.Unsubscribe(PlayerDefineEventArgs.EventId, UpdateUI);
+        }
+
+        protected override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
+        {
+            base.OnDepthChanged(uiGroupDepth, depthInUIGroup);
+            canvas.sortingOrder = 32767;
         }
 
         IEnumerator OpenShopCallBack(int panel_type)

@@ -46,7 +46,7 @@ namespace StarForce
         protected internal override void OnInit(object userData)
 #endif
         {
-            //base.OnInit(userData);
+            base.OnInit(userData);
             Name = "Role_" + Id;
             transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
             select = transform.Find("select").gameObject;

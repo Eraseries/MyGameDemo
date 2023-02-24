@@ -65,6 +65,11 @@ namespace StarForce
         ActivityUI = 108,
 
         /// <summary>
+        /// 钱包界面。
+        /// </summary>
+        MoneyUI = 109,
+
+        /// <summary>
         /// 主界面。
         /// </summary>
         MainUI = 200,

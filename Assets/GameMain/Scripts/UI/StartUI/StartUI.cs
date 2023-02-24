@@ -23,7 +23,6 @@ namespace StarForce
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
-            Name = "StartUI";
             content = transform.Find("Background");
             newGameBtn = content.Find("NewGameBtn").GetComponent<Button>();
             exitBtn = content.Find("ExitBtn").GetComponent<Button>();
