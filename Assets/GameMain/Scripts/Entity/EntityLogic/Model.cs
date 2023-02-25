@@ -23,9 +23,9 @@ namespace StarForce
         private Vector3 target_pos = Vector3.one;
         private Vector3 orign_pos = Vector3.zero;
         private float timer = 0.1f;
-        public int model_type;
+        public int model_type;  //角色类型
         public GameObject select;
-        private enum State
+        public enum State
         {
             Dead,
             Rebirth,
@@ -35,10 +35,11 @@ namespace StarForce
             Skill,
             Idle,
             OperateFinsh,
+            PlayEnd,
             None
         }
 
-        State cur_state = State.Idle;
+        public State cur_state = State.Idle;
 
 #if UNITY_2017_3_OR_NEWER
         protected override void OnInit(object userData)
@@ -63,7 +64,6 @@ namespace StarForce
         protected internal override void OnShow(object userData)
 #endif
         {
-            //base.OnShow(userData);
             gameObject.SetActive(false);
             m_ModelData = userData as ModelData;
             if (m_ModelData == null)
@@ -71,20 +71,20 @@ namespace StarForce
                 Log.Error("My aircraft data is invalid.");
                 return;
             }
+
+            if (m_ModelData.model_type == CampType.Player)
+            {
+                transform.localScale = new Vector3(-2.5f, 2.5f, -2.5f);
+            }
+            else
+            {
+                transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
+            }
+
             Name = "Role_" + Id;
-            transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
             gameObject.SetLayerRecursively(Constant.Layer.UIModelLayerId);
             animator.SetFloat("Offset", Random.Range(0.0f, 1.0f));
             animator.SetFloat("Speed", Random.Range(0.6f, 1.5f));
-            //ScrollableBackground sceneBackground = FindObjectOfType<ScrollableBackground>();
-            //if (sceneBackground == null)
-            //{
-            //    Log.Warning("Can not find scene background.");
-            //    return;
-            //}
-
-            //m_PlayerMoveBoundary = new Rect(sceneBackground.PlayerMoveBoundary.bounds.min.x, sceneBackground.PlayerMoveBoundary.bounds.min.z,
-            //    sceneBackground.PlayerMoveBoundary.bounds.size.x, sceneBackground.PlayerMoveBoundary.bounds.size.z);
         }
 
 #if UNITY_2017_3_OR_NEWER
@@ -94,32 +94,6 @@ namespace StarForce
 #endif
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
-
-            //if (Input.GetMouseButton(0))
-            //{
-            //    Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //    m_TargetPosition = new Vector3(point.x, 0f, point.z);
-
-            //    for (int i = 0; i < m_Weapons.Count; i++)
-            //    {
-            //        m_Weapons[i].TryAttack();
-            //    }
-            //}
-
-            //Vector3 direction = m_TargetPosition - CachedTransform.localPosition;
-            //if (direction.sqrMagnitude <= Vector3.kEpsilon)
-            //{
-            //    return;
-            //}
-
-            //Vector3 speed = Vector3.ClampMagnitude(direction.normalized * m_ModelData.Speed * elapseSeconds, direction.magnitude);
-            //CachedTransform.localPosition = new Vector3
-            //(
-            //    Mathf.Clamp(CachedTransform.localPosition.x + speed.x, m_PlayerMoveBoundary.xMin, m_PlayerMoveBoundary.xMax),
-            //    0f,
-            //    Mathf.Clamp(CachedTransform.localPosition.z + speed.z, m_PlayerMoveBoundary.yMin, m_PlayerMoveBoundary.yMax)
-            //);
-
             if(cur_state == State.Idle)
             {
                 if(!animator.isActiveAndEnabled)
@@ -186,12 +160,25 @@ namespace StarForce
             {
                 cur_state = State.Idle;
             }
+            else if (cur_state == State.None)
+            {
+                
+            }
+            else if (cur_state == State.PlayEnd)
+            {
+
+            }
             else
             {
 
             }
-
         }
+
+        public ModelData GetModelData()
+        {
+            return m_ModelData;
+        }
+
 
         public void SetParent(Transform parent)
         {
@@ -202,21 +189,6 @@ namespace StarForce
             transform.position = pos;
             orign_pos = pos;
         }
-
-        public void SetDirection(string type)
-        {
-            if (type == "Player")
-            {
-                transform.localScale = new Vector3(-2.5f, 2.5f, -2.5f);
-                model_type = 1;
-            }
-            else
-            {
-                transform.localScale = new Vector3(2.5f, 2.5f, -2.5f);
-                model_type = 2;
-            }
-        }
-
         public void Fly(Vector3 pos)
         {
             Vector3 end_pos = new Vector3(pos.x - 1.5f , pos.y, pos.z);

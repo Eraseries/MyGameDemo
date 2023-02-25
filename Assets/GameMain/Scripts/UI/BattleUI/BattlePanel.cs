@@ -25,7 +25,12 @@ namespace StarForce
     {
         //存储生成的所有模型(参数一：生成模型的唯一SerialId，参数二：场景数据)
         Dictionary<int, DRBattleScene1> model = new Dictionary<int, DRBattleScene1>();
-        private static int current_stage = 1; //当前关卡
+
+        //按出战优先级存储的所有模型
+        Dictionary<int, Model> battle_queue = new Dictionary<int, Model>();
+
+        private int current_stage = 1; //当前关卡
+        public bool is_turn = true;
         public static BattlePanel instance;
         public static BattlePanel Instance
         {
@@ -68,14 +73,14 @@ namespace StarForce
         public void InitPlayer()
         {
             //获取到自己设置的出战的角色
-            if(GameEntry.PlayerData.GetPlayerData().RoleBag.Count > 0)
+            if (GameEntry.PlayerData.GetPlayerData().RoleBag.Count > 0)
             {
                 foreach (var item in GameEntry.PlayerData.GetPlayerData().RoleBag)
                 {
-                    if(item.Value.battle_pos != -1)
+                    if (item.Value.battle_pos != -1)
                     {
                         battleScene1Data = dtBattleScene1.GetDataRow(item.Value.battle_pos);
-                        GameEntry.Entity.ShowModel(new ModelData(GameEntry.Entity.GenerateSerialId(), item.Key));
+                        GameEntry.Entity.ShowModel(new ModelData(GameEntry.Entity.GenerateSerialId(), item.Key, "Player", item.Value.level));
                         model.Add(GameEntry.Entity.GetSerialId(), battleScene1Data);
                     }
                 }
@@ -109,7 +114,7 @@ namespace StarForce
                 //加载模型（先从池子里判断有没有该模型，有的话直接取，没有再生成）
 
                 int model_index = int.Parse(model_id_s[id]);
-                GameEntry.Entity.ShowModel(new ModelData(GameEntry.Entity.GenerateSerialId(), model_index));
+                GameEntry.Entity.ShowModel(new ModelData(GameEntry.Entity.GenerateSerialId(), model_index,"Enemy",5, current_stage));
                 battleScene1Data = dtBattleScene1.GetDataRow(int.Parse(model_pos_s[id]));
                 model.Add(GameEntry.Entity.GetSerialId(), battleScene1Data);
             }
@@ -133,10 +138,17 @@ namespace StarForce
             status = Status.RoundStart;
             foreach (var item in model)
             {
-                (GameEntry.Entity.GetEntity(item.Key).Logic as Model).SetPos(new Vector3(item.Value.X, item.Value.Y, item.Value.Z));
-                (GameEntry.Entity.GetEntity(item.Key).Logic as Model).SetDirection(item.Value.Type);
-                GameEntry.Entity.GetEntity(item.Key).gameObject.SetActive(true);
+                Model model;
+                model = GameEntry.Entity.GetEntity(item.Key).Logic as Model;
+                model.SetPos(new Vector3(item.Value.X, item.Value.Y, item.Value.Z));
+                model.gameObject.SetActive(true);
+                
             }
+        }
+
+        public void SetStage(int value)
+        {
+            current_stage = value;
         }
 
         public void TestOperate(int index)
@@ -147,15 +159,25 @@ namespace StarForce
         public void Update()
         {
             //回合开始（场上所有玩家和怪物选卡逻辑）
-
             if(status == Status.RoundStart)
             {
-                battleUI.RoundStart(SortModel);
+                battleUI.RoundStart(SortModel,UpdateQueue);
                 status = Status.None;
             }
             else if(status == Status.Fighting)
             {
-
+                if(is_turn)
+                {
+                    foreach (var item in battle_queue)
+                    {
+                        if (item.Value.cur_state != Model.State.PlayEnd)
+                        {
+                            battleUI.UpdateBottomCard(item.Value.GetModelData().roleData.index);
+                            break;
+                        }
+                    }
+                    is_turn = false;
+                }
             }
             else if (status == Status.RoundEnd)
             {
@@ -174,11 +196,73 @@ namespace StarForce
         //处理所有模型的出战优先级
         private void SortModel()
         {
+            Model temp_model;
+            int temp_index = 0;
+            if(battle_queue.Count == 0)
+            {
+                foreach (var item in model)
+                {
+                    battle_queue.Add(temp_index, GameEntry.Entity.GetEntity(item.Key).Logic as Model);
+                    temp_index = temp_index + 1;
+                }
+                temp_index = 0;
+
+                for (int i = 0; i < battle_queue.Count; i++)
+                {
+                    //找出优先级最小的那个
+                    int priority_1 = battle_queue[i].GetModelData().roleData.priority;
+                    int record_index = i;
+                    for (int j = i + 1; j < battle_queue.Count; j++)
+                    {
+                        int priority_2 = battle_queue[j].GetModelData().roleData.priority;
+                        temp_index++;
+                        temp_index = (int)Mathf.Clamp(temp_index, 0, 1);
+                        if (priority_2 <= priority_1 && temp_index == 1)
+                        {
+                            record_index = j;
+                        }
+                    }
+                    temp_model = battle_queue[record_index];
+                    battle_queue[record_index] = battle_queue[i];
+                    battle_queue[i] = temp_model;
+                }
+                for (int i = 0; i < battle_queue.Count; i++)
+                {
+                    Log.Error(battle_queue[i].GetModelData().roleData.priority);
+                }
+            }
+            else
+            {
+                //先处理没血的
+                temp_index = 0;
+                Dictionary<int, Model> temp_queue = new Dictionary<int, Model>();
+                for (int i = 0; i < battle_queue.Count; i++)
+                {
+                    if(battle_queue[i].GetModelData().roleData.total_hp <= 0)
+                    {
+                        continue;
+                    }
+                    temp_queue.Add(temp_index, battle_queue[i]);
+                    temp_index++;
+                }
+                battle_queue = temp_queue;
+
+            }
+
+
+            
             foreach (var item in model)
             {
                 Model model_logic = GameEntry.Entity.GetEntity(item.Key).Logic as Model;
-                
             }
+
+        }
+
+        //更新左上角出战队列ToDo
+        private void UpdateQueue()
+        {
+
+            status = Status.Fighting;
         }
 
         public void Attack(int index)

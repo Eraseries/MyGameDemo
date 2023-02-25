@@ -17,6 +17,7 @@ namespace StarForce
         BattleUI parent_ui;
 
         bool select_enemy = false;
+        Model cur_player;
         Model cur_select_model;
         Model pre_select_model;
         //更新卡牌数据 TODO
@@ -32,8 +33,6 @@ namespace StarForce
             {
                 return;
             }
-
-
         }
         public void OnBeginDrag(PointerEventData eventData)
         {

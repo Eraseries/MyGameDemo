@@ -275,33 +275,33 @@ namespace StarForce
         private void UpdateBagData(string panel_name = "Panel_All")
         {
             PlayerDataConfig playerData = GameEntry.PlayerData.GetPlayerData();
-            if(playerData.Bag.Count == 0)
-            {
-                //初始化存档数据
-                Dictionary<string, Dictionary<int, BagData>> temp_bag = new Dictionary<string, Dictionary<int, BagData>>();
-                foreach (var item in tap_panel_name)
-                {
-                    Dictionary<int, BagData> temp_bag_detail = new Dictionary<int, BagData>();
-                    temp_bag.Add(item, temp_bag_detail);
-                }
-                playerData.Bag = temp_bag;
-                GameEntry.PlayerData.SetPlayerData(playerData);
-            }
-            else
-            {
-                foreach (var item in playerData.Bag)
-                {
-                    Log.Error(item.Key);
-                    if(item.Key == panel_name)
-                    {
-                        Dictionary<int, BagData> temp_bag_detail = item.Value;
-                        foreach (var bag_item in temp_bag_detail)
-                        {
-                            slots[bag_item.Key].GetComponent<BagItem>().UpdateInfo(bag_item.Value);
-                        }
-                    }
-                }
-            }
+            //if(playerData.Bag.Count == 0)
+            //{
+            //    //初始化存档数据
+            //    Dictionary<string, Dictionary<int, BagData>> temp_bag = new Dictionary<string, Dictionary<int, BagData>>();
+            //    foreach (var item in tap_panel_name)
+            //    {
+            //        Dictionary<int, BagData> temp_bag_detail = new Dictionary<int, BagData>();
+            //        temp_bag.Add(item, temp_bag_detail);
+            //    }
+            //    playerData.Bag = temp_bag;
+            //    GameEntry.PlayerData.SetPlayerData(playerData);
+            //}
+            //else
+            //{
+            //    foreach (var item in playerData.Bag)
+            //    {
+            //        Log.Error(item.Key);
+            //        if(item.Key == panel_name)
+            //        {
+            //            Dictionary<int, BagData> temp_bag_detail = item.Value;
+            //            foreach (var bag_item in temp_bag_detail)
+            //            {
+            //                slots[bag_item.Key].GetComponent<BagItem>().UpdateInfo(bag_item.Value);
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void Test(string panel_name = "Panel_All")

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using Newtonsoft.Json.Serialization;
 /// <summary>
 /// 战斗模块
 /// </summary>
@@ -14,7 +15,7 @@ namespace StarForce
         private Transform top;
         private Transform right;
         private Transform bottom;
-        private int index = 5;
+        private int index = 2;
         private Text time_text;
         Text useCardText;
         [HideInInspector]
@@ -48,9 +49,9 @@ namespace StarForce
             });
             AddBtnEvent(right.Find("AutoBtn").GetComponent<Button>(), () =>
             {
-                if(index > 11)
+                if(index > 4)
                 {
-                    index = 5;
+                    index = 2;
                 }
                 BattlePanel.Instance.TestOperate(index);
                 index++;
@@ -104,17 +105,17 @@ namespace StarForce
         }
 
         //更新底部出战卡牌(传入角色id)
-        private void UpdateBottomCard(int role_id)
+        public void UpdateBottomCard(int role_id)
         {
             //获取该角色的战斗卡组
             int grid_index = 0;
             foreach (var item_1 in GameEntry.PlayerData.GetPlayerData().RoleBag)
             {
-                if(item_1.Key == role_id)
+                if (item_1.Key == role_id)
                 {
                     foreach (var item_2 in item_1.Value.CardBag)
                     {
-                        if(item_2.Value.load_battle)
+                        if (item_2.Value.load_battle)
                         {
                             grid_table[grid_index].UpdateCardInfo(item_1.Value);
                         }
@@ -122,13 +123,18 @@ namespace StarForce
                     round_use_card_count = item_1.Value.round_use_card_count;
                 }
             }
-            
+
         }
 
         //更新回合使用卡个数
-        private void UpdateUseCardText()
+        private void UpdateUseCardText(bool reset = false)
         {
-            useCardText.text = String.Format("(卡牌使用次数:(<color=#ff0000>{0}</color>/{1})", cur_use_card_count,round_use_card_count);
+            if(reset)
+            {
+                useCardText.text = String.Format("(卡牌使用次数:(<color=#ff0000>0</color>/{0})",round_use_card_count);
+                return;
+            }
+            useCardText.text = String.Format("(卡牌使用次数:(<color=#ff0000>{0}</color>/{1})",cur_use_card_count,round_use_card_count);
         }
 
         //设置回合使用卡个数
@@ -167,16 +173,20 @@ namespace StarForce
             }
         }
 
-        public void RoundStart(Action action = null)
+        public void RoundStart(System.Action action_1 = null,System.Action action_2 = null)
         {
             roundPanel.SetActive(true);
+            if (action_1 != null)
+            {
+                action_1();
+            }
+            if (action_2 != null)
+            {
+                action_2();
+            }
             Timer.Register(1.52f, () => {
                 roundPanel.SetActive(false);
                 UpdateTopTime();
-                if(action != null)
-                {
-                    action();
-                }
             }, null, false, true,this);
         }
 
@@ -212,6 +222,7 @@ namespace StarForce
 
         protected override void OnOpen(object userData)
         {
+            UpdateUseCardText(true);
             BattlePanel.Instance.Show();
             base.OnOpen(userData);
         }

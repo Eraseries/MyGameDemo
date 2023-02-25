@@ -70,22 +70,19 @@ namespace StarForce
         /// 创建新的玩家数据
         /// </summary>
         /// <returns></returns>
+        /// 
         public PlayerDataConfig CreateNewPlayerData()
         {
             CurrentSaveType = SaveDataType.Data1;
             //创建一个Save对象存储当前游戏数据
             PlayerDataConfig data = new PlayerDataConfig();
-            System.Random random = new System.Random();
-            data.coin = 1000;
-            data.diamond = 0;
-            data.energy = 50;
-            data.playerName = "冒险家#" + random.Next(10000000, 99999999);
-            data.level = 1;
-            data.exp = 0;
-            Dictionary<int, int> temp_dic = new Dictionary<int, int>();
 
-            temp_dic.Add(1, 0);
-            data.Stage.Add("Battle_1", temp_dic);
+
+            Dictionary<int, int> temp_dic = new Dictionary<int, int>();
+            data.RoleBag.Add(100002, new RoleData());
+            data.RoleBag[100002].battle_pos = 1;
+
+            data.Stage.Add(1,new StageData());
             return data;
         }
 
@@ -105,8 +102,6 @@ namespace StarForce
             }
 
             LoadSettingData();
-
-
             colorDic = new Dictionary<SaveDataType, Sprite>();
             for (int i = 0; i < saveDatas.Length; i++)
             {

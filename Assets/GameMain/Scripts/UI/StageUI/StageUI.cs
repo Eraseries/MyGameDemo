@@ -42,7 +42,7 @@ namespace StarForce
                 int index = i;
                 AddBtnEvent(content_1.Find("ScrollRect/Content/BigStage_"+ index).GetComponent<Button>(), () =>
                 {
-                    if(index > playerData.Stage.Count)
+                    if(index > playerData.Stage[GameEntry.PlayerData.GetPlayerData().cur_select_map].big_stage)
                     {
                         Log.Error("关卡未解锁！！");
                         return;

@@ -63,6 +63,16 @@ namespace StarForce
             private set;
         }
 
+        /// <summary>
+        /// 获取物品描述。
+        /// </summary>
+        public string ExtraHp
+        {
+            get;
+            private set;
+        }
+
+
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -78,6 +88,7 @@ namespace StarForce
             EnemyCount = int.Parse(columnStrings[index++]);
             EnemyModel = columnStrings[index++];
             EnemyPos = columnStrings[index++];
+            ExtraHp = columnStrings[index++];
             GeneratePropertyArray();
             return true;
         }
@@ -92,6 +103,7 @@ namespace StarForce
                     EnemyCount = binaryReader.Read7BitEncodedInt32();
                     EnemyModel = binaryReader.ReadString();
                     EnemyPos = binaryReader.ReadString();
+                    ExtraHp = binaryReader.ReadString();
                 }
             }
 

@@ -89,6 +89,35 @@ namespace StarForce
             get;
             private set;
         }
+
+        /// <summary>
+        /// 基础血量(50 + 等级*稀有度*2)
+        /// </summary>
+        public string BaseHp
+        {
+            get;
+            private set;
+        }
+
+
+        /// <summary>
+        /// 提供的经验(稀有度*5 + 等级 * 2)
+        /// </summary>
+        public string DeadOfferExp
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 每回合可以使用的卡牌数
+        /// </summary>
+        public int RoundUseCardCount
+        {
+            get;
+            private set;
+        }
+        
         public override bool ParseDataRow(string dataRowString, object userData)
         {
             string[] columnStrings = dataRowString.Split(DataTableExtension.DataSplitSeparators);
@@ -107,7 +136,9 @@ namespace StarForce
             Type = columnStrings[index++];
             Exp = columnStrings[index++];
             Priority = int.Parse(columnStrings[index++]);
-
+            BaseHp = columnStrings[index++];
+            DeadOfferExp = columnStrings[index++];
+            RoundUseCardCount = int.Parse(columnStrings[index++]);
             GeneratePropertyArray();
             return true;
         }
@@ -125,6 +156,9 @@ namespace StarForce
                     Type = binaryReader.ReadString();
                     Exp = binaryReader.ReadString();
                     Priority = binaryReader.Read7BitEncodedInt32();
+                    BaseHp = binaryReader.ReadString();
+                    DeadOfferExp = binaryReader.ReadString();
+                    RoundUseCardCount = binaryReader.Read7BitEncodedInt32();
                 }
             }
 
